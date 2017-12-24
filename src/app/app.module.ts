@@ -3,11 +3,33 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { UpComponent } from './up/up.component';
+import { BottomComponent } from './bottom/bottom.component';
+import { CenterComponent } from './center/center.component';
+import { LeftComponent } from './left/left.component';
+import { RightComponent } from './right/right.component';
+import { RoomInformationComponent } from './room-information/room-information.component';
+import { TableComponent } from './table/table.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { GameHallComponent } from './game-hall/game-hall.component';
+import { GameResultComponent } from './game-result/game-result.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UpComponent,
+    BottomComponent,
+    LeftComponent,
+    RightComponent,
+    CenterComponent,
+    TableComponent,
+    RoomInformationComponent,
+    LoginComponent,
+    RegisterComponent,
+    GameHallComponent,
+    GameResultComponent
   ],
   imports: [
     BrowserModule
