@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-
+<div class="login">
+  <h1>Register</h1>
+  <form >
+    <input type="text" name="u" placeholder="Username" #name required="required" />
+    <input type="password" name="p" placeholder="Password" #password required="required" />
+    <button type="submit"  (click)="onSubmit(name,password)" class="btn btn-primary btn-block btn-large" >Sign UP!</button>
+  </form>
+</div>
 </body>
 </html>

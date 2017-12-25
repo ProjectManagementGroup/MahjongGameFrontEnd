@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-
+<div class="login">
+  <h1>Login</h1>
+  <form >
+    <input type="text" name="u" placeholder="Username" required="required" #name/>
+    <input type="password" name="p" placeholder="Password" required="required" #password/>
+    <button type="submit" class="btn btn-primary btn-block btn-large" (click)="onSubmit(name,password)">Let me in.</button>
+  </form>
+</div>
 </body>
 </html>
