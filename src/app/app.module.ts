@@ -15,6 +15,8 @@ import { RegisterComponent } from './register/register.component';
 import { GameHallComponent } from './game-hall/game-hall.component';
 import { GameResultComponent } from './game-result/game-result.component';
 
+import { GameResultService } from './service/game-result.service';
+import { PlayerService } from './service/player.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { GameResultComponent } from './game-result/game-result.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    GameResultService,
+    PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

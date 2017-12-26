@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div>
+  <h2>结算框</h2>
+  <!--赢的牌-->
+  <div>
+    <!--赢家所有牌-->
+    <div *ngFor="let tile of  winner_tiles">
+      <img src="" alt="牌图" >
+    </div>
+    <!--胡的那一张牌-->
+    <div>
+      <img src='../../assets/picture/bamboo/1.png' alt="牌图" >
+    </div>
+  </div>
+  <!--玩家积分变动情况-->
+  <div>
+    <ul>
+      <li *ngFor="let game_result of game_results"
+          [class.selected]="game_result.gameid === player_gameid">
+        <div><img src="" alt="头像">
+          <span>{{game_result.name}}</span>
+          <span>{{game_result.win}}</span>
+          <span>{{game_result.point}}</span></div>
+      </li>
+    </ul>
+  </div>
+  <div ><button >退出</button><button >继续</button></div>
+</div>
