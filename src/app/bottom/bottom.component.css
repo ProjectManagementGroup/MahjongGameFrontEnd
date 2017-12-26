@@ -54,3 +54,39 @@
   float: left;
 }
 
+.button {
+  color: #eee;
+  height: 50px;
+  border-radius: 2px;
+  position: absolute;
+  right:10px;
+  bottom:60px;
+}
+
+#bump,#eat,#rob,#win {
+  /*opacity: 1;*/
+  outline:none;
+  background: none;
+  /*border:5px;*/
+  width:40px;
+  height:40px;
+  border-radius: 20px;
+  background-size:100% 100%
+}
+#bump:hover,#eat:hover,#rob:hover,#win:hover {
+  opacity:0.6;
+}
+#bump {
+  background-image: url(../../assets/images/bump.png);
+}
+#eat {
+  background-image: url(../../assets/images/eat.png);
+}
+
+#rob {
+  background-image: url(../../assets/images/rob.png);
+}
+#win {
+  background-image: url(../../assets/images/win.png);
+}
+
