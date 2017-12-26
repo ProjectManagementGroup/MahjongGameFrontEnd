@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>game hall</title>
+  <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <!--
+  <link href="../lib/bootstrap.min.css" rel="stylesheet">
+  <link href="game-hall.component.css" rel="stylesheet">
+  -->
 </head>
+
 <body>
+<div class="container">
+    <div class="page-header">
+      <h4>
+      <img src="../../assets/images/background2.jpg" width="70px" height="70px"/>
+      <span class="label label-default">player1</span>
+      </h4>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title">消息</h3>
+          </div>
+          <div class="panel-body">
+            暂无消息
+            <p id="message_buttons">
+            <button id="accept">接收</button>
+            <button id="refuse">拒绝</button>
+            </p>
+          </div>
+        </div>
+      <!--
+      <div class="well" id="message">
+      </div>
+      -->
+      </div>
+    <div class="col-md-4">
+    </div>
+      <div class="col-md-4" id="sidebar">
+        <div class="well" id="buttons">
+          <p><button id="create_room">创建房间</button></p>
+          <p><button id="add_room">加入房间</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
