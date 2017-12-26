@@ -1,25 +1,24 @@
 .bottom{
   text-align: center;
   color: #eee;
-  background-color: #607D8B;
   border-radius: 2px;
-  height: 250px;
+  height: 200px;
   width: 550px;
+  position: relative;
 }
 .bottom_useless {
   text-align: center;
   color: #eee;
-  height: 150px;
-  width: 280px;
-  background-color: #607D8B;
+  height: 120px;
+  width: 200px;
   border-radius: 2px;
   position: absolute;
   left: 70px
 }
 
 .useless_tile {
-  height: 50px;
-  width: 35px;
+  height: 40px;
+  width: 25px;
   float: left;
 }
 
@@ -27,7 +26,6 @@
   text-align: center;
   color: #eee;
   height: 50px;
-  background-color: #607D8B;
   border-radius: 2px;
   position: absolute;
   left:10px;
@@ -44,7 +42,6 @@
   text-align: center;
   color: #eee;
   height: 50px;
-  background-color: #607D8B;
   border-radius: 2px;
   position: absolute;
   right:10px;

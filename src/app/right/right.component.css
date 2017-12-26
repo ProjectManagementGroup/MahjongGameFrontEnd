@@ -1,10 +1,9 @@
 .right{
   text-align: center;
   color: #eee;
-  background-color: #607D8B;
   border-radius: 2px;
-  height: 250px;
-  width: 550px;
+  height: 200px;
+  width: 500px;
   -moz-transform:rotate(270deg);
   -webkit-transform:rotate(270deg);
   filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
@@ -12,25 +11,23 @@
 .right_useless {
   text-align: center;
   color: #eee;
-  height: 150px;
-  width: 280px;
-  background-color: #607D8B;
+  height: 120px;
+  width: 200px;
   border-radius: 2px;
   position: absolute;
   left: 70px
 }
 
 .useless_tile {
-  height: 50px;
-  width: 35px;
+  height: 40px;
+  width: 25px;
   float: left;
 }
 
 .right_using {
   text-align: center;
   color: #eee;
-  height: 50px;
-  background-color: #607D8B;
+  height: 40px;
   border-radius: 2px;
   position: absolute;
   left:10px;
@@ -38,16 +35,15 @@
 }
 
 .using_tile {
-  height: 50px;
-  width: 35px;
+  height: 40px;
+  width: 25px;
   float: left;
 }
 
 .right_used {
   text-align: center;
   color: #eee;
-  height: 50px;
-  background-color: #607D8B;
+  height: 40px;
   border-radius: 2px;
   position: absolute;
   right:10px;
@@ -55,8 +51,8 @@
 }
 
 .used_tile {
-  height: 50px;
-  width: 35px;
+  height: 40px;
+  width: 25px;
   float: left;
 }
 
