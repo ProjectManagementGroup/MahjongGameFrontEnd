@@ -1,0 +1,14 @@
+.game{
+  text-align: center;
+  width: 100%;
+}
+.left_in_game{
+  min-width: 1000px;
+  width: 90%;
+  float:left;
+}
+
+.right_in_game{
+  width: 10%;
+  float:left;
+}

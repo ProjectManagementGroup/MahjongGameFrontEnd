@@ -20,6 +20,7 @@ import { PlayerService } from './service/player.service';
 import { UselessTileService } from './service/useless-tile.service';
 import { UsingTileService } from './service/using-tile.service';
 import { UsedTileService } from './service/used-tile.service';
+import { GameComponent } from './game/game.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UsedTileService } from './service/used-tile.service';
     LoginComponent,
     RegisterComponent,
     GameHallComponent,
-    GameResultComponent
+    GameResultComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule
