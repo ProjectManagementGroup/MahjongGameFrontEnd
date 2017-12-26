@@ -20,6 +20,8 @@ import { PlayerService } from './service/player.service';
 import { UselessTileService } from './service/useless-tile.service';
 import { UsingTileService } from './service/using-tile.service';
 import { UsedTileService } from './service/used-tile.service';
+import { OrderTileService } from './service/order-tile.service';
+import { CheckTileService } from './service/check-tile.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,10 @@ import { UsedTileService } from './service/used-tile.service';
     PlayerService,
     UselessTileService,
     UsedTileService,
-    UsingTileService],
+    UsingTileService,
+    OrderTileService,
+    CheckTileService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
