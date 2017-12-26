@@ -27,7 +27,6 @@ export class RoomInformationComponent implements OnInit {
     this.banker = {name: 'name1', gameid: 0, point: 100, ready: true};
   }
 
-
   ngOnInit(): void {
     this.initializePlayers();
     this.initializeBanker();
