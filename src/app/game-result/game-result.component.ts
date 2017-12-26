@@ -11,11 +11,11 @@ import {PlayerService} from '../service/player.service';
 })
 
 export class GameResultComponent  implements OnInit {
-  player_gameid: number;
-  winner_tiles: Array<Tile>;
-  hu_tile: Tile;
-  game_results: Array<GameResult>;
-  imgsrc: Array<string>;
+  private player_gameid: number;
+  private winner_tiles: Array<Tile>;
+  private hu_tile: Tile;
+  private game_results: Array<GameResult>;
+  private imgsrc: Array<string>;
 
   constructor(private gameResultSer: GameResultService ,
               private playerSer: PlayerService) {

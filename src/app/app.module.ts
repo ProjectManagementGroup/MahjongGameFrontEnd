@@ -17,6 +17,9 @@ import { GameResultComponent } from './game-result/game-result.component';
 
 import { GameResultService } from './service/game-result.service';
 import { PlayerService } from './service/player.service';
+import { UselessTileService } from './service/useless-tile.service';
+import { UsingTileService } from './service/using-tile.service';
+import { UsedTileService } from './service/used-tile.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { PlayerService } from './service/player.service';
   ],
   providers: [
     GameResultService,
-    PlayerService],
+    PlayerService,
+    UselessTileService,
+    UsedTileService,
+    UsingTileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
