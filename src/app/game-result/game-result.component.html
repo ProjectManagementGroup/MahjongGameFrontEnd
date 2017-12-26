@@ -4,11 +4,11 @@
   <div>
     <!--赢家所有牌-->
     <div *ngFor="let tile of  winner_tiles">
-      <img src="" alt="牌图" >
+      <img src="../../assets/picture/{{tile.type}}/{{tile.value}}.png" alt="tile_img" >
     </div>
     <!--胡的那一张牌-->
     <div>
-      <img src='../../assets/picture/bamboo/1.png' alt="牌图" >
+      <img src= "../../assets/picture/{{hu_tile.type}}/{{hu_tile.value}}.png"  alt="hu_tile_img" >
     </div>
   </div>
   <!--玩家积分变动情况-->

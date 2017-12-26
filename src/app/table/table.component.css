@@ -1,0 +1,27 @@
+
+.center_in_body_table{
+  background-color: #607000;
+  width: 700px;
+  height: 700px;
+  float: left;
+}
+
+.left_in_table {
+  position: absolute;
+  left: 10px;
+}
+
+.up_in_table {
+  position: absolute;
+  up: 10px;
+}
+
+.right_in_table {
+  position: absolute;
+  right: 10px;
+}
+
+.bottom_in_table {
+  position: absolute;
+  bottom: 10px;
+}

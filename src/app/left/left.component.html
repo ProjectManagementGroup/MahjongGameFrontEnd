@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="left">
+  <!--已打出的牌 -->
+  <div class="left_useless">
+    <div *ngFor="let useless_tile of useless_tiles" class="useless_tile">
+      <img src="../../assets/picture/{{useless_tile.type}}/{{useless_tile.value}}.png" alt="useless_tile_img">
+    </div>
+  </div>
+  <!--手中的牌 -->
+  <div class="left_using">
+    <div *ngFor="let using_tile of using_tiles" class="using_tile">
+      <img src="../../assets/picture/{{using_tile.type}}/{{using_tile.value}}.png" alt="using_tile_img">
+    </div>
+  </div>
+  <!--碰或者杠的牌 -->
+  <div class="left_used">
+    <div *ngFor="let used_tile of used_tiles" class="used_tile">
+      <img src="../../assets/picture/{{used_tile.type}}/{{used_tile.value}}.png" alt="used_tile_img">
+    </div>
+  </div>
+</div>

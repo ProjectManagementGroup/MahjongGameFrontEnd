@@ -13,7 +13,7 @@ import {PlayerService} from '../service/player.service';
 export class GameResultComponent  implements OnInit {
   private player_gameid: number;
   private winner_tiles: Array<Tile>;
-  private hu_tile: Tile;
+  private hu_tile: Tile ;
   private game_results: Array<GameResult>;
   private imgsrc: Array<string>;
 
@@ -29,22 +29,11 @@ export class GameResultComponent  implements OnInit {
     this.initializeWinnerTiles();
     this.initializeHuTile();
     this.initializeGameResults();
-    this.initializeImgSrc();
   }
 
   initializePlayerGameId() {}
   initializeWinnerTiles() {}
   initializeHuTile() {}
   initializeGameResults() {}
-
-  initializeImgSrc() {
-    const length = this.winner_tiles.length;
-    const basepath = '../../assets/picture/';
-    for ( let i = 0; i < length; i++) {
-      this.imgsrc.push(basepath + this.winner_tiles[i].type + '/' + this.winner_tiles[i].value + '.png');
-    }
-  }
-
-
 
 }

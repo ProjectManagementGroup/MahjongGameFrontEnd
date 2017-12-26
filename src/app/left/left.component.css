@@ -1,0 +1,62 @@
+.left{
+  text-align: center;
+  color: #eee;
+  background-color: #607D8B;
+  border-radius: 2px;
+  height: 250px;
+  width: 550px;
+  -moz-transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+  filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+.left_useless {
+  text-align: center;
+  color: #eee;
+  height: 150px;
+  width: 280px;
+  background-color: #607D8B;
+  border-radius: 2px;
+  position: absolute;
+  left: 70px
+}
+
+.useless_tile {
+  height: 50px;
+  width: 35px;
+  float: left;
+}
+
+.left_using {
+  text-align: center;
+  color: #eee;
+  height: 50px;
+  background-color: #607D8B;
+  border-radius: 2px;
+  position: absolute;
+  left:10px;
+  bottom:10px;
+}
+
+.using_tile {
+  height: 50px;
+  width: 35px;
+  float: left;
+}
+
+.left_used {
+  text-align: center;
+  color: #eee;
+  height: 50px;
+  background-color: #607D8B;
+  border-radius: 2px;
+  position: absolute;
+  right:10px;
+  bottom:10px;
+}
+
+.used_tile {
+  height: 50px;
+  width: 35px;
+  float: left;
+}
+
