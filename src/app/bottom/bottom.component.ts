@@ -54,6 +54,7 @@ export class BottomComponent  implements OnInit {
   private player: Player;
   // 0 using_tile 1 used_tile 2  useless_tile
   private tiles: Tile[][]=[[],[],[]];
+  // 最后出的那张牌在不在这个方位
   private hasCurrentTile: boolean = false;
   private lastUselessNum: number = 0;
 
