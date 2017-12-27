@@ -52,6 +52,8 @@ export class LeftComponent  implements OnInit {
   private player: Player;
   // 0 using_tile 1 used_tile 2  useless_tile
   private tiles: Tile[][]=[[],[],[]];
+  private hasCurrentTile: boolean = false;
+  private lastUselessNum: number = 0;
 
   constructor(private socketService: SocketService) {
     this.tiles[0] = USINGTILE;
@@ -63,6 +65,13 @@ export class LeftComponent  implements OnInit {
     this.socketService.getTile_Left.subscribe(
       (tiles)=>{
         this.tiles = tiles;
+        let newNum = this.tiles[2].length;
+        if(newNum > this.lastUselessNum) {
+          this.hasCurrentTile = true;
+        }else {
+          this.hasCurrentTile = false;
+        }
+        this.lastUselessNum = newNum;
       }
     );
   }
