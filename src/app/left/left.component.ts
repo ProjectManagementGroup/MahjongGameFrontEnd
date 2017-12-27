@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Tile} from '../object/tile';
-import {Player} from '../object/player';
+import { Tile } from '../object/tile';
+import { Player } from '../object/player';
+import { SocketService } from '../service/socket.service';
 
 const USELESSTRILE: Tile[] = [
   {type: 'bamboo', value: 1},
@@ -49,30 +50,19 @@ const USEDTILE: Tile[] = [
 
 export class LeftComponent  implements OnInit {
   private player: Player;
-  private useless_tiles: Array<Tile>;
-  private using_tiles: Array<Tile>;
-  private used_tiles: Array<Tile>;
+  // 0 using_tile 1 used_tile 2  useless_tile
+  private tiles: Tile[][]=[[],[],[]];
 
-  constructor() {
-    // this.useless_tiles = [];
-    // this.using_tiles = [];
-    // this.used_tiles = [];
-    this.useless_tiles = USELESSTRILE;
-    this.using_tiles = USINGTILE;
-    this.used_tiles = USEDTILE;
+  constructor(private socketService: SocketService) {
+
   }
 
   ngOnInit(): void {
-    this.initializePlayer();
-    this.initializeUsingTiles();
-  }
-
-  initializePlayer() {
-
-  }
-
-  initializeUsingTiles() {
-
+    this.socketService.getTile_Left.subscribe(
+      (tiles)=>{
+        this.tiles = tiles;
+      }
+    );
   }
 
 }
