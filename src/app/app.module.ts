@@ -15,7 +15,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { GameHallComponent } from './game-hall/game-hall.component';
 import { GameResultComponent } from './game-result/game-result.component';
-import { GameComponent } from './game/game.component';
 
 import { SocketService } from './service/socket.service';
 import { OrderTileService } from './service/order-tile.service';
@@ -26,6 +25,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'room' , component: RoomInformationComponent}
 ];
 
 @NgModule({
@@ -41,8 +41,7 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     GameHallComponent,
-    GameResultComponent,
-    GameComponent
+    GameResultComponent
   ],
   imports: [
     BrowserModule,

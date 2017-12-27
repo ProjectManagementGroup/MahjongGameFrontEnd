@@ -3,15 +3,16 @@
   height: 740px;
   min-width: 1520px;
   /*background-color: #307000;*/
-  background-image: url("../../assets/images/game_background3.png");
+  background-image: url("../../assets/images/game_background.png");
+  /*background-size: 100px 100px;*/
 }
 
 .center_in_body_table{
   text-align: center;
-  background-image: url("../../assets/images/game_background.png");
+  background-image: url("../../assets/images/game_background3.png");
   border-radius:5%;
-  width: 900px;
-  height: 500px;
+  width: 940px;
+  height: 540px;
   position: relative;
   top: 50%;
   left: 50%;
@@ -23,7 +24,7 @@
 .left_in_table {
   text-align: center;
   position: absolute;
-  left: -140px;
+  left: -120px;
   top: 170px;
   -moz-transform:rotate(90deg);
   -webkit-transform:rotate(90deg);
@@ -49,11 +50,23 @@
   top: 0px;
 }
 
+.tipIcon {
+  background-color: #f00;
+  color: #fff;
+  border-radius:50%;
+  text-align: center;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right:50px;  //负值为自身体积的一半
+  top:0px;
+}
+
 .up_in_table {
   text-align: center;
   position: absolute;
   right: 250px;
-  top: 0px;
+  top: 20px;
   -moz-transform:rotate(180deg);
   -webkit-transform:rotate(180deg);
   filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
@@ -64,13 +77,13 @@
   width: 50px;
   position: absolute;
   right: 750px;
-  top: -50px;
+  top: 20px;
 }
 
 .right_in_table {
   text-align: center;
   position: absolute;
-  right:-140px;
+  right:-120px;
   top: 150px;
   -moz-transform:rotate(270deg);
   -webkit-transform:rotate(270deg);
@@ -88,7 +101,7 @@
 .bottom_in_table {
   text-align: center;
   position: absolute;
-  bottom:0px;
+  bottom:20px;
   left: 250px;
 }
 
@@ -96,8 +109,8 @@
   height: 50px;
   width: 50px;
   position: absolute;
-  bottom: 0px;
-  left: 150px;
+  bottom: 50px;
+  left: 155px;
 }
 
 .center_in_table{
@@ -106,3 +119,12 @@
   top: 215px;
   left: 450px;
 }
+
+.left_tile{
+  text-align: center;
+  position: absolute;
+  top: 500px;
+  right: 50px;
+}
+
+

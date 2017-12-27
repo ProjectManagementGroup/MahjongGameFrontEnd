@@ -1,13 +1,17 @@
-<div>
-  <div>left number: {{leftTile}}</div>
-  <div>BANKER: {{banker.name}}</div>
-  <div>
-    <div *ngFor="let player of players">
-      <img src="../../assets/picture/portrait/{{player.gameid}}.png" alt="touxiang">
-      <div>{{player.name}}</div>
-      <div>point: {{player.point}}</div>
-      <div>isReady: {{player.ready}}</div>
+<div class="room_information">
+  <div class="center_in_ri">
+    <div class="show_room_info">
+      <div>
+        <div *ngFor="let player of players" class="player_in_ri">
+          <img class="portrait" src="../../assets/picture/portrait/{{player.gameid}}.jpg" alt="touxiang">
+          <span *ngIf="player.ready === true"  class="tipIcon_ready">准</span>
+          <span *ngIf="player.gameid === banker.gameid"  class="tipIcon_banker">庄</span>
+          <h4 class="portrait_name"><span  class="label label-default">{{player.name}}</span></h4>
+        </div>
+      </div>
+      <div class="button"><button>准备</button></div>
     </div>
+
   </div>
-  <div><button>HELP</button></div>
 </div>
+

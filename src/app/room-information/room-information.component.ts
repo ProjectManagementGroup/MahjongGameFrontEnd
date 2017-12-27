@@ -4,7 +4,7 @@ import {Player} from '../object/player';
 const PLAYERS: Player[] = [
   {name: 'name1', gameid: 0, point: 100, ready: true},
   {name: 'name2', gameid: 1, point: 100, ready: true},
-  {name: 'name3', gameid: 2, point: 100, ready: true},
+  {name: 'name3', gameid: 2, point: 100, ready: false},
   {name: 'name4', gameid: 3, point: 100, ready: true}
 ];
 
@@ -16,13 +16,11 @@ const PLAYERS: Player[] = [
 
 export class RoomInformationComponent implements OnInit {
   private players: Array<Player>;
-  private leftTile: number;
   private banker: Player;
 
   constructor( ) {
     // this.players = [];
     this.players = PLAYERS;
-    this.leftTile = 100;
     this.banker = {name: 'name1', gameid: 0, point: 100, ready: true};
   }
 
