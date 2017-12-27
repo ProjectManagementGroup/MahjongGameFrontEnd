@@ -26,7 +26,7 @@ export class GameHallComponent implements OnInit{
       }
     );
     this.socket.get_room_number.subscribe((val)=>{
-      this.room_number=val;
+      this.room_number = val;
     });
 
   }
