@@ -12,9 +12,9 @@ import { SocketService } from '../service/socket.service';
 
 export class GameResultComponent  implements OnInit {
   private player_gameid: number;
-  private winner_tiles: Array<Tile>;
+  private winner_tiles: Array<Tile> = [];
   private hu_tile: Tile ;
-  private game_results: Array<GameResult>;
+  private game_results: Array<GameResult> = [];
   private imgsrc: Array<string>;
 
   constructor(private socketService: SocketService) {
