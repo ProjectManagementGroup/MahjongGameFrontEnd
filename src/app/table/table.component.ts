@@ -19,12 +19,16 @@ export class TableComponent  implements OnInit {
   private rightPlayer: Player;
   private upPlayer: Player;
   private bottomPlayer: Player;
+  private leftTile: number;
+  private banker: Player;
 
   constructor( ) {
     this.leftPlayer = PLAYERS[0];
     this.upPlayer = PLAYERS[1];
     this.rightPlayer = PLAYERS[2];
     this.bottomPlayer = PLAYERS[3];
+    this.leftTile = 100;
+    this.banker = PLAYERS[0];
   }
 
   ngOnInit(): void {
