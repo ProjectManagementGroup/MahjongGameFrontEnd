@@ -27,21 +27,21 @@
         <div>
           <div class="form-group">
             <label for="username1" class="control-label">第1个好友:</label>
-            <input type="text" class="form-control" id="username1">
+            <input type="text" class="form-control" id="username1"  [(ngModel)]="name1">
           </div>
           <div class="form-group">
             <label for="username2" class="control-label">第2个好友:</label>
-            <input type="text" class="form-control" id="username2">
+            <input type="text" class="form-control" id="username2" [(ngModel)]="name2">
           </div>
           <div class="form-group">
             <label for="username3" class="control-label">第3个好友:</label>
-            <input type="text" class="form-control" id="username3">
+            <input type="text" class="form-control" id="username3" [(ngModel)]="name3">
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary">确定邀请</button>
+        <button type="button" class="btn btn-primary" (click)="send_invitation()">确定邀请</button>
       </div>
     </div>
   </div>
@@ -65,10 +65,17 @@
             <h3 class="panel-title">消息</h3>
           </div>
           <div class="panel-body">
-            暂无消息
+            <p *ngIf="!invatation">暂无消息</p>
+            <ul *ngIf="invatation">
+              <li>邀请者(房主)：    {{invatation[0]}}</li>
+              <li>被邀请者1： {{invatation[1]}}</li>
+              <li>被邀请者2： {{invatation[2]}}</li>
+              <li>被邀请者3： {{invatation[3]}}</li>
+              <li>房间号： {{invatation[4]}}</li>
+            </ul>
             <p id="message_buttons">
-            <button id="accept">接收</button>
-            <button id="refuse">拒绝</button>
+            <button id="accept" (click)="accept_invitation()" *ngIf="invatation">接收</button>
+            <button id="refuse" *ngIf="invatation">拒绝</button>
             </p>
           </div>
         </div>
