@@ -4,8 +4,8 @@
   <div class="up_arrow"></div>
   <div class="bottom_arrow"></div>
   <div class="count_down"><h4><span class="label label-default">{{countDown}}</span></h4></div>
-  <div *ngIf="leftPlayer.gameid === curPlayer.gameid"  class="left_arrow_highlight"></div>
-  <div *ngIf="rightPlayer.gameid === curPlayer.gameid"  class="right_arrow_highlight"></div>
-  <div *ngIf="upPlayer.gameid === curPlayer.gameid"  class="up_arrow_highlight"></div>
-  <div *ngIf="bottomPlayer.gameid === curPlayer.gameid"  class="bottom_arrow_highlight"></div>
+  <div *ngIf="leftPlayer.gameid === next_turn"  class="left_arrow_highlight"></div>
+  <div *ngIf="rightPlayer.gameid === next_turn"  class="right_arrow_highlight"></div>
+  <div *ngIf="upPlayer.gameid === next_turn"  class="up_arrow_highlight"></div>
+  <div *ngIf="bottomPlayer.gameid === next_turn"  class="bottom_arrow_highlight"></div>
 </div>

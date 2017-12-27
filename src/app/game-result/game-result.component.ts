@@ -33,9 +33,10 @@ const GAMERESULTS: GameResult[] = [
 })
 
 export class GameResultComponent  implements OnInit {
-  private winner_tiles: Array<Tile>;
+  private player_gameid: number;
+  private winner_tiles: Array<Tile> = [];
   private hu_tile: Tile ;
-  private game_results: Array<GameResult>;
+  private game_results: Array<GameResult> = [];
   private win: boolean;
 
   constructor(private socketService: SocketService) {

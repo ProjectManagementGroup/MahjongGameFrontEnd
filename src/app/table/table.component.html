@@ -3,8 +3,8 @@
       <left class="left_in_table"></left>
       <up class="up_in_table"></up>
       <right class="right_in_table"></right>
-      <bottom class="bottom_in_table"></bottom>
-      <center-table class="center_in_table"></center-table>
+      <bottom [uuid]="uuid" [turn]="turn" [current_tile]="current_tile" class="bottom_in_table"></bottom>
+      <center-table [leftPlayer]="leftPlayer" [rightPlayer]="rightPlayer" [upPlayer]="upPlayer" [bottomPlayer]="bottomPlayer"  class="center_in_table"></center-table>
       <div class="left_player" >
         <div>
           <img class="portrait" src="../../assets/picture/portrait/{{leftPlayer.gameid}}.jpg" alt="touxiang">

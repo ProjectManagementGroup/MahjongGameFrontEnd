@@ -49,7 +49,7 @@ const USEDTILE: Tile[] = [
 })
 
 export class LeftComponent  implements OnInit {
-  private player: Player;
+
   // 0 using_tile 1 used_tile 2  useless_tile
   private tiles: Tile[][]=[[],[],[]];
   private hasCurrentTile: boolean = false;
