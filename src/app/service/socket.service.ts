@@ -27,11 +27,11 @@ export class SocketService {
   user: User; //本人的user信息
   get_user: Subject<User> = new Subject<User>();
 
-  //自己的index
   uuid: number;
   get_uuid: Subject<number> = new Subject<number>();
   //游戏是否开始
   game_start: boolean=false;
+  //自己的index
   get_game_start: Subject<boolean> = new Subject<boolean>();
   //发出吃碰请求的三张牌
   eat_bump_tiles: Tile[];
@@ -48,7 +48,7 @@ export class SocketService {
   //成功邀请的房间号
   room_number: string;
   get_room_number: Subject<string> = new Subject<string>();
-  wsUrl: string = 'wss://192.168.99.1:9000/game/ws';
+  wsUrl: string = 'wss://47.96.147.90:9000/game/ws';
   socket: WebSocket = null;
   //自己将要出的牌
   out_tile: Tile;
@@ -153,10 +153,13 @@ export class SocketService {
       case 'get tile':
         //TODO：发牌数据问题
         this.bottom_tile[0].push(<Tile>message.object);
+        this.rest--;
+        this.get_rest.next(this.rest);
         this.getTile_Bottom.next(this.bottom_tile);
         break;
       case 'allocate tile':
         var temp = message.object-this.uuid;
+        this.rest--;
         if(temp==1){
           this.right_tile[0].push(null);
           this.getTile_Right.next(this.right_tile);
@@ -167,6 +170,7 @@ export class SocketService {
           this.top_tile[0].push(null);
           this.getTile_Top.next(this.top_tile);
         }
+        this.get_rest.next(this.rest);
       case 'out success':
         if(message.ok){
           this.bottom_tile[0].splice(this.bottom_tile[0].indexOf( this.out_tile ), 1);

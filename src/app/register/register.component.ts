@@ -20,10 +20,12 @@ export class RegisterComponent implements OnInit{
     this.socket.getRS.subscribe((val)=>{
       this.register_state=val;
       if(this.register_state){
-        let message = 'register|'+this.username+'|'+this.password;
-        this.socket.sendMessage(message);
         this.router.navigate(['/login']);
       }
     });
+  }
+  register(): void {
+    let message = 'register|'+this.username+'|'+this.password;
+    this.socket.sendMessage(message);
   }
 }
