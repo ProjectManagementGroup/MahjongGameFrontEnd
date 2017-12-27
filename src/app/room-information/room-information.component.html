@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div>
+  <div>left number: {{leftTile}}</div>
+  <div>BANKER: {{banker.name}}</div>
+  <div>
+    <div *ngFor="let player of players">
+      <img src="../../assets/picture/portrait/{{player.gameid}}.png" alt="touxiang">
+      <div>{{player.name}}</div>
+      <div>point: {{player.point}}</div>
+      <div>isReady: {{player.ready}}</div>
+    </div>
+  </div>
+  <div><button>HELP</button></div>
+</div>

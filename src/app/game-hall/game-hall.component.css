@@ -1,0 +1,87 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+/*html,*/
+/*body {*/
+  /*overflow-x: hidden;*/
+/*}*/
+body {
+  background-image: url(../../assets/images/hall.png);
+  background-repeat:no-repeat;
+  background-size: cover;
+  /*background:#f0f0f0;*/
+  /*padding-top: 70px;*/
+}
+/*footer {*/
+  /*padding: 30px 0;*/
+/*}*/
+#leftbar,#sidebar{
+  display:inline;
+  width:30%;
+}
+
+#buttons {
+  margin-top:190px;
+  background: none;
+  border:none;
+  /*background: #f0f0f0;*/
+  background-image: url(../../assets/images/border.png);
+  background-size:100% 100%;
+  opacity: 0.9;
+}
+.panel {
+  /*background: #f0f0f0;*/
+  height:500px;
+  opacity: 0.5;
+}
+.panel-body{
+  height:100%;
+}
+#message_buttons{
+  height:100px;
+  margin-top:350px;
+}
+#accept,#refuse {
+  opacity: 1;
+  outline:none;
+  background: none;
+  border:none;
+  width:30%;
+  margin:8%;
+  height:40px;
+  background-size:100% 100%;
+  font-weight: bold;
+  color:white;
+}
+#accept {
+  background-image: url(../../assets/images/accept.png);
+}
+#refuse {
+  background-image: url(../../assets/images/refuse.png);
+}
+#create_room,#add_room {
+  opacity: 1;
+  outline:none;
+  background: none;
+  border:none;
+  width:90%;
+  height:80px;
+  background-size:100% 100%
+}
+#create_room:hover,#add_room:hover,#accept:hover,#refuse:hover {
+   opacity:0.8;
+ }
+#create_room {
+  background-image: url(../../assets/images/button1.png);
+  margin:50px 10px 10px 10px;
+}
+#add_room {
+  background-image: url(../../assets/images/button2.png);
+  margin:15px 10px 30px 10px;
+}
+img{
+  border: 1px dotted #000000; /*border: 1px solid #000000;*/
+  -webkit-border-radius: 50%;
+  border-radius: 50%
+}
