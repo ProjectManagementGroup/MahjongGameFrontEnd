@@ -4,9 +4,9 @@
   border-radius: 2px;
   height: 200px;
   width: 500px;
-  -moz-transform:rotate(90deg);
-  -webkit-transform:rotate(90deg);
-  filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  /*-moz-transform:rotate(90deg);*/
+  /*-webkit-transform:rotate(90deg);*/
+  /*filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);*/
 }
 
 .left_useless {

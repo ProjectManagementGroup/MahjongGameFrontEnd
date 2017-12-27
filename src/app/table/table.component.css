@@ -1,7 +1,7 @@
 .table{
   text-align: center;
-  height: 760px;
-  width: 1200px;
+  height: 740px;
+  min-width: 1550px;
   background-color: #307000;
 }
 
@@ -21,10 +21,11 @@
 .left_in_table {
   text-align: center;
   position: absolute;
-  height: 500px;
-  width: 200px;
   left: -150px;
   top: 250px;
+  -moz-transform:rotate(90deg);
+  -webkit-transform:rotate(90deg);
+  filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
 }
 
 .left_player {
@@ -47,11 +48,12 @@
 
 .up_in_table {
   text-align: center;
-  height: 200px;
-  width: 500px;
   position: absolute;
   left: 100px;
   top: 0px;
+  -moz-transform:rotate(180deg);
+  -webkit-transform:rotate(180deg);
+  filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
 }
 
 .up_player{
@@ -64,11 +66,12 @@
 
 .right_in_table {
   text-align: center;
-  height: 500px;
-  width: 200px;
   position: absolute;
-  right:150px;
+  right:-150px;
   top: 150px;
+  -moz-transform:rotate(270deg);
+  -webkit-transform:rotate(270deg);
+  filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
 .right_player {
@@ -81,8 +84,6 @@
 
 .bottom_in_table {
   text-align: center;
-  height: 200px;
-  width: 550px;
   position: absolute;
   bottom:0px;
   left: 200px;

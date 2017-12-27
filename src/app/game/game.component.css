@@ -2,13 +2,14 @@
   text-align: center;
   width: 100%;
 }
-.left_in_game{
-  min-width: 1000px;
-  width: 90%;
-  float:left;
+.table_in_game{
+  text-align: center;
 }
 
-.right_in_game{
-  width: 10%;
-  float:left;
+.room_information_in_game{
+  text-align: center;
+}
+
+.hidden{
+  visibility: hidden;
 }
