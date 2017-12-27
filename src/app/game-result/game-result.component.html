@@ -1,27 +1,38 @@
-<div>
-  <h2>结算框</h2>
-  <!--赢的牌-->
-  <div>
-    <!--赢家所有牌-->
-    <div *ngFor="let tile of  winner_tiles">
-      <img src="../../assets/picture/{{tile.type}}/{{tile.value}}.png" alt="tile_img" >
+<div class="game_result">
+  <div class="center_in_gr">
+    <div class="show_info">
+      <div class="title_gr">
+        <img *ngIf="win === true" src="" alt="胜利">
+        <img *ngIf="win === false" src="" alt="失败">
+      </div>
+      <!--赢的牌-->
+      <div class="tile_gr">
+        <!--赢家所有牌-->
+        <div class="winner_tiles">
+          <div *ngFor="let tile of  winner_tiles" class="winner_tile">
+            <img src="../../assets/picture/{{tile.type}}/{{tile.value}}.png" alt="tile_img" >
+          </div>
+        </div>
+        <!--胡的那一张牌-->
+        <div class="hu_tile">
+          <img src= "../../assets/picture/{{hu_tile.type}}/{{hu_tile.value}}.png"  alt="hu_tile_img" >
+        </div>
+      </div>
+      <!--玩家积分变动情况-->
+      <div class="point_gr">
+        <div class="point_player_gr" *ngFor="let game_result of game_results">
+          <img class="portrait" src="../../assets/picture/portrait/{{game_result.gameid}}.jpg" alt="touxiang">
+          <!--<div class="name_player"><h4><span class="label label-default">{{game_result.name}}</span></h4></div>-->
+          <!--<div class="win_player"><h1><span class="label label-default">{{game_result.win}}</span></h1></div>-->
+          <!--<div class="point_player"><h1><span class="label label-default">{{game_result.point}}</span></h1></div>-->
+          <span class="label label-default">{{game_result.name}}</span>
+          <span class="label label-default">{{game_result.win}}</span>
+          <span class="label label-default">{{game_result.point}}</span>
+        </div>
+      </div>
+      <!--<div ><button >退出</button><button >继续</button></div>-->
     </div>
-    <!--胡的那一张牌-->
-    <div>
-      <img src= "../../assets/picture/{{hu_tile.type}}/{{hu_tile.value}}.png"  alt="hu_tile_img" >
-    </div>
+
   </div>
-  <!--玩家积分变动情况-->
-  <div>
-    <ul>
-      <li *ngFor="let game_result of game_results"
-          [class.selected]="game_result.gameid === player_gameid">
-        <div><img src="" alt="头像">
-          <span>{{game_result.name}}</span>
-          <span>{{game_result.win}}</span>
-          <span>{{game_result.point}}</span></div>
-      </li>
-    </ul>
-  </div>
-  <div ><button >退出</button><button >继续</button></div>
+
 </div>

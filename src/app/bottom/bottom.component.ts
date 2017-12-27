@@ -4,46 +4,46 @@ import { Player } from '../object/player';
 import { SocketService } from '../service/socket.service';
 import {OrderTileService} from '../service/order-tile.service';
 import {CheckTileService} from '../service/check-tile.service';
-/*
+
 const USELESSTRILE: Tile[] = [
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 1}
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 1, typeid: 0 }
 ];
 
 const USINGTILE: Tile[] = [
-  {type: 'bamboo', value: 1 },
-  {type: 'bamboo', value: 2 },
-  {type: 'bamboo', value: 2 },
-  {type: 'bamboo', value: 3 },
-  {type: 'bamboo', value: 5 },
-  {type: 'bamboo', value: 6 },
-  {type: 'bamboo', value: 9 }
+  {type: 'bamboo', value: 1 , typeid: 0 },
+  {type: 'bamboo', value: 2 , typeid: 0 },
+  {type: 'bamboo', value: 2 , typeid: 0 },
+  {type: 'bamboo', value: 3 , typeid: 0 },
+  {type: 'bamboo', value: 5 , typeid: 0 },
+  {type: 'bamboo', value: 6 , typeid: 0 },
+  {type: 'bamboo', value: 9 , typeid: 0 }
 ];
 
 const USEDTILE: Tile[] = [
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 2},
-  {type: 'bamboo', value: 3},
-  {type: 'bamboo', value: 4},
-  {type: 'bamboo', value: 5},
-  {type: 'bamboo', value: 6}
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 2, typeid: 0 },
+  {type: 'bamboo', value: 3, typeid: 0 },
+  {type: 'bamboo', value: 4, typeid: 0 },
+  {type: 'bamboo', value: 5, typeid: 0 },
+  {type: 'bamboo', value: 6, typeid: 0 }
 ];
-*/
+
 @Component({
   selector: 'bottom',
   templateUrl: './bottom.component.html',
@@ -66,6 +66,7 @@ export class BottomComponent  implements OnInit {
               private orderTileService: OrderTileService,
               private checkTileService: CheckTileService ) {
     this.uuid = this.socketService.uuid;
+
   }
 
   ngOnInit(): void {
@@ -118,9 +119,9 @@ export class BottomComponent  implements OnInit {
   private testEat(): boolean {
     let canEat = false;
     if(this.turn == ((this.uuid + 3)%4)){
-      if(this.checkTileService.checkEat(this.current_tile, this.tiles[0])){
-        canEat = true;
-      }
+      // if(this.checkTileService.checkEat(this.current_tile, this.tiles[0])){
+      //   canEat = true;
+      // }
     }
     return canEat;
   }
