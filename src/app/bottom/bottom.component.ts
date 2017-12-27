@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Tile } from '../object/tile';
 import { Player } from '../object/player';
 import { SocketService } from '../service/socket.service';
@@ -58,14 +58,14 @@ export class BottomComponent  implements OnInit {
   private hasCurrentTile: boolean = false;
   private lastUselessNum: number = 0;
 
-  private uuid: number;
-  private current_tile: Tile; //最后出的牌
-  private turn: number=0; //当前出牌者，最后一个牌是谁出的，是已经出完的
+  @Input() uuid: number;
+  @Input() current_tile: Tile; //最后出的牌
+  @Input() turn: number=0; //当前出牌者，最后一个牌是谁出的，是已经出完的
 
   constructor(private socketService: SocketService,
               private orderTileService: OrderTileService,
               private checkTileService: CheckTileService ) {
-    this.uuid = this.socketService.uuid;
+
   }
 
   ngOnInit(): void {
@@ -80,16 +80,6 @@ export class BottomComponent  implements OnInit {
           this.hasCurrentTile = false;
         }
         this.lastUselessNum = newNum;
-      }
-    );
-    this.socketService.get_current.subscribe(
-      (tile)=>{
-        this.current_tile = tile;
-      }
-    );
-    this.socketService.get_turn.subscribe(
-      (turn)=>{
-        this.turn = turn;
       }
     );
   }
