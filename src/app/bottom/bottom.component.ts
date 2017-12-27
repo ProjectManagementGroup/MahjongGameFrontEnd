@@ -57,7 +57,6 @@ export class BottomComponent  implements OnInit {
   private hasCurrentTile: boolean = false;
   private lastUselessNum: number = 0;
 
-
   private uuid: number;
   private current_tile: Tile; //最后出的牌
   private turn: number=0; //当前出牌者，最后一个牌是谁出的，是已经出完的
@@ -94,36 +93,27 @@ export class BottomComponent  implements OnInit {
     );
   }
 
+  //检测碰牌是否成功，如果成功就发给后台
   bump(): void {
-    if(this.testBump()){
-      this.socketService.sendMessage('bump|');
-    }
-  }
-
-  private testBump(): boolean {
-    let canBump = false;
+    let bumpTiles = [];
     if(this.turn !== this.uuid){
-      if(this.checkTileService.checkBump(this.current_tile, this.tiles[0])){
-        canBump = true;
+      if(this.checkTileService.checkBump(this.current_tile, this.tiles[0], bumpTiles)){
+        this.socketService.sendMessage('bump|');
+        this.socketService.sendEatBumpMessage(bumpTiles);
       }
     }
-    return canBump;
   }
 
   eat(): void {
-
-
-  }
-
-  private testEat(): boolean {
-    let canEat = false;
+    let eatTiles = [];
     if(this.turn == ((this.uuid + 3)%4)){
-      if(this.checkTileService.checkEat(this.current_tile, this.tiles[0])){
-        canEat = true;
+      if(this.checkTileService.checkEat(this.current_tile, this.tiles[0], eatTiles)){
+        this.socketService.sendMessage('eat|');
+        this.socketService.sendEatBumpMessage(eatTiles);
       }
     }
-    return canEat;
   }
+
   rob(): void {
 
   }

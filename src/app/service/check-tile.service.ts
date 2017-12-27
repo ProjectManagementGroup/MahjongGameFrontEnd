@@ -10,19 +10,20 @@ export class CheckTileService {
     return tile.typeid * 10 + tile.value;
   }
 
-  public checkBump(target: Tile, tiles: Array<Tile>): boolean {
-    return this.isNumMoreThan(target, tiles, 2);
+  public checkBump(target: Tile, tiles: Array<Tile>, eatTiles: Tile[]): boolean {
+    return this.isNumMoreThan(target, tiles, 2, eatTiles);
   }
-  public checkRod(target: Tile, tiles: Array<Tile>): boolean {
-    return this.isNumMoreThan(target, tiles, 3);
+  public checkRod(target: Tile, tiles: Array<Tile>, eatTiles: Tile[]): boolean {
+    return this.isNumMoreThan(target, tiles, 3, eatTiles);
   }
 
-  private isNumMoreThan(target: Tile, tiles: Array<Tile>, mixNum: number) {
+  private isNumMoreThan(target: Tile, tiles: Array<Tile>, mixNum: number, eatTiles: Tile[]) {
     let num = 0;
     let size = tiles.length;
     for(let i = 0; i < size; i++) {
       if(this.getTileNum(target) == this.getTileNum(tiles[i])) {
         num++;
+        eatTiles.push(tiles[i]);
       }
     }
     if(num >= mixNum) {
@@ -33,7 +34,19 @@ export class CheckTileService {
   }
 
   public checkEat(target: Tile, tiles: Array<Tile>, eatTiles: Tile[]): boolean {
-    return true;
+    let targetTileNum = this.getTileNum(target);
+    if(this.checkEatLRM(tiles, targetTileNum + 1, targetTileNum + 2, eatTiles)) {
+      return true;
+    }
+    if(this.checkEatLRM(tiles, targetTileNum - 1, targetTileNum + 1, eatTiles)) {
+      return true;
+    }
+    if(this.checkEatLRM(tiles, targetTileNum - 2, targetTileNum - 1, eatTiles)) {
+      return true;
+    }
+
+    return false;
+    //return true;
     //return this.checkEatLRM(tiles, this.getTileNum(target) + 1, this.getTileNum(target) + 2) ||
       //this.checkEatLRM(tiles, this.getTileNum(target) - 1, this.getTileNum(target) + 1) ||
       //this.checkEatLRM(tiles, this.getTileNum(target) - 2, this.getTileNum(target) - 1);
