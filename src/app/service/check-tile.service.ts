@@ -32,25 +32,30 @@ export class CheckTileService {
     }
   }
 
-  public checkEat(target: Tile, tiles: Array<Tile>): boolean {
-    return this.checkEatLRM(tiles, this.getTileNum(target) + 1, this.getTileNum(target) + 2) ||
-      this.checkEatLRM(tiles, this.getTileNum(target) - 1, this.getTileNum(target) + 1) ||
-      this.checkEatLRM(tiles, this.getTileNum(target) - 2, this.getTileNum(target) - 1);
+  public checkEat(target: Tile, tiles: Array<Tile>, eatTiles: Tile[]): boolean {
+    return true;
+    //return this.checkEatLRM(tiles, this.getTileNum(target) + 1, this.getTileNum(target) + 2) ||
+      //this.checkEatLRM(tiles, this.getTileNum(target) - 1, this.getTileNum(target) + 1) ||
+      //this.checkEatLRM(tiles, this.getTileNum(target) - 2, this.getTileNum(target) - 1);
   }
 
-  private checkEatLRM(tiles: Array<Tile>, find1: number, find2: number): boolean {
+  private checkEatLRM(tiles: Array<Tile>, find1: number, find2: number, eatTiles: Tile[]): boolean {
     let size = tiles.length;
-    let isfind1 = false;
-    let isfind2 = false;
+    let isfind1 = -1;
+    let isfind2 = -1;
     for(let i = 0; i < size; i++) {
       if(this.getTileNum(tiles[i]) == find1) {
-        isfind1 = true;
+        isfind1 = i;
       }
       if(this.getTileNum(tiles[i]) == find2) {
-        isfind2 = true;
+        isfind2 = i;
       }
     }
-    return isfind1&&isfind2;
+    if((isfind1!= -1) && (isfind2 != -1)) {
+      eatTiles[0] = tiles[isfind1];
+      eatTiles[1] = tiles[isfind2];
+    }
+    return (isfind1!= -1) && (isfind2 != -1);
   }
   /*
   // bump碰牌 eat吃牌 rod杠牌
