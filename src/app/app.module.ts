@@ -25,7 +25,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'room' , component: RoomInformationComponent}
+  { path: 'room', component: RoomInformationComponent },
+  { path: 'table', component: TableComponent }
 ];
 
 @NgModule({

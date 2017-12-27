@@ -1,11 +1,76 @@
 import { Injectable } from '@angular/core';
 import { Tile } from '../object/tile';
-import { OrderTileService } from './order-tile.service';
+
 
 @Injectable()
 export class CheckTileService {
-  constructor (private orderTileService: OrderTileService) {}
+  constructor () {}
 
+  private getTileNum(tile: Tile) : number{
+    return tile.typeid * 10 + tile.value;
+  }
+
+  public checkBump(target: Tile, tiles: Array<Tile>, eatTiles: Tile[]): boolean {
+    return this.isNumMoreThan(target, tiles, 2, eatTiles);
+  }
+  public checkRod(target: Tile, tiles: Array<Tile>, eatTiles: Tile[]): boolean {
+    return this.isNumMoreThan(target, tiles, 3, eatTiles);
+  }
+
+  private isNumMoreThan(target: Tile, tiles: Array<Tile>, mixNum: number, eatTiles: Tile[]) {
+    let num = 0;
+    let size = tiles.length;
+    for(let i = 0; i < size; i++) {
+      if(this.getTileNum(target) == this.getTileNum(tiles[i])) {
+        num++;
+        eatTiles.push(tiles[i]);
+      }
+    }
+    if(num >= mixNum) {
+      return true;
+    }else {
+      return false;
+    }
+  }
+
+  public checkEat(target: Tile, tiles: Array<Tile>, eatTiles: Tile[]): boolean {
+    let targetTileNum = this.getTileNum(target);
+    if(this.checkEatLRM(tiles, targetTileNum + 1, targetTileNum + 2, eatTiles)) {
+      return true;
+    }
+    if(this.checkEatLRM(tiles, targetTileNum - 1, targetTileNum + 1, eatTiles)) {
+      return true;
+    }
+    if(this.checkEatLRM(tiles, targetTileNum - 2, targetTileNum - 1, eatTiles)) {
+      return true;
+    }
+
+    return false;
+    //return true;
+    //return this.checkEatLRM(tiles, this.getTileNum(target) + 1, this.getTileNum(target) + 2) ||
+      //this.checkEatLRM(tiles, this.getTileNum(target) - 1, this.getTileNum(target) + 1) ||
+      //this.checkEatLRM(tiles, this.getTileNum(target) - 2, this.getTileNum(target) - 1);
+  }
+
+  private checkEatLRM(tiles: Array<Tile>, find1: number, find2: number, eatTiles: Tile[]): boolean {
+    let size = tiles.length;
+    let isfind1 = -1;
+    let isfind2 = -1;
+    for(let i = 0; i < size; i++) {
+      if(this.getTileNum(tiles[i]) == find1) {
+        isfind1 = i;
+      }
+      if(this.getTileNum(tiles[i]) == find2) {
+        isfind2 = i;
+      }
+    }
+    if((isfind1!= -1) && (isfind2 != -1)) {
+      eatTiles[0] = tiles[isfind1];
+      eatTiles[1] = tiles[isfind2];
+    }
+    return (isfind1!= -1) && (isfind2 != -1);
+  }
+  /*
   // bump碰牌 eat吃牌 rod杠牌
   public checkBump(target: Tile, sameTypeTiles: Array<Tile>): boolean {
     return this.isNumMoreThan(target.value, sameTypeTiles, 2);
@@ -57,11 +122,11 @@ export class CheckTileService {
     for(let i = 0; i < size; i++) {
       //newTiles.push({type: usingTiles[i].type, value: usingTiles[i].value});
     }
-    newTiles.push({type: winTile.type, value: winTile.value});
+    //newTiles.push({type: winTile.type, value: winTile.value});
 
 
   }
-
+  */
 
 }
 

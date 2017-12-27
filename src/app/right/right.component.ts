@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Tile } from '../object/tile';
 import { Player } from '../object/player';
 import {SocketService} from '../service/socket.service';
-
+/*
 const USELESSTRILE: Tile[] = [
   {type: 'bamboo', value: 1},
   {type: 'bamboo', value: 1},
@@ -41,7 +41,7 @@ const USEDTILE: Tile[] = [
   {type: 'bamboo', value: 5},
   {type: 'bamboo', value: 6}
 ];
-
+*/
 @Component({
   selector: 'right',
   templateUrl: './right.component.html',
@@ -52,6 +52,8 @@ export class RightComponent  implements OnInit {
   private player: Player;
   // 0 using_tile 1 used_tile 2  useless_tile
   private tiles: Tile[][]=[[],[],[]];
+  private hasCurrentTile: boolean = false;
+  private lastUselessNum: number = 0;
 
   constructor(private socketService: SocketService) {
 
@@ -61,6 +63,13 @@ export class RightComponent  implements OnInit {
     this.socketService.getTile_Right.subscribe(
       (tiles)=>{
         this.tiles = tiles;
+        let newNum = this.tiles[2].length;
+        if(newNum > this.lastUselessNum) {
+          this.hasCurrentTile = true;
+        }else {
+          this.hasCurrentTile = false;
+        }
+        this.lastUselessNum = newNum;
       }
     );
   }

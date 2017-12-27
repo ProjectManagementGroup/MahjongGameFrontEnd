@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Tile } from '../object/tile';
 @Injectable()
 export class OrderTileService {
+  /*
   // 第一次发牌的时候，需要对所有的牌进行排序
   public getOrderedAllTypeTile(tiles: Array<Tile>): Array<{ divider: string, oneTypeTiles: Array<Tile>, size: number }> {
     let allTypeTiles: Array<{ divider: string, oneTypeTiles: Array<Tile>, size: number }> = [];
@@ -12,7 +13,24 @@ export class OrderTileService {
     }
     return allTypeTiles;
   }
+  */
 
+  private getTileNum(tile: Tile) : number{
+    return tile.typeid * 10 + tile.value;
+  }
+  public bubbleSortTile(list: Array<Tile>) {
+    let size = list.length;
+    for (let i = 0; i < size; i++) {
+      for (let j = i; j < size; j++) {
+        if (this.getTileNum(list[j]) < this.getTileNum(list[i])) {
+          let tmp = list[j];
+          list[j] = list[i];
+          list[i] = tmp;
+        }
+      }
+    }
+  }
+  /*
   public bubbleSortOneTypeTile(size: number, list: Array<Tile>) {
     for (let i = 0; i < size; i++) {
       for (let j = i; j < size; j++) {
@@ -49,4 +67,5 @@ export class OrderTileService {
       });
     }
   }
+  */
 }
