@@ -1,8 +1,14 @@
 .game{
+  /*text-align: center;*/
+  /*padding:0px;*/
+  /*margin: 0px;*/
+  /*background-color: coral;*/
   text-align: center;
-  padding:0px;
-  margin: 0px;
-  background-color: coral;
+  height: 740px;
+  min-width: 1520px;
+  /*background-color: #307000;*/
+  background-image: url("../../assets/images/game_background.png");
+  /*background-size: 100px 100px;*/
 }
 .table_in_game{
   text-align: center;

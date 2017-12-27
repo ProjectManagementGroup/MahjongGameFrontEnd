@@ -6,24 +6,37 @@
       <bottom class="bottom_in_table"></bottom>
       <center-table class="center_in_table"></center-table>
       <div class="left_player" >
-        <div><img class="portrait" src="../../assets/picture/portrait/{{leftPlayer.gameid}}.jpg" alt="touxiang"></div>
+        <div>
+          <img class="portrait" src="../../assets/picture/portrait/{{leftPlayer.gameid}}.jpg" alt="touxiang">
+          <span *ngIf="leftPlayer.gameid === banker.gameid"  class="tipIcon">庄</span>
+        </div>
         <div><h4><span class="label label-default">{{leftPlayer.name}}</span></h4></div>
         <div><h4><span class="label label-default">LeftPoint {{leftPlayer.point}}</span></h4></div>
       </div>
     <div class="up_player" >
-      <div><img class="portrait" src="../../assets/picture/portrait/{{upPlayer.gameid}}.jpg" alt="touxiang"></div>
+      <div>
+        <img class="portrait" src="../../assets/picture/portrait/{{upPlayer.gameid}}.jpg" alt="touxiang">
+        <span *ngIf="upPlayer.gameid === banker.gameid"  class="tipIcon">庄</span>
+      </div>
       <div><h4><span class="label label-default">{{upPlayer.name}}</span></h4></div>
       <div><h4><span class="label label-default">LeftPoint {{upPlayer.point}}</span></h4></div>
     </div>
     <div class="right_player" >
-      <img class="portrait" src="../../assets/picture/portrait/{{rightPlayer.gameid}}.jpg" alt="touxiang">
+      <div>
+        <img class="portrait" src="../../assets/picture/portrait/{{rightPlayer.gameid}}.jpg" alt="touxiang">
+        <span *ngIf="rightPlayer.gameid === banker.gameid"  class="tipIcon">庄</span>
+      </div>
       <div><h4><span class="label label-default">{{rightPlayer.name}}</span></h4></div>
       <div><h4><span class="label label-default">LeftPoint {{rightPlayer.point}}</span></h4></div>
     </div>
     <div class="bottom_player">
-      <img class="portrait" src="../../assets/picture/portrait/{{bottomPlayer.gameid}}.jpg" alt="touxiang">
+      <div>
+        <img class="portrait" src="../../assets/picture/portrait/{{bottomPlayer.gameid}}.jpg" alt="touxiang">
+        <span *ngIf="bottomPlayer.gameid === banker.gameid"  class="tipIcon">庄</span>
+      </div>
       <div><h4><span class="label label-default">{{bottomPlayer.name}}</span></h4></div>
       <div><h4><span class="label label-default">LeftPoint {{bottomPlayer.point}}</span></h4></div>
     </div>
+    <div class="left_tile"><h4><span class="label label-default">剩余牌数 {{leftTile}}</span></h4></div>
   </div>
 </div>

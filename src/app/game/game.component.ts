@@ -9,6 +9,6 @@ export class GameComponent {
   private gameStart: boolean;
 
   constructor() {
-    this.gameStart = true;
+    this.gameStart = false;
   }
 }
