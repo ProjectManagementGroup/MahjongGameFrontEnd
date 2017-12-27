@@ -15,13 +15,13 @@ export class SocketService {
   bottom_tile: Tile[][]=[[],[],[]];
   getTile_Bottom: Subject<Tile[][]> = new Subject<Tile[][]>();
 
-  turn: number=0; //当前出牌者
+  turn: number=0; //当前出牌者，最后一个牌是谁出的，是已经出完的
   get_turn: Subject<number> = new Subject<number>();
 
   current_tile: Tile; //最后出的牌
   get_current: Subject<Tile> = new Subject<Tile>();
 
-  rest: number=83; //剩下的牌
+  rest: number=83; //剩下的牌数
   get_rest: Subject<number> = new Subject<number>();
 
   user: User; //本人的user信息

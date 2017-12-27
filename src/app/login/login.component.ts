@@ -24,9 +24,10 @@ export class LoginComponent {
         (login_state)=>{
           this.login_state=login_state;
           if(this.login_state) {
-            this.router.navigate(['/register']);
+            //导航到游戏大厅
           }else {
-            //提示输入错误
+            //提示无法登录
+            console.log("username或password错误");
           }
         }
       );
@@ -34,6 +35,9 @@ export class LoginComponent {
     else{
       console.log("username或password不能为空");
     }
+  }
 
+  register(): void{
+    this.router.navigate(['/register']);
   }
 }

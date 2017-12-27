@@ -55,6 +55,9 @@ export class BottomComponent  implements OnInit {
   private tiles: Tile[][]=[[],[],[]];
   private usingAllTypeTiles: Array<{ divider: string, oneTypeTiles: Array<Tile>, size: number }> = [];
 
+  private current_tile: Tile; //最后出的牌
+  private turn: number=0; //当前出牌者，最后一个牌是谁出的，是已经出完的
+
   constructor(private socketService: SocketService, private orderTileService: OrderTileService) {
 
   }
@@ -66,6 +69,31 @@ export class BottomComponent  implements OnInit {
         this.usingAllTypeTiles = this.orderTileService.getOrderedAllTypeTile(tiles[0]);
       }
     );
+    this.socketService.get_current.subscribe(
+      (tile)=>{
+        this.current_tile = tile;
+      }
+    );
+    this.socketService.get_turn.subscribe(
+      (turn)=>{
+        this.turn = turn;
+      }
+    );
   }
 
+  bump(): void {
+
+  }
+
+  eat(): void {
+
+  }
+
+  rob(): void {
+
+  }
+
+  win(): void {
+
+  }
 }

@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import {Player} from '../object/player';
+import {SocketService} from '../service/socket.service';
 
 const PLAYERS: Player[] = [
   {name: 'name1', gameid: 0, point: 100, ready: true},
@@ -20,7 +21,10 @@ export class TableComponent  implements OnInit {
   private upPlayer: Player;
   private bottomPlayer: Player;
 
-  constructor( ) {
+  constructor(private socketService: SocketService) {
+    if(this.socketService.players.length < 4){
+
+    }
     this.leftPlayer = PLAYERS[0];
     this.upPlayer = PLAYERS[1];
     this.rightPlayer = PLAYERS[2];
@@ -28,25 +32,11 @@ export class TableComponent  implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initializeLeftPlayer();
-    this.initializeUpPlayer();
-    this.initializeRightPlayer();
-    this.initializeBottomPlayer();
+    
   }
 
-  initializeLeftPlayer() {
+  initializeLRUBPlayer(): void{
 
   }
 
-  initializeRightPlayer() {
-
-  }
-
-  initializeUpPlayer() {
-
-  }
-
-  initializeBottomPlayer() {
-
-  }
 }
