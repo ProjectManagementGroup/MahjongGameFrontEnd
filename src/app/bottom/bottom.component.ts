@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Tile} from '../object/tile';
-import {Player} from '../object/player';
+import { Tile } from '../object/tile';
+import { Player } from '../object/player';
+import { SocketService } from '../service/socket.service';
+import {OrderTileService} from '../service/order-tile.service';
 
 const USELESSTRILE: Tile[] = [
   {type: 'bamboo', value: 1},
@@ -49,30 +51,21 @@ const USEDTILE: Tile[] = [
 
 export class BottomComponent  implements OnInit {
   private player: Player;
-  private useless_tiles: Array<Tile>;
-  private using_tiles: Array<Tile>;
-  private used_tiles: Array<Tile>;
+  // 0 using_tile 1 used_tile 2  useless_tile
+  private tiles: Tile[][]=[[],[],[]];
+  private usingAllTypeTiles: Array<{ divider: string, oneTypeTiles: Array<Tile>, size: number }> = [];
 
-  constructor() {
-    // this.useless_tiles = [];
-    // this.using_tiles = [];
-    // this.used_tiles = [];
-    this.useless_tiles = USELESSTRILE;
-    this.using_tiles = USINGTILE;
-    this.used_tiles = USEDTILE;
+  constructor(private socketService: SocketService, private orderTileService: OrderTileService) {
+
   }
 
   ngOnInit(): void {
-    this.initializePlayer();
-    this.initializeUsingTiles();
-  }
-
-  initializePlayer() {
-
-  }
-
-  initializeUsingTiles() {
-
+    this.socketService.getTile_Bottom.subscribe(
+      (tiles)=>{
+        this.tiles = tiles;
+        this.usingAllTypeTiles = this.orderTileService.getOrderedAllTypeTile(tiles[0]);
+      }
+    );
   }
 
 }
