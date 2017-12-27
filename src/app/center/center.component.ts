@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'center',
+  selector: 'center-table',
   templateUrl: './center.component.html',
   styleUrls: [ './center.component.css' ]
 })
