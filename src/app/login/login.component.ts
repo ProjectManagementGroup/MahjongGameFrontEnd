@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { SocketService } from '../service/socket.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent {
   private password: string;
   private login_state:boolean=null;
 
-  constructor(private socketService: SocketService) {
+  constructor(private socketService: SocketService, private router: Router) {
   }
 
   login(){
@@ -23,7 +24,7 @@ export class LoginComponent {
         (login_state)=>{
           this.login_state=login_state;
           if(this.login_state) {
-
+            this.router.navigate(['register']);
           }else {
 
           }

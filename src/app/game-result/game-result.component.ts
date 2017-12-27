@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Tile} from '../object/tile';
-import {GameResult} from '../object/game-result';
-import {GameResultService} from '../service/game-result.service';
-import {PlayerService} from '../service/player.service';
+import { Tile } from '../object/tile';
+import { GameResult } from '../object/game-result';
+import { SocketService } from '../service/socket.service';
+
 
 @Component({
   selector: 'game-result',
@@ -17,8 +17,7 @@ export class GameResultComponent  implements OnInit {
   private game_results: Array<GameResult>;
   private imgsrc: Array<string>;
 
-  constructor(private gameResultSer: GameResultService ,
-              private playerSer: PlayerService) {
+  constructor(private socketService: SocketService) {
     this.winner_tiles = [];
     this.game_results = [];
     this.imgsrc = [];
