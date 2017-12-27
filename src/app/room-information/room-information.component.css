@@ -64,7 +64,7 @@
   width: 30px;
   height: 30px;
   left:100px;  //负值为自身体积的一半
-  top:0px;
+top:0px;
 }
 
 .tipIcon_banker {
@@ -76,7 +76,7 @@
   width: 30px;
   height: 30px;
   left:45px;  //负值为自身体积的一半
-  top:0px;
+top:0px;
 }
 
 .button{

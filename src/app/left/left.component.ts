@@ -54,7 +54,9 @@ export class LeftComponent  implements OnInit {
   private tiles: Tile[][]=[[],[],[]];
 
   constructor(private socketService: SocketService) {
-
+    this.tiles[0] = USINGTILE;
+    this.tiles[1] = USEDTILE;
+    this.tiles[2] = USELESSTRILE;
   }
 
   ngOnInit(): void {
