@@ -14,6 +14,9 @@ export class GameHallComponent implements OnInit{
   invatation: string[]=null;
   //主动邀请信息
   room_number:  string=null;
+  name1:string;
+  name2:string;
+  name3:string;
   constructor(private socket:SocketService,private router:Router){
       this.user=socket.user;
   }
@@ -34,6 +37,7 @@ export class GameHallComponent implements OnInit{
   }
 
   send_invitation(): void {
-
+      let message='invite|'+ this.name1+'|'+this.name2+'|'+this.name3;
+      this.socket.sendMessage(message);
   }
 }

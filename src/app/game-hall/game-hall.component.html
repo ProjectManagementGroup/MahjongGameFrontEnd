@@ -27,21 +27,21 @@
         <div>
           <div class="form-group">
             <label for="username1" class="control-label">第1个好友:</label>
-            <input type="text" class="form-control" id="username1">
+            <input type="text" class="form-control" id="username1"  [(ngModel)]="name1">
           </div>
           <div class="form-group">
             <label for="username2" class="control-label">第2个好友:</label>
-            <input type="text" class="form-control" id="username2">
+            <input type="text" class="form-control" id="username2" [(ngModel)]="name2">
           </div>
           <div class="form-group">
             <label for="username3" class="control-label">第3个好友:</label>
-            <input type="text" class="form-control" id="username3">
+            <input type="text" class="form-control" id="username3" [(ngModel)]="name3">
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary">确定邀请</button>
+        <button type="button" class="btn btn-primary" (click)="send_invitation()">确定邀请</button>
       </div>
     </div>
   </div>
