@@ -2,8 +2,8 @@
   text-align: center;
   color: #eee;
   border-radius: 2px;
-  height: 170px;
-  width: 500px;
+  height: 130px;
+  width: 450px;
   /*-moz-transform:rotate(180deg);*/
   /*-webkit-transform:rotate(180deg);*/
   /*filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);*/
@@ -12,11 +12,11 @@
 .up_useless {
   text-align: center;
   color: #eee;
-  height: 120px;
-  width: 200px;
+  height: 80px;
+  width: 300px;
   border-radius: 2px;
   position: absolute;
-  left: 70px
+  left: 50px
 }
 
 .useless_tile {

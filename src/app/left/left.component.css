@@ -2,13 +2,12 @@
   text-align: center;
   color: #eee;
   border-radius: 2px;
-  height: 200px;
-  width: 500px;
+  height: 170px;
+  width: 450px;
   /*-moz-transform:rotate(90deg);*/
   /*-webkit-transform:rotate(90deg);*/
   /*filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);*/
 }
-
 .left_useless {
   text-align: center;
   color: #eee;
@@ -16,7 +15,7 @@
   width: 200px;
   border-radius: 2px;
   position: absolute;
-  left: 70px
+  left: 125px
 }
 
 .useless_tile {

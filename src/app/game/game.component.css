@@ -1,20 +1,18 @@
 .game{
   text-align: center;
-  height: 100%;
+  padding:0px;
+  margin: 0px;
   background-color: coral;
 }
 .table_in_game{
   text-align: center;
-  height: 100%;
-  position: absolute;
-  background-color: coral;
+  padding:0px;
+  /*background-color: coral;*/
 }
 
 .room_information_in_game{
   text-align: center;
-  height: 100%;
-  position: absolute;
-  background-color: coral;
+  /*background-color: coral;*/
 }
 
 .hidden{

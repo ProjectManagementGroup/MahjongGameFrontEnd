@@ -1,4 +1,4 @@
 <div class="game">
-  <div class="table_in_game" [class.hidden]="gameStart === false"><table *ngIf="gameStart"></table></div>
+  <table class="table_in_game" [class.hidden]="gameStart === false" *ngIf="gameStart"></table>
   <room-information class="room_information_in_game" [class.hidden]="gameStart === true"></room-information>
 </div>
