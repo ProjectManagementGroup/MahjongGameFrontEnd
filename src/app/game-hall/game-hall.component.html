@@ -33,10 +33,17 @@
             <h3 class="panel-title">消息</h3>
           </div>
           <div class="panel-body">
-            暂无消息
+            <p *ngIf="!invatation">暂无消息</p>
+            <ul *ngIf="invatation">
+              <li>邀请者(房主)：    {{invatation[0]}}</li>
+              <li>被邀请者1： {{invatation[1]}}</li>
+              <li>被邀请者2： {{invatation[2]}}</li>
+              <li>被邀请者3： {{invatation[3]}}</li>
+              <li>房间号： {{invatation[4]}}</li>
+            </ul>
             <p id="message_buttons">
-            <button id="accept">接收</button>
-            <button id="refuse">拒绝</button>
+            <button id="accept" (click)="accept_invitation()" *ngIf="invatation">接收</button>
+            <button id="refuse" *ngIf="invatation">拒绝</button>
             </p>
           </div>
         </div>

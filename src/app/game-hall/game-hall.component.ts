@@ -1,11 +1,39 @@
-import { Component } from '@angular/core';
-
+import {Component, OnInit} from '@angular/core';
+import {User} from '../object/user';
+import {SocketService} from "../service/socket.service";
+import { Router} from "@angular/router";
 @Component({
   selector: 'game-hall',
   templateUrl: './game-hall.component.html',
   styleUrls: [ './game-hall.component.css' ]
 })
 
-export class GameHallComponent {
+export class GameHallComponent implements OnInit{
+  user:User;
+  //被邀请信息
+  invatation: string[]=null;
+  //主动邀请信息
+  room_number:  string=null;
+  constructor(private socket:SocketService,private router:Router){
+      this.user=socket.user;
+  }
+  ngOnInit(): void {
+    this.socket.get_invitation.subscribe((val)=>{
+      this.invatation = val;
+      }
+    );
+    this.socket.get_room_number.subscribe((val)=>{
+      this.room_number=val;
+    });
 
+  }
+  accept_invitation(): void {
+    let message = 'accept|'+this.invatation[4];
+    this.socket.sendMessage(message);
+    this.router.navigate(['game']);
+  }
+
+  send_invitation(): void {
+
+  }
 }
