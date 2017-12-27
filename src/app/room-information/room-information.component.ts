@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Player} from '../object/player';
+import {SocketService} from '../service/socket.service';
+import {Router} from '@angular/router';
 
 const PLAYERS: Player[] = [
   {name: 'name1', gameid: 0, point: 100, ready: true},
@@ -15,31 +17,33 @@ const PLAYERS: Player[] = [
 })
 
 export class RoomInformationComponent implements OnInit {
-  private players: Array<Player>;
+  private players: Array<Player> = [];
   private banker: Player;
 
-  constructor( ) {
-    // this.players = [];
-    this.players = PLAYERS;
-    this.banker = {name: 'name1', gameid: 0, point: 100, ready: true};
+  constructor(private socketService: SocketService, private router: Router) {
+    if(this.socketService.players.length > 0) {
+      this.players = this.socketService.players;
+      this.banker = this.players[0];
+    }
+
+    //this.players = PLAYERS;
+    //this.banker = {name: 'name1', gameid: 0, point: 100, ready: true};
   }
 
   ngOnInit(): void {
-    this.initializePlayers();
-    this.initializeBanker();
-    this.initializeLeftTile();
+    this.socketService.get_players.subscribe(
+      (players)=>{
+        this.players = players;
+        this.banker = this.players[0];
+
+        if(this.players.length == 4) {
+          this.router.navigate(['/table']);
+        }
+      }
+    );
   }
 
-  initializePlayers() {
-
+  ready(): void {
+    this.socketService.sendMessage("ready|");
   }
-
-  initializeBanker() {
-
-  }
-
-  initializeLeftTile() {
-
-  }
-
 }

@@ -16,31 +16,42 @@ const PLAYERS: Player[] = [
 })
 
 export class TableComponent  implements OnInit {
+  private players: Player[] = [];
+  private uuid: number;
+
   private leftPlayer: Player;
   private rightPlayer: Player;
   private upPlayer: Player;
   private bottomPlayer: Player;
-  private leftTile: number;
+
+  private restTile: number;
   private banker: Player;
 
   constructor(private socketService: SocketService) {
-    if(this.socketService.players.length < 4){
+    this.players = this.socketService.players;
+    this.uuid = this.socketService.uuid;
 
-    }
-    this.leftPlayer = PLAYERS[0];
-    this.upPlayer = PLAYERS[1];
-    this.rightPlayer = PLAYERS[2];
-    this.bottomPlayer = PLAYERS[3];
-    this.leftTile = 100;
-    this.banker = PLAYERS[0];
+    this.bottomPlayer = this.players[this.uuid];
+    this.rightPlayer = this.players[(this.uuid + 1)%4];
+    this.upPlayer = this.players[(this.uuid + 2)%4];
+    this.leftPlayer = this.players[(this.uuid + 3)%4];
+
+    this.restTile = this.socketService.rest;
+    this.banker = this.players[0];
+    //this.leftPlayer = PLAYERS[0];
+    //this.upPlayer = PLAYERS[1];
+    //this.rightPlayer = PLAYERS[2];
+    //this.bottomPlayer = PLAYERS[3];
+    //this.restTile = 83;
+    //this.banker = PLAYERS[0];
   }
 
   ngOnInit(): void {
-    
-  }
-
-  initializeLRUBPlayer(): void{
-
+    this.socketService.get_rest.subscribe(
+      (rest)=> {
+        this.restTile = rest;
+      }
+    );
   }
 
 }
