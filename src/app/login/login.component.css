@@ -1,8 +1,10 @@
-body{
+.wrapper{
+  height:758px;
   background-image: url(../../assets/images/background4.jpg);
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
+  /*background-size: cover;*/
 }
 .form-horizontal{
   margin-top:40%;
@@ -108,7 +110,7 @@ body{
   padding-top: 5px;
   text-transform: capitalize;
 }
-.form-horizontal .btn{
+.form-horizontal .btn-default{
   float: right;
   font-size: 14px;
   color: #fff;
@@ -119,14 +121,18 @@ body{
   text-transform: capitalize;
   transition: all 0.5s ease 0s;
 }
-@media only screen and (max-width: 479px){
-  .form-horizontal .form-group{
-    padding: 0 25px;
-  }
-  .form-horizontal .form-group i{
-    left: 45px;
-  }
-  .form-horizontal .btn{
-    padding: 10px 20px;
-  }
+.form-horizontal .btn-link {
+  float: right;
+  text-decoration:underline;
 }
+/*@media only screen and (max-width: 479px){*/
+  /*.form-horizontal .form-group{*/
+    /*padding: 0 25px;*/
+  /*}*/
+  /*.form-horizontal .form-group i{*/
+    /*left: 45px;*/
+  /*}*/
+  /*.form-horizontal .btn-default{*/
+    /*padding: 10px 20px;*/
+  /*}*/
+/*}*/
