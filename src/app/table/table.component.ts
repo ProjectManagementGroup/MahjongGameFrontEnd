@@ -1,5 +1,4 @@
 import { Component,OnInit } from '@angular/core';
-import {PlayerService} from '../service/player.service';
 import {Player} from '../object/player';
 
 const PLAYERS: Player[] = [
@@ -21,7 +20,7 @@ export class TableComponent  implements OnInit {
   private upPlayer: Player;
   private bottomPlayer: Player;
 
-  constructor(private playerSer: PlayerService ) {
+  constructor( ) {
     this.leftPlayer = PLAYERS[0];
     this.upPlayer = PLAYERS[1];
     this.rightPlayer = PLAYERS[2];

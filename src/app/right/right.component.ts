@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Tile} from '../object/tile';
 import {Player} from '../object/player';
-import {PlayerService} from '../service/player.service';
-import {UselessTileService} from '../service/useless-tile.service';
-import {UsingTileService} from '../service/using-tile.service';
-import {UsedTileService} from '../service/used-tile.service';
 
 const USELESSTRILE: Tile[] = [
   {type: 'bamboo', value: 1},
@@ -57,10 +53,7 @@ export class RightComponent  implements OnInit {
   private using_tiles: Array<Tile>;
   private used_tiles: Array<Tile>;
 
-  constructor(private playerSer: PlayerService,
-              private uselessTileSer: UselessTileService,
-              private usingTileSer: UsingTileService,
-              private usedTileSer: UsedTileService) {
+  constructor() {
     // this.useless_tiles = [];
     // this.using_tiles = [];
     // this.used_tiles = [];

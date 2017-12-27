@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Player} from '../object/player';
-import {PlayerService} from '../service/player.service';
 
 const PLAYERS: Player[] = [
   {name: 'name1', gameid: 0, point: 100, ready: true},
@@ -20,7 +19,7 @@ export class RoomInformationComponent implements OnInit {
   private leftTile: number;
   private banker: Player;
 
-  constructor(private playerSer: PlayerService ) {
+  constructor( ) {
     // this.players = [];
     this.players = PLAYERS;
     this.leftTile = 100;

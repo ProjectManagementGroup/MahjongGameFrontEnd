@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {Player} from '../object/player';
-import {PlayerService} from '../service/player.service';
 
 const PLAYERS: Player[] = [
   {name: 'name1', gameid: 0, point: 100, ready: true},
@@ -23,7 +22,7 @@ export class CenterComponent {
   private curPlayer: Player;
   private countDown: number;
 
-  constructor(private playerSer: PlayerService ) {
+  constructor() {
     this.leftPlayer = PLAYERS[0];
     this.upPlayer = PLAYERS[1];
     this.rightPlayer = PLAYERS[2];
