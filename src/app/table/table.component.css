@@ -1,15 +1,18 @@
 .table{
   text-align: center;
-  height: 720px;
-  min-width: 1550px;
+  height: 740px;;
+  min-width: 1400px;
   background-color: #307000;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
 }
 
 .center_in_body_table{
   text-align: center;
   background-color: #607000;
-  width: 800px;
-  height: 600px;
+  width: 900px;
+  height: 500px;
   position: relative;
   top: 50%;
   left: 50%;
@@ -21,8 +24,8 @@
 .left_in_table {
   text-align: center;
   position: absolute;
-  left: -150px;
-  top: 250px;
+  left: -140px;
+  top: 170px;
   -moz-transform:rotate(90deg);
   -webkit-transform:rotate(90deg);
   filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
@@ -49,7 +52,7 @@
 .up_in_table {
   text-align: center;
   position: absolute;
-  left: 100px;
+  right: 250px;
   top: 0px;
   -moz-transform:rotate(180deg);
   -webkit-transform:rotate(180deg);
@@ -61,13 +64,13 @@
   width: 50px;
   position: absolute;
   top:-50px;
-  left: 350px;
+  right: 400px;
 }
 
 .right_in_table {
   text-align: center;
   position: absolute;
-  right:-150px;
+  right:-140px;
   top: 150px;
   -moz-transform:rotate(270deg);
   -webkit-transform:rotate(270deg);
@@ -86,7 +89,7 @@
   text-align: center;
   position: absolute;
   bottom:0px;
-  left: 200px;
+  left: 250px;
 }
 
 .bottom_player {
@@ -94,7 +97,7 @@
   width: 50px;
   position: absolute;
   bottom:-55px;
-  left: 350px;
+  left: 500px;
 }
 
 .center_in_table{
