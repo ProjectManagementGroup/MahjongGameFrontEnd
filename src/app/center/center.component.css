@@ -1,0 +1,111 @@
+.center-table{
+  text-align: center;
+  color: #eee;
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+
+.left_arrow{
+  text-align: center;
+  position: absolute;
+  background-image: url("../../assets/images/left_arrow.png");
+  background-size: 50px 50px;
+  height: 50px;
+  width: 50px;
+  left: -40px;
+  top:0px;
+}
+
+.left_arrow_highlight{
+  text-align: center;
+  position: absolute;
+  background-image: url("../../assets/images/left_arrow_highlight.png");
+  background-size: 50px 50px;
+  height: 50px;
+  width: 50px;
+  left: -40px;
+  top:0px;
+}
+
+.up_arrow{
+  text-align: center;
+  position: absolute;
+  background-image: url("../../assets/images/up_arrow.png");
+  background-size: 50px 50px;
+  height: 50px;
+  width: 50px;
+  left: 0px;
+  top:-45px;
+}
+
+.up_arrow_highlight{
+  text-align: center;
+  position: absolute;
+  background-image: url("../../assets/images/up_arrow_highlight.png");
+  background-size: 50px 50px;
+  height: 50px;
+  width: 50px;
+  left: 0px;
+  top:-45px;
+}
+
+.right_arrow{
+  text-align: center;
+  position: absolute;
+  background-image: url("../../assets/images/right_arrow.png");
+  background-size: 50px 50px;
+  height: 50px;
+  width: 50px;
+  left: 44px;
+  top:-2px;
+}
+
+.right_arrow_highlight{
+  text-align: center;
+  position: absolute;
+  background-image: url("../../assets/images/right_arrow_highlight.png");
+  background-size: 50px 50px;
+  height: 50px;
+  width: 50px;
+  left: 44px;
+  top:-2px;
+}
+
+.bottom_arrow{
+  text-align: center;
+  position: absolute;
+  background-image: url("../../assets/images/bottom_arrow.png");
+  background-size: 50px 50px;
+  height: 50px;
+  width: 50px;
+  left: 4px;
+  top:43px;
+}
+
+.bottom_arrow_highlight{
+  text-align: center;
+  position: absolute;
+  background-image: url("../../assets/images/bottom_arrow_highlight.png");
+  background-size: 50px 50px;
+  height: 50px;
+  width: 50px;
+  left: 4px;
+  top:43px;
+}
+
+.count_down{
+  text-align: center;
+  position: absolute;
+  background-image: url("../../assets/images/count_down.png");
+  background-size: 50px 50px;
+  height: 50px;
+  width: 50px;
+  left: 0px;
+  top:0px;
+}
+
+.selected{
+  background-color: #CFD8DC !important;
+  color: white;
+}

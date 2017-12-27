@@ -1,4 +1,5 @@
 <div class="game">
-  <table class="table_in_game" [class.hidden]="gameStart === false" *ngIf="gameStart"></table>
-  <room-information class="room_information_in_game" [class.hidden]="gameStart === true"></room-information>
+  <table class="table_in_game"  *ngIf="gameStart === true "></table>
+  <!--[class.hidden]="gameStart === false"-->
+  <room-information *ngIf="gameStart === false "></room-information>
 </div>
