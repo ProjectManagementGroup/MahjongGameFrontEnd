@@ -21,11 +21,6 @@ import { SocketService } from './service/socket.service';
 import { OrderTileService } from './service/order-tile.service';
 import { CheckTileService } from './service/check-tile.service';
 
-import { GameResultService } from './service/game-result.service';
-import { PlayerService } from './service/player.service';
-import { UselessTileService } from './service/useless-tile.service';
-import { UsingTileService } from './service/using-tile.service';
-import { UsedTileService } from './service/used-tile.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -55,11 +50,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    GameResultService,
-    PlayerService,
-    UselessTileService,
-    UsedTileService,
-    UsingTileService,
     OrderTileService,
     CheckTileService,
     SocketService
