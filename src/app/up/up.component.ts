@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Tile } from '../object/tile';
 import { Player } from '../object/player';
 import { SocketService } from '../service/socket.service';
-
+/*
 const USELESSTRILE: Tile[] = [
   {type: 'bamboo', value: 1},
   {type: 'bamboo', value: 1},
@@ -41,7 +41,7 @@ const USEDTILE: Tile[] = [
   {type: 'bamboo', value: 5},
   {type: 'bamboo', value: 6}
 ];
-
+*/
 @Component({
   selector: 'up',
   templateUrl: './up.component.html',

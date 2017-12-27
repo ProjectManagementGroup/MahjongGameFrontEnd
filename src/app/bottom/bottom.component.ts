@@ -3,7 +3,8 @@ import { Tile } from '../object/tile';
 import { Player } from '../object/player';
 import { SocketService } from '../service/socket.service';
 import {OrderTileService} from '../service/order-tile.service';
-
+import {CheckTileService} from '../service/check-tile.service';
+/*
 const USELESSTRILE: Tile[] = [
   {type: 'bamboo', value: 1},
   {type: 'bamboo', value: 1},
@@ -42,7 +43,7 @@ const USEDTILE: Tile[] = [
   {type: 'bamboo', value: 5},
   {type: 'bamboo', value: 6}
 ];
-
+*/
 @Component({
   selector: 'bottom',
   templateUrl: './bottom.component.html',
@@ -55,20 +56,23 @@ export class BottomComponent  implements OnInit {
   private tiles: Tile[][]=[[],[],[]];
   private hasCurrentTile: boolean = false;
   private lastUselessNum: number = 0;
-  private usingAllTypeTiles: Array<{ divider: string, oneTypeTiles: Array<Tile>, size: number }> = [];
 
+
+  private uuid: number;
   private current_tile: Tile; //最后出的牌
   private turn: number=0; //当前出牌者，最后一个牌是谁出的，是已经出完的
 
-  constructor(private socketService: SocketService, private orderTileService: OrderTileService) {
-
+  constructor(private socketService: SocketService,
+              private orderTileService: OrderTileService,
+              private checkTileService: CheckTileService ) {
+    this.uuid = this.socketService.uuid;
   }
 
   ngOnInit(): void {
     this.socketService.getTile_Bottom.subscribe(
       (tiles)=>{
         this.tiles = tiles;
-        this.usingAllTypeTiles = this.orderTileService.getOrderedAllTypeTile(tiles[0]);
+        this.orderTileService.bubbleSortTile(tiles[0]);
         let newNum = this.tiles[2].length;
         if(newNum > this.lastUselessNum) {
           this.hasCurrentTile = true;
@@ -91,13 +95,35 @@ export class BottomComponent  implements OnInit {
   }
 
   bump(): void {
+    if(this.testBump()){
+      this.socketService.sendMessage('bump|');
+    }
+  }
 
+  private testBump(): boolean {
+    let canBump = false;
+    if(this.turn !== this.uuid){
+      if(this.checkTileService.checkBump(this.current_tile, this.tiles[0])){
+        canBump = true;
+      }
+    }
+    return canBump;
   }
 
   eat(): void {
 
+
   }
 
+  private testEat(): boolean {
+    let canEat = false;
+    if(this.turn == ((this.uuid + 3)%4)){
+      if(this.checkTileService.checkEat(this.current_tile, this.tiles[0])){
+        canEat = true;
+      }
+    }
+    return canEat;
+  }
   rob(): void {
 
   }

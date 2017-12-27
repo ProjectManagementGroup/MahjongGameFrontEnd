@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Tile } from '../object/tile';
 import { Player } from '../object/player';
 import { SocketService } from '../service/socket.service';
-
+/*
 const USELESSTRILE: Tile[] = [
   {type: 'bamboo', value: 1},
   {type: 'bamboo', value: 1},
@@ -41,7 +41,7 @@ const USEDTILE: Tile[] = [
   {type: 'bamboo', value: 5},
   {type: 'bamboo', value: 6}
 ];
-
+*/
 @Component({
   selector: 'left',
   templateUrl: './left.component.html',
@@ -56,9 +56,9 @@ export class LeftComponent  implements OnInit {
   private lastUselessNum: number = 0;
 
   constructor(private socketService: SocketService) {
-    this.tiles[0] = USINGTILE;
-    this.tiles[1] = USEDTILE;
-    this.tiles[2] = USELESSTRILE;
+    //this.tiles[0] = USINGTILE;
+    //this.tiles[1] = USEDTILE;
+    //this.tiles[2] = USELESSTRILE;
   }
 
   ngOnInit(): void {
