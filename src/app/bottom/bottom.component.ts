@@ -53,6 +53,7 @@ export class BottomComponent  implements OnInit {
 
   // 0 using_tile 1 used_tile 2  useless_tile
   private tiles: Tile[][]=[[],[],[]];
+  private new_tile:Tile;
   // 最后出的那张牌在不在这个方位
   private hasCurrentTile: boolean = false;
   private lastUselessNum: number = 0;
@@ -81,6 +82,11 @@ export class BottomComponent  implements OnInit {
         this.lastUselessNum = newNum;
       }
     );
+    this.socketService.get_new_tile.subscribe(
+      (val)=>{
+        this.new_tile=val;
+      }
+    )
   }
 
   //检测碰牌是否成功，如果成功就发给后台
@@ -88,8 +94,9 @@ export class BottomComponent  implements OnInit {
     let bumpTiles = [];
     if(this.turn !== this.uuid){
       if(this.checkTileService.checkBump(this.current_tile, this.tiles[0], bumpTiles)){
-        this.socketService.sendMessage('bump|');
         this.socketService.sendEatBumpMessage(bumpTiles);
+        this.socketService.sendMessage('bump|');
+
       }
     }
   }
@@ -98,8 +105,9 @@ export class BottomComponent  implements OnInit {
     let eatTiles = [];
     if(this.turn == ((this.uuid + 3)%4)){
       if(this.checkTileService.checkEat(this.current_tile, this.tiles[0], eatTiles)){
-        this.socketService.sendMessage('eat|');
         this.socketService.sendEatBumpMessage(eatTiles);
+        this.socketService.sendMessage('eat|');
+
       }
     }
   }
@@ -109,6 +117,18 @@ export class BottomComponent  implements OnInit {
   }
 
   win(): void {
+    if(this.new_tile){
+      this.socketService.setWintile(this.new_tile);
+    }else{
+      this.socketService.setWintile(this.current_tile);
+    }
+    var message="win|";
+    this.socketService.sendMessage(message);
+  }
 
+  outTile(tile:Tile):void {
+    var message="out|"+tile;
+    this.socketService.setOuttile(tile);
+    this.socketService.sendMessage(message);
   }
 }
