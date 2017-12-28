@@ -66,6 +66,9 @@ export class SocketService {
   //胡的牌
   win_tiles: Tile[];
   get_win_tiles: Subject<Tile[]> = new Subject<Tile[]>();
+  //此句是否结束
+  is_finished: boolean = false;
+  get_is_finished: Subject<boolean> =new Subject<boolean>();
  public create():void {
     //this.socket = new WebSocket(this.wsUrl);
     let global = this;
@@ -261,6 +264,8 @@ export class SocketService {
            global.result_point.push(<number>content.all[i].point);
          }
          global.get_result_point.next(global.result_point);
+         global.is_finished=true;
+         global.get_is_finished.next(global.is_finished);
          break;
      }
    }

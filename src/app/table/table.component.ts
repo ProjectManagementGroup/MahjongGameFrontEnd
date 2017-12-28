@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import {Player} from '../object/player';
 import {SocketService} from '../service/socket.service';
 import {Tile} from '../object/tile';
+import {Router} from "@angular/router";
 /*
 const PLAYERS: Player[] = [
   {name: 'name1', gameid: 0, point: 100, ready: true},
@@ -30,7 +31,9 @@ export class TableComponent  implements OnInit {
   private current_tile: Tile; //最后出的牌
   private turn: number=0; //当前出牌者，最后一个牌是谁出的，是已经出完的
 
-  constructor(private socketService: SocketService) {
+  private is_finished=false;
+
+  constructor(private socketService: SocketService , private router: Router) {
     this.players = this.socketService.players;
     this.uuid = this.socketService.uuid;
     this.banker = this.players[0];
@@ -66,6 +69,15 @@ export class TableComponent  implements OnInit {
     this.socketService.get_turn.subscribe(
       (turn)=>{
         this.turn = turn;
+      }
+    );
+
+    this.socketService.get_is_finished.subscribe(
+      (val)=>{
+        this.is_finished=val;
+        if(this.is_finished){
+          this.router.navigate(['/gameResult']);
+        }
       }
     );
   }
