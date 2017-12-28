@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../object/user';
 import {SocketService} from "../service/socket.service";
 import { Router} from "@angular/router";
+import {$} from "protractor";
 @Component({
   selector: 'game-hall',
   templateUrl: './game-hall.component.html',
@@ -27,6 +28,7 @@ export class GameHallComponent implements OnInit{
     );
     this.socket.get_room_number.subscribe((val)=>{
       this.room_number = val;
+      $('#inviteModal').modal('hide');
       this.router.navigate(['room']);
     });
 
@@ -39,6 +41,8 @@ export class GameHallComponent implements OnInit{
 
   send_invitation(): void {
       let message='invite|'+ this.name1+'|'+this.name2+'|'+this.name3;
+
       this.socket.sendMessage(message);
+
   }
 }
