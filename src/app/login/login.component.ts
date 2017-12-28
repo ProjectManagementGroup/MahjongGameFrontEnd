@@ -16,6 +16,7 @@ export class LoginComponent {
   constructor(private socketService: SocketService, private router: Router) {
   }
 
+
   login(): void{
     if(this.username!="" && this.password!="") {
       let message = "login|" + this.username + "|" + this.password;
@@ -24,7 +25,7 @@ export class LoginComponent {
         (login_state)=>{
           this.login_state=login_state;
           if(this.login_state) {
-            //导航到游戏大厅
+            this.router.navigate(['/gameHall']);
           }else {
             //提示无法登录
             console.log("username或password错误");
