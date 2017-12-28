@@ -189,6 +189,8 @@ export class SocketService {
            global.bottom_tile[0].splice(global.bottom_tile[0].indexOf( global.out_tile ,1), 1);
            global.bottom_tile[0].push(global.new_tile);
            }
+           global.new_tile=null;
+           global.get_new_tile.next(global.new_tile);
            global.bottom_tile[2].push(global.out_tile);
            global.getTile_Bottom.next(global.bottom_tile);
            global.turn = global.uuid;
