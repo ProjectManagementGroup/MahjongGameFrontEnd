@@ -11,7 +11,7 @@
       <img src="../../assets/picture/{{using_tile.type}}/{{using_tile.value}}.png" alt="using_tile_img" (click)="outTile(using_tile)">
     </div>
     <!--这张表示刚刚发给我的牌，你需要改变它的布局-->
-    <div *ngIf="new_tile" >
+    <div *ngIf="new_tile" class="new_tile">
       <img src="../../assets/picture/{{new_tile.type}}/{{new_tile.value}}.png" alt="new_tile_img" (click)="outTile(new_tile)">
     </div>
   </div>
