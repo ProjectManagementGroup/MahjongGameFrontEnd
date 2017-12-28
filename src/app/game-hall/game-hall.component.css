@@ -7,6 +7,7 @@
   /*overflow-x: hidden;*/
 /*}*/
 body {
+  height:758px;
   background-image: url(../../assets/images/hall.png);
   background-repeat:no-repeat;
   background-size: cover;
