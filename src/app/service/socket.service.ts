@@ -115,7 +115,12 @@ export class SocketService {
          global.players = <Player[]>content.all;
          //global.players.push(<Player>content.me);
          global.get_players.next(global.players);
-         global.uuid=content.me.index;
+         //global.uuid=content.me.index;
+         for(var i=0;i<global.players.length;i++){
+           if(global.players[i].name==global.user.name){
+             global.uuid=global.players[i].gameid;
+           }
+         }
          global.get_uuid.next(global.uuid);
          break;
        //被邀请玩家收到消息
