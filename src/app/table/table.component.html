@@ -46,8 +46,8 @@
         </div>
       </div>
       <div class="bottom_chatting">
-        <input type="text" value="" id="text">
-        <button>发送</button>
+        <input [(ngModel)]="message" type="text" value="" id="text">
+        <button (click)="send_message()">发送</button>
       </div>
     </div>
   </div>

@@ -47,7 +47,7 @@ export class TableComponent  implements OnInit {
   private is_finished=false;
 
   private chatMessage: Message[]=[];//聊天信息
-
+  private message:string;
   constructor(private socketService: SocketService , private router: Router) {
     this.players = this.socketService.players;
     this.uuid = this.socketService.uuid;
@@ -101,6 +101,10 @@ export class TableComponent  implements OnInit {
         this.chatMessage.push(val);
       }
     )
+  }
+  send_message():void {
+    var smessage = "speak|"+this.message;
+    this.socketService.sendMessage(smessage);
   }
 
 }
