@@ -65,7 +65,10 @@ export class BottomComponent  implements OnInit {
   constructor(private socketService: SocketService,
               private orderTileService: OrderTileService,
               private checkTileService: CheckTileService ) {
-
+    this.tiles[0] = USINGTILE;
+    this.tiles[1] = USEDTILE;
+    this.tiles[2] = USELESSTRILE;
+    this.new_tile = USINGTILE[0];
   }
 
   ngOnInit(): void {

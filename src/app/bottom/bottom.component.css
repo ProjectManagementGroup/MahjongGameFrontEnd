@@ -3,7 +3,7 @@
   color: #eee;
   border-radius: 2px;
   height: 180px;
-  width: 550px;
+  width: 600px;
   position: relative;
 }
 .bottom_useless {
@@ -36,6 +36,13 @@
   height: 50px;
   width: 35px;
   float: left;
+}
+
+.new_tile{
+  height: 50px;
+  width: 35px;
+  float: left;
+  margin-left: 20px;
 }
 
 .bottom_used {
