@@ -38,7 +38,7 @@ export class SocketService {
   get_game_start: Subject<boolean> = new Subject<boolean>();
   //发出吃碰请求的两张牌
   eat_bump_tiles: Tile[];
-  players: Player[]; //player列表
+  players: Player[]=[]; //player列表
   get_players: Subject<Player[]> = new Subject<Player[]>();
   register_state:boolean=false;
   getRS:Subject<boolean> = new Subject<boolean>();
@@ -108,7 +108,7 @@ export class SocketService {
        case 'room information':
          var content= message.object;
          global.players = <Player[]>content.others;
-         global.players.push(<Player>content.me);
+         //global.players.push(<Player>content.me);
          global.get_players.next(global.players);
          global.uuid=content.me.index;
          global.get_uuid.next(global.uuid);
@@ -125,6 +125,7 @@ export class SocketService {
          break;
        case 'invite success':
          global.room_number=message.object;
+         global.players.push(<Player>{name:global.user.name,gameid:0,point:global.user.point,ready:false})
          global.get_room_number.next(global.room_number);
          break;
        case "game start":
