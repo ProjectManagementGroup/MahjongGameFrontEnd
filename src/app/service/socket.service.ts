@@ -165,6 +165,8 @@ export class SocketService {
          global.getTile_Right.next(global.right_tile);
          global.getTile_Top.next(global.top_tile);
          global.get_turn.next(global.turn);
+         global.next_turn=0;
+         global.get_next_turn.next(global.next_turn);
          global.get_rest.next(global.rest);
        case 'get tile':
          //TODO：发牌数据问题
