@@ -71,7 +71,7 @@ export class CheckTileService {
     return (isfind1!= -1) && (isfind2 != -1);
   }
 
-  public checkWin():{
+  public checkWin(){
 
   }
   /*
