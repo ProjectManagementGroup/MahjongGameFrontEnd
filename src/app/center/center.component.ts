@@ -1,14 +1,14 @@
 import {Component, Input} from '@angular/core';
 import {Player} from '../object/player';
 import {SocketService} from '../service/socket.service';
-/*
+
 const PLAYERS: Player[] = [
   {name: 'name1', gameid: 0, point: 100, ready: true},
   {name: 'name2', gameid: 1, point: 100, ready: true},
   {name: 'name3', gameid: 2, point: 100, ready: true},
   {name: 'name4', gameid: 3, point: 100, ready: true}
 ];
-*/
+
 @Component({
   selector: 'center-table',
   templateUrl: './center.component.html',
