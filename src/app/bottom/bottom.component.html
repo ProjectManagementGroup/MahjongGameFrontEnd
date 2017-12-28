@@ -12,7 +12,7 @@
     </div>
     <!--这张表示刚刚发给我的牌，你需要改变它的布局-->
     <div *ngIf="new_tile" class="new_tile">
-      <img src="../../assets/picture/{{new_tile.type}}/{{new_tile.value}}.png" alt="new_tile_img" (click)="outTile(new_tile)">
+      <img  *ngIf="new_tile" src="../../assets/picture/{{new_tile.type}}/{{new_tile.value}}.png" alt="new_tile_img" (click)="outTile(new_tile)">
     </div>
   </div>
   <!--碰或者杠的牌 -->

@@ -61,6 +61,7 @@ export class BottomComponent  implements OnInit {
   @Input() uuid: number;
   @Input() current_tile: Tile; //最后出的牌
   @Input() turn: number=0; //当前出牌者，最后一个牌是谁出的，是已经出完的
+  @Input() next_turn: number;
 
   constructor(private socketService: SocketService,
               private orderTileService: OrderTileService,
@@ -130,9 +131,11 @@ export class BottomComponent  implements OnInit {
   }
 
   outTile(tile:Tile):void {
-    this.new_tile = null;
-    var message="out|"+tile.type+"|"+tile.value;
-    this.socketService.setOuttile(tile);
-    this.socketService.sendMessage(message);
+    if(this.next_turn == this.uuid) {
+      this.new_tile = null;
+      var message="out|"+tile.type+"|"+tile.value;
+      this.socketService.setOuttile(tile);
+      this.socketService.sendMessage(message);
+    }
   }
 }

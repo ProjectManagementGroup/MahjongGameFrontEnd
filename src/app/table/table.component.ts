@@ -43,6 +43,7 @@ export class TableComponent  implements OnInit {
   private restTile: number;//剩余牌数
   private current_tile: Tile; //最后出的牌
   private turn: number=0; //当前出牌者，最后一个牌是谁出的，是已经出完的
+  private next_turn: number = 0;//下一个要出牌的人
 
   private is_finished=false;
 

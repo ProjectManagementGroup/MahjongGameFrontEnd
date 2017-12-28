@@ -21,7 +21,7 @@ export class CenterComponent {
   @Input() upPlayer: Player;
   @Input() bottomPlayer: Player;
 
-  private next_turn: number;//下一个要出牌的人
+  @Input() next_turn: number;//下一个要出牌的人
 
   private countDown: number = 7;
 
