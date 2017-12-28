@@ -16,87 +16,106 @@
 </head>
 
 <body>
-<div class="modal fade" id="inviteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
-  <div class="modal-dialog" role="document" >
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">邀请好友加入房间</h4>
-      </div>
-      <div class="modal-body" >
-        <div>
-          <div class="form-group">
-            <label for="username1" class="control-label">第1个好友:</label>
-            <input type="text" class="form-control" id="username1"  [(ngModel)]="name1">
-          </div>
-          <div class="form-group">
-            <label for="username2" class="control-label">第2个好友:</label>
-            <input type="text" class="form-control" id="username2" [(ngModel)]="name2">
-          </div>
-          <div class="form-group">
-            <label for="username3" class="control-label">第3个好友:</label>
-            <input type="text" class="form-control" id="username3" [(ngModel)]="name3">
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" (click)="send_invitation()">确定邀请</button>
-      </div>
-    </div>
-  </div>
-</div>
+<!--<div class="modal fade" id="inviteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">-->
+<!--<div class="modal-dialog" role="document">-->
+<!--<div class="modal-content">-->
+<!--<div class="modal-header">-->
+<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+<!--<h4 class="modal-title" id="exampleModalLabel">邀请好友加入房间</h4>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--<div>-->
+<!--<div class="form-group">-->
+<!--<label for="username1" class="control-label">第1个好友:</label>-->
+<!--<input type="text" class="form-control" id="username1"  [(ngModel)]="name1">-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label for="username2" class="control-label">第2个好友:</label>-->
+<!--<input type="text" class="form-control" id="username2" [(ngModel)]="name2">-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label for="username3" class="control-label">第3个好友:</label>-->
+<!--<input type="text" class="form-control" id="username3" [(ngModel)]="name3">-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="modal-footer">-->
+<!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
+<!--<button type="button" class="btn btn-primary" (click)="send_invitation()">确定邀请</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+
 
 
 <div class="container">
-    <div class="page-header">
-      <h4>
+  <div class="page-header">
+    <h4>
       <img src="../../assets/images/background2.jpg" width="70px" height="70px"/>
       <span class="label label-default">{{user.name}}</span>
-      </h4>
-    </div>
+    </h4>
+  </div>
 </div>
 
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-        <div class="panel panel-danger">
-          <div class="panel-heading">
-            <h3 class="panel-title">消息</h3>
-          </div>
-          <div class="panel-body">
-            <p *ngIf="!invatation">暂无消息</p>
-            <div class="message" *ngIf="invatation">
-              <ul >
-                <li>邀请者(房主)：    {{invatation[0]}}</li>
-                <li>被邀请者1： {{invatation[1]}}</li>
-                <li>被邀请者2： {{invatation[2]}}</li>
-                <li>被邀请者3： {{invatation[3]}}</li>
-                <li>房间号： {{invatation[4]}}</li>
-              </ul>
-              <p id="message_buttons">
-                <button id="accept" (click)="accept_invitation()" *ngIf="invatation">接收</button>
-                <button id="refuse" *ngIf="invatation">拒绝</button>
-              </p>
-            </div>
-
-          </div>
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">消息</h3>
         </div>
+        <div class="panel-body">
+          <p *ngIf="!invatation">暂无消息</p>
+          <div class="message" *ngIf="invatation">
+            <ul >
+              <li>邀请者(房主)：    {{invatation[0]}}</li>
+              <li>被邀请者1： {{invatation[1]}}</li>
+              <li>被邀请者2： {{invatation[2]}}</li>
+              <li>被邀请者3： {{invatation[3]}}</li>
+              <li>房间号： {{invatation[4]}}</li>
+            </ul>
+            <p id="message_buttons">
+              <button id="accept" (click)="accept_invitation()" *ngIf="invatation">接收</button>
+              <button id="refuse" *ngIf="invatation">拒绝</button>
+            </p>
+          </div>
+
+        </div>
+      </div>
       <!--
       <div class="well" id="message">
       </div>
       -->
+    </div>
+    <div class="col-md-4" *ngIf="visible">
+      <div class="form-group">
+        <label for="username1" class="control-label">第1个好友:</label>
+        <input type="text" class="form-control" id="username1"  [(ngModel)]="name1">
       </div>
+      <div class="form-group">
+        <label for="username2" class="control-label">第2个好友:</label>
+        <input type="text" class="form-control" id="username2" [(ngModel)]="name2">
+      </div>
+      <div class="form-group">
+        <label for="username3" class="control-label">第3个好友:</label>
+        <input type="text" class="form-control" id="username3" [(ngModel)]="name3">
+      </div>
+      <button type="button" class="btn btn-default" >取消</button>
+      <button type="button" class="btn btn-primary" (click)="send_invitation()">确定邀请</button>
+    </div>
     <div class="col-md-4">
     </div>
-      <div class="col-md-4" id="sidebar">
-        <div class="well" id="buttons">
-          <p><button id="create_room" data-toggle="modal" data-target="#inviteModal">创建房间</button></p>
-          <p><button id="add_room">加入房间</button></p>
-        </div>
+    <div class="col-md-4" id="sidebar">
+      <div class="well" id="buttons">
+        <!--<p><button id="create_room" data-toggle="modal" data-target="#inviteModal">创建房间</button></p>-->
+        <p><button id="create_room" data-toggle="modal" (click)="create_room()">创建房间</button></p>
+        <p><button id="add_room">加入房间</button></p>
       </div>
     </div>
   </div>
+</div>
 
 </body>
 </html>

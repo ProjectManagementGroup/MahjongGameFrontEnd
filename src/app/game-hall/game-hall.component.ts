@@ -18,6 +18,7 @@ export class GameHallComponent implements OnInit{
   name1:string;
   name2:string;
   name3:string;
+  visible:boolean=false;
   constructor(private socket:SocketService,private router:Router){
       this.user=socket.user;
   }
@@ -28,7 +29,7 @@ export class GameHallComponent implements OnInit{
     );
     this.socket.get_room_number.subscribe((val)=>{
       this.room_number = val;
-      $('#inviteModal').modal('hide');
+      this.visible=false;
       this.router.navigate(['room']);
     });
 
@@ -44,5 +45,8 @@ export class GameHallComponent implements OnInit{
 
       this.socket.sendMessage(message);
 
+  }
+  create_room():void {
+    this.visible=true;
   }
 }
