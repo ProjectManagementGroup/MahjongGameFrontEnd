@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { SocketService } from '../service/socket.service';
 
@@ -8,29 +8,28 @@ import { SocketService } from '../service/socket.service';
   styleUrls: [ './login.component.css']
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   private username: string;
   private password: string;
   private login_state: boolean = null;
 
-  constructor(private socketService: SocketService, private router: Router) {
+  constructor(private socket: SocketService, private router: Router) {
+  }
+
+  ngOnInit(): void {
+    this.socket.create();
+    this.socket.getLS.subscribe((val)=>{
+      this.login_state=val;
+      if(this.login_state){
+        this.router.navigate(['/gameHall']);
+      }
+    });
   }
 
   login(): void{
     if(this.username!="" && this.password!="") {
       let message = "login|" + this.username + "|" + this.password;
-      this.socketService.sendMessage(message);
-      this.socketService.getLS.subscribe(
-        (login_state)=>{
-          this.login_state=login_state;
-          if(this.login_state) {
-            //导航到游戏大厅
-          }else {
-            //提示无法登录
-            console.log("username或password错误");
-          }
-        }
-      );
+      this.socket.sendMessage(message);
     }
     else{
       console.log("username或password不能为空");
