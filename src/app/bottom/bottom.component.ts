@@ -61,7 +61,7 @@ export class BottomComponent  implements OnInit {
   @Input() uuid: number;
   @Input() current_tile: Tile; //最后出的牌
   @Input() turn: number=0; //当前出牌者，最后一个牌是谁出的，是已经出完的
-  private next_turn: number;
+  private next_turn: number = 0;//默认庄家出牌
 
 
   constructor(private socketService: SocketService,
