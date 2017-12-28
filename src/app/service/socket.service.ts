@@ -215,8 +215,6 @@ export class SocketService {
            global.bottom_tile[2].push(global.out_tile);
            global.getTile_Bottom.next(global.bottom_tile);
            global.turn = global.uuid;
-           global.next_turn=(global.turn+1)%4;
-           global.get_next_turn.next(global.next_turn);
            global.current_tile = global.out_tile;
            global.get_turn.next(global.turn);
            global.get_current.next(global.current_tile);
@@ -239,8 +237,6 @@ export class SocketService {
            global.top_tile[2].push(global.current_tile);
            global.getTile_Top.next(global.top_tile);
          }
-         global.next_turn=(global.turn+1)%4;
-         global.get_next_turn.next(global.next_turn);
          break;
        case 'bump request success':
          console.log("bump request success!!!!");
