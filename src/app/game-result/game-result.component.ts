@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Tile } from '../object/tile';
-import { GameResult } from '../object/game-result';
 import { SocketService } from '../service/socket.service';
 import {Player} from "../object/player";
 
@@ -36,20 +35,19 @@ import {Player} from "../object/player";
 export class GameResultComponent  implements OnInit {
   private winner_tiles: Array<Tile> = [];
   private hu_tile: Tile ;
-  //private game_results: Array<GameResult> = [];
-  private win: boolean = false;
-  private uuid:number;
+
   private players:Player[];
+  private uuid:number;
+  private winner_id:number;
+  private win: boolean = false;
+
   constructor(private socketService: SocketService) {
-
-
-    // this.winner_tiles = WINNERTILES;
-    // this.hu_tile = {type: 'bamboo', value: 2, typeid: 0 };
-    // this.game_results = GAMERESULTS;
     this.winner_tiles=this.socketService.win_tiles;
     this.hu_tile=this.socketService.win_tile;
     this.players=this.socketService.players;
     this.uuid=this.socketService.uuid;
+    this.winner_id=this.socketService.winner;
+    this.win=this.winner_id==this.uuid;
   }
 
   ngOnInit(): void {
