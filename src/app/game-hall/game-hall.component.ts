@@ -33,7 +33,7 @@ export class GameHallComponent implements OnInit{
   accept_invitation(): void {
     let message = 'accept|'+this.invatation[4];
     this.socket.sendMessage(message);
-    this.router.navigate(['game']);
+    this.router.navigate(['room']);
   }
 
   send_invitation(): void {
