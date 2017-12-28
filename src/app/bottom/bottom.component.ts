@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Tile } from '../object/tile'
+import {Component, Input, OnInit} from '@angular/core';
+import { Tile } from '../object/tile';
 import { SocketService } from '../service/socket.service';
 import {OrderTileService} from '../service/order-tile.service';
 import {CheckTileService} from '../service/check-tile.service';
@@ -35,12 +35,12 @@ const USINGTILE: Tile[] = [
 ];
 
 const USEDTILE: Tile[] = [
-  {type: 'bamboo', value: 1, typeid: 0 },
-  {type: 'bamboo', value: 2, typeid: 0 },
-  {type: 'bamboo', value: 3, typeid: 0 },
-  {type: 'bamboo', value: 4, typeid: 0 },
-  {type: 'bamboo', value: 5, typeid: 0 },
-  {type: 'bamboo', value: 6, typeid: 0 }
+  {type: 'bamboo', value: 1, typeid: 0},
+  {type: 'bamboo', value: 2, typeid: 0},
+  {type: 'bamboo', value: 3, typeid: 0},
+  {type: 'bamboo', value: 4, typeid: 0},
+  {type: 'bamboo', value: 5, typeid: 0},
+  {type: 'bamboo', value: 6, typeid: 0}
 ];
 
 @Component({
@@ -71,7 +71,7 @@ export class BottomComponent  implements OnInit {
     this.socketService.getTile_Bottom.subscribe(
       (tiles)=>{
         this.tiles = tiles;
-        this.orderTileService.bubbleSortTile(tiles[0]);
+        this.orderTileService.bubbleSortTile(this.tiles[0]);
         let newNum = this.tiles[2].length;
         if(newNum > this.lastUselessNum) {
           this.hasCurrentTile = true;
