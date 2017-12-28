@@ -53,7 +53,7 @@ export class BottomComponent  implements OnInit {
 
   // 0 using_tile 1 used_tile 2  useless_tile
   private tiles: Tile[][]=[[],[],[]];
-  private new_tile:Tile;
+  private new_tile:Tile = null;
   // 最后出的那张牌在不在这个方位
   private hasCurrentTile: boolean = false;
   private lastUselessNum: number = 0;
@@ -130,6 +130,7 @@ export class BottomComponent  implements OnInit {
   }
 
   outTile(tile:Tile):void {
+    this.new_tile = null;
     var message="out|"+tile.type+"|"+tile.value;
     this.socketService.setOuttile(tile);
     this.socketService.sendMessage(message);
