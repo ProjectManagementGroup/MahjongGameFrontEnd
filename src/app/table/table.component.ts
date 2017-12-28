@@ -3,6 +3,7 @@ import {Player} from '../object/player';
 import {SocketService} from '../service/socket.service';
 import {Tile} from '../object/tile';
 import {Router} from "@angular/router";
+import {Message} from "../object/message";
 
 const PLAYERS: Player[] = [
   {name: 'name1', gameid: 0, point: 100, ready: true},
@@ -45,7 +46,7 @@ export class TableComponent  implements OnInit {
 
   private is_finished=false;
 
-  private chatMessage: string[];//聊天信息
+  private chatMessage: Message[]=[];//聊天信息
 
   constructor(private socketService: SocketService , private router: Router) {
     this.players = this.socketService.players;
@@ -95,6 +96,11 @@ export class TableComponent  implements OnInit {
         }
       }
     );
+    this.socketService.get_latest_message.subscribe(
+      (val)=>{
+        this.chatMessage.push(val);
+      }
+    )
   }
 
 }

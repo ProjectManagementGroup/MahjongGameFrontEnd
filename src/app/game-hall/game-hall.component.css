@@ -1,8 +1,8 @@
-@font-face {
-  font-family: 'water';/*此处YourWebFontName为你的字体名称*/
-src:
-url('../../assets/fonts/汉仪水滴体简.ttf')  format('truetype'); /* Safari, Android, iOS */
-}
+/*@font-face {*/
+  /*font-family: 'water';!*此处YourWebFontName为你的字体名称*!*/
+/*src:*/
+/*url('../../assets/fonts/汉仪水滴体简.ttf')  format('truetype'); !* Safari, Android, iOS *!*/
+/*}*/
 
 body {
   height:758px;

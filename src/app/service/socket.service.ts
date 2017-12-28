@@ -3,6 +3,7 @@ import { Tile } from '../object/tile';
 import { User} from '../object/user';
 import { Player} from '../object/player';
 import {Subject} from 'rxjs';
+import {Message} from "../object/message";
 @Injectable()
 export class SocketService {
   //0 using_tile 1 used_tile 2  useless_tile
@@ -72,6 +73,10 @@ export class SocketService {
   //此句是否结束
   is_finished: boolean = false;
   get_is_finished: Subject<boolean> =new Subject<boolean>();
+
+  //聊天消息
+  latest_message:Message;
+  get_latest_message:Subject<Message> = new Subject<Message>();
  public create():void {
     //this.socket = new WebSocket(this.wsUrl);
     let global = this;
@@ -279,6 +284,9 @@ export class SocketService {
          global.is_finished=true;
          global.get_is_finished.next(global.is_finished);
          break;
+       case 'speak':
+         global.latest_message=<Message>message.object;
+         global.get_latest_message.next(global.latest_message);
      }
    }
     //this.getRS.next(true);
