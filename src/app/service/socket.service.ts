@@ -66,6 +66,9 @@ export class SocketService {
   //胡的牌
   win_tiles: Tile[];
   get_win_tiles: Subject<Tile[]> = new Subject<Tile[]>();
+  //新发的牌
+  new_tile: Tile;
+  get_new_tile: Subject<Tile> = new Subject<Tile>();
   //此句是否结束
   is_finished: boolean = false;
   get_is_finished: Subject<boolean> =new Subject<boolean>();
@@ -154,10 +157,12 @@ export class SocketService {
          global.get_rest.next(global.rest);
        case 'get tile':
          //TODO：发牌数据问题
-         global.bottom_tile[0].push(<Tile>message.object);
+         //global.bottom_tile[0].push(<Tile>message.object);
+         global.new_tile=<Tile>message.object;
+         global.get_new_tile.next(global.new_tile);
          global.rest--;
          global.get_rest.next(global.rest);
-         global.getTile_Bottom.next(global.bottom_tile);
+         //global.getTile_Bottom.next(global.bottom_tile);
          global.next_turn = global.uuid;
          global.get_next_turn.next(global.next_turn);
          break;
@@ -179,7 +184,11 @@ export class SocketService {
          global.get_rest.next(global.rest);
        case 'out success':
          if(message.ok){
+           var is_new = (global.new_tile==global.out_tile);
+           if(!is_new){
            global.bottom_tile[0].splice(global.bottom_tile[0].indexOf( global.out_tile ,1), 1);
+           global.bottom_tile[0].push(global.new_tile);
+           }
            global.bottom_tile[2].push(global.out_tile);
            global.getTile_Bottom.next(global.bottom_tile);
            global.turn = global.uuid;
