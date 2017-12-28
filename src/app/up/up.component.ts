@@ -56,9 +56,9 @@ export class UpComponent  implements OnInit {
   private lastUselessNum: number = 0;
 
   constructor(private socketService: SocketService) {
-    // this.tiles[0] = USINGTILE;
-    // this.tiles[1] = USEDTILE;
-    // this.tiles[2] = USELESSTRILE;
+    this.tiles[0] = USINGTILE;
+    this.tiles[1] = USEDTILE;
+    this.tiles[2] = USELESSTRILE;
   }
 
   ngOnInit(): void {

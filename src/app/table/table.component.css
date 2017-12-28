@@ -128,5 +128,45 @@
   top: 500px;
   right: 50px;
 }
+.chatting{
+  text-align: center;
+  position: absolute;
+  width: 180px;
+  height: 250px;
+  top: 300px;
+  right: -200px;
+}
+
+.top_chatting{
+  text-align: center;
+  width: 180px;
+  height: 200px;
+  background-color: #CFD8DC;
+  padding: 5px;
+  overflow: auto;
+}
+.chat_message{
+  text-align: left;
+  width: 170px;
+  background-color: cornflowerblue;
+  padding-bottom: 5px;
+}
+
+.bottom_chatting{
+  text-align: left;
+  width: 160px;
+  height: 50px;
+}
+
+.bottom_chatting input{
+  width: 130px;
+  position: relative;
+}
+.bottom_chatting button{
+  width: 50px;
+  position: relative;
+  top:  -26px;
+  left: 130px;
+}
 
 
