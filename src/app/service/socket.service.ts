@@ -113,7 +113,7 @@ export class SocketService {
        case 'room information':
          var content= message.object;
          global.players = <Player[]>content.all;
-         global.players.push(<Player>content.me);
+         //global.players.push(<Player>content.me);
          global.get_players.next(global.players);
          global.uuid=content.me.index;
          global.get_uuid.next(global.uuid);
