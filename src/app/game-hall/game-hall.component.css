@@ -39,8 +39,9 @@ body {
   height:100%;
 }
 #message_buttons{
-  height:100px;
-  margin-top:350px;
+  height:60px;
+  padding-left: 20px;
+  /*margin-top:350px;*/
 }
 #accept,#refuse {
   opacity: 1;
@@ -96,3 +97,10 @@ img{
   background: url(../../assets/images/model.png);
   background-size: 100% 100%;
 }
+.message {
+  border:1px solid #F00;
+}
+ul {
+  padding-top: 20px;
+}
+
