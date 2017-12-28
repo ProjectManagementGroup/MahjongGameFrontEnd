@@ -1,11 +1,9 @@
-/*
- * Style tweaks
- * --------------------------------------------------
- */
-/*html,*/
-/*body {*/
-  /*overflow-x: hidden;*/
-/*}*/
+@font-face {
+  font-family: 'water';/*此处YourWebFontName为你的字体名称*/
+src:
+url('../../assets/fonts/汉仪彩蝶体简.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
 body {
   height:758px;
   background-image: url(../../assets/images/hall.png);
@@ -35,6 +33,7 @@ body {
   /*background: #f0f0f0;*/
   height:500px;
   opacity: 0.5;
+  font-family:'water';
 }
 .panel-body{
   height:100%;
@@ -69,7 +68,10 @@ body {
   border:none;
   width:90%;
   height:80px;
-  background-size:100% 100%
+  background-size:100% 100%;
+  font-family:'water';
+  font-size:20px;
+  color:white;
 }
 #create_room:hover,#add_room:hover,#accept:hover,#refuse:hover {
    opacity:0.8;
