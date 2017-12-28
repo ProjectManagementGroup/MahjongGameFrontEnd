@@ -85,3 +85,14 @@ img{
   -webkit-border-radius: 50%;
   border-radius: 50%
 }
+.modal-content {
+  margin:200px auto;
+  width:300px;
+  height:380px;
+  background: none;
+  border:none;
+  color: #CD853F;
+  opacity:0.8;
+  background: url(../../assets/images/model.png);
+  background-size: 100% 100%;
+}
