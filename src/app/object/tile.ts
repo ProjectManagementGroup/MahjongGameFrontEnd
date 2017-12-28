@@ -1,7 +1,7 @@
 export class Tile {
   type: string;
   value: number;
-
+  typeid: number;
 
   // dot("饼(筒)"),
   // wind("东西南北风"),

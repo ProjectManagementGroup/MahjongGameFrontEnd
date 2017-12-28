@@ -1,31 +1,19 @@
 <div class="bottom">
   <!--已打出的牌 -->
   <div class="bottom_useless">
-    <div *ngFor="let useless_tile of useless_tiles" class="useless_tile">
+    <div *ngFor="let useless_tile of tiles[2]" class="useless_tile">
       <img  height="40" width="30" src="../../assets/picture/{{useless_tile.type}}/{{useless_tile.value}}.png" alt="useless_tile_img">
     </div>
   </div>
   <!--手中的牌 -->
   <div class="bottom_using">
-    <div *ngFor="let using_tile_bamboo of usingAllTypeTiles[0].oneTypeTiles" class="using_tile">
-      <img src="../../assets/picture/{{using_tile_bamboo.type}}/{{using_tile_bamboo.value}}.png" alt="using_tile_img">
-    </div>
-    <div *ngFor="let using_tile_dot of usingAllTypeTiles[1].oneTypeTiles" class="using_tile">
-      <img src="../../assets/picture/{{using_tile_dot.type}}/{{using_tile_dot.value}}.png" alt="using_tile_img">
-    </div>
-    <div *ngFor="let using_tile_myriad of usingAllTypeTiles[2].oneTypeTiles" class="using_tile">
-      <img src="../../assets/picture/{{using_tile_myriad.type}}/{{using_tile_myriad.value}}.png" alt="using_tile_img">
-    </div>
-    <div *ngFor="let using_tile_wind of usingAllTypeTiles[3].oneTypeTiles" class="using_tile">
-      <img src="../../assets/picture/{{using_tile_wind.type}}/{{using_tile_wind.value}}.png" alt="using_tile_img">
-    </div>
-    <div *ngFor="let using_tile_dragon of usingAllTypeTiles[4].oneTypeTiles" class="using_tile">
-      <img src="../../assets/picture/{{using_tile_dragon.type}}/{{using_tile_dragon.value}}.png" alt="using_tile_img">
+    <div *ngFor="let using_tile of tiles[0]" class="using_tile">
+      <img src="../../assets/picture/{{using_tile.type}}/{{using_tile.value}}.png" alt="using_tile_img">
     </div>
   </div>
   <!--碰或者杠的牌 -->
   <div class="bottom_used">
-    <div *ngFor="let used_tile of used_tiles" class="used_tile">
+    <div *ngFor="let used_tile of tiles[1]" class="used_tile">
       <img src="../../assets/picture/{{used_tile.type}}/{{used_tile.value}}.png" alt="used_tile_img">
     </div>
   </div>
