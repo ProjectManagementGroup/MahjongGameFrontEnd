@@ -50,22 +50,22 @@ export class TableComponent  implements OnInit {
   constructor(private socketService: SocketService , private router: Router) {
     this.players = this.socketService.players;
     this.uuid = this.socketService.uuid;
-    // this.banker = this.players[0];
-    //
-    // this.bottomPlayer = this.players[this.uuid];
-    // this.rightPlayer = this.players[(this.uuid + 1)%4];
-    // this.upPlayer = this.players[(this.uuid + 2)%4];
-    // this.leftPlayer = this.players[(this.uuid + 3)%4];
-    //
-    // this.restTile = this.socketService.rest;
+    this.banker = this.players[0];
 
-    this.leftPlayer = PLAYERS[0];
-    this.upPlayer = PLAYERS[1];
-    this.rightPlayer = PLAYERS[2];
-    this.bottomPlayer = PLAYERS[3];
-    this.restTile = 83;
-    this.banker = PLAYERS[0];
-    this.chatMessage = CHATMESSAGE;
+    this.bottomPlayer = this.players[this.uuid];
+    this.rightPlayer = this.players[(this.uuid + 1)%4];
+    this.upPlayer = this.players[(this.uuid + 2)%4];
+    this.leftPlayer = this.players[(this.uuid + 3)%4];
+
+    this.restTile = this.socketService.rest;
+
+    // this.leftPlayer = PLAYERS[0];
+    // this.upPlayer = PLAYERS[1];
+    // this.rightPlayer = PLAYERS[2];
+    // this.bottomPlayer = PLAYERS[3];
+    // this.restTile = 83;
+    // this.banker = PLAYERS[0];
+    // this.chatMessage = CHATMESSAGE;
   }
 
   ngOnInit(): void {
