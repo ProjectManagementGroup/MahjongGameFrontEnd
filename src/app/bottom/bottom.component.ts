@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Tile } from '../object/tile';
-import { Player } from '../object/player';
+import { Component, OnInit, Input } from '@angular/core';
+import { Tile } from '../object/tile'
 import { SocketService } from '../service/socket.service';
 import {OrderTileService} from '../service/order-tile.service';
 import {CheckTileService} from '../service/check-tile.service';
@@ -36,12 +35,12 @@ const USINGTILE: Tile[] = [
 ];
 
 const USEDTILE: Tile[] = [
-  {type: 'bamboo', value: 1},
-  {type: 'bamboo', value: 2},
-  {type: 'bamboo', value: 3},
-  {type: 'bamboo', value: 4},
-  {type: 'bamboo', value: 5},
-  {type: 'bamboo', value: 6}
+  {type: 'bamboo', value: 1, typeid: 0 },
+  {type: 'bamboo', value: 2, typeid: 0 },
+  {type: 'bamboo', value: 3, typeid: 0 },
+  {type: 'bamboo', value: 4, typeid: 0 },
+  {type: 'bamboo', value: 5, typeid: 0 },
+  {type: 'bamboo', value: 6, typeid: 0 }
 ];
 
 @Component({

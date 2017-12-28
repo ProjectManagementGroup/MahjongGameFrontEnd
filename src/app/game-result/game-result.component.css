@@ -7,10 +7,14 @@
 
 .center_in_gr{
   text-align: center;
-  background-image: url("../../assets/images/game_background3.png");
-  border-radius:5%;
-  width: 940px;
-  height: 540px;
+  /*background-image: url("../../assets/images/game_background3.png");*/
+  /*border-radius:5%;*/
+  /*width: 940px;*/
+  /*height: 540px;*/
+  width: 775px;
+  height: 456px;
+  background-image: url("../../assets/images/gameresult_bg.png");
+  background-size: 775px 456px;
   position: relative;
   top: 50%;
   left: 50%;
@@ -21,12 +25,13 @@
 
 .show_info{
   text-align: center;
-  background-image: url("../../assets/images/game_background.png");
+  /*background-image: url("../../assets/images/gameresult_bg.png");*/
+  /*background-size: 775px 456px;*/
   border-radius:5%;
-  width: 525px;
-  height: 400px;
+  width: 775px;
+  height: 456px;
   position: absolute;
-  left: 240px;
+  left: 100px;
   top: 0px;
   padding-top: 50px;
 }
@@ -65,7 +70,7 @@
 }
 .point_gr{
   text-align: center;
-  background-image: url("../../assets/images/game_background3.png");
+  /*background-image: url("../../assets/images/game_background3.png");*/
   /*border-radius:5%;*/
   width: 520px;
   height: 400px;
