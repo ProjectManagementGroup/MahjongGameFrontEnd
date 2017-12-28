@@ -130,7 +130,7 @@ export class BottomComponent  implements OnInit {
   }
 
   outTile(tile:Tile):void {
-    var message="out|"+tile;
+    var message="out|"+tile.type+"|"+tile.value;
     this.socketService.setOuttile(tile);
     this.socketService.sendMessage(message);
   }
