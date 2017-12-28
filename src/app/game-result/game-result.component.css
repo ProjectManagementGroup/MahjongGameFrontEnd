@@ -111,7 +111,7 @@
   outline:none;
   background: none;
   border:none;
-  width:160px;
+  width:100px;
   height:40px;
   background-size:100% 100%
 }
@@ -119,14 +119,15 @@
   opacity:0.8;
 }
 #quit {
-  background-image: url(../../assets/images/button1.png);
+  background-image: url(../../assets/images/result_button.png);
   margin:50px 10px 10px 10px;
 }
 #continue {
-  background-image: url(../../assets/images/button2.png);
-  margin:15px 10px 30px 10px;
+  background-image: url(../../assets/images/result_button.png);
+  margin:25px 10px 50px 10px;
 }
 #buttons {
   margin-left:-25%;
   margin-top:10%;
+  color:white;
 }
