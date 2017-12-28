@@ -2,8 +2,8 @@
   <div class="center_in_gr">
     <div class="show_info">
       <div class="title_gr">
-        <img *ngIf="win === true" src="" alt="胜利">
-        <img *ngIf="win === false" src="" alt="失败">
+        <img *ngIf="win" src="" alt="胜利">
+        <img *ngIf="!win" src="" alt="失败">
       </div>
       <!--赢的牌-->
       <div class="tile_gr">
@@ -20,17 +20,18 @@
       </div>
       <!--玩家积分变动情况-->
       <div class="point_gr">
-        <div class="point_player_gr" *ngFor="let game_result of game_results">
-          <img class="portrait" src="../../assets/picture/portrait/{{game_result.gameid}}.jpg" alt="touxiang">
+        <div class="point_player_gr" *ngFor="let player of players">
+          <img class="portrait" src="../../assets/picture/portrait/{{player.gameid}}.jpg" alt="touxiang">
           <!--<div class="name_player"><h4><span class="label label-default">{{game_result.name}}</span></h4></div>-->
           <!--<div class="win_player"><h1><span class="label label-default">{{game_result.win}}</span></h1></div>-->
           <!--<div class="point_player"><h1><span class="label label-default">{{game_result.point}}</span></h1></div>-->
-          <span class="label label-default">{{game_result.name}}</span>
-          <span class="label label-default">{{game_result.win}}</span>
-          <span class="label label-default">{{game_result.point}}</span>
+          <span class="label label-default">{{player.name}}</span>
+          <span class="label label-default" *ngIf="player.gameid===winner_id">+</span>
+          <span class="label label-default" *ngIf="player.gameid!==winner_id">-</span>
+          <span class="label label-default">50</span>
         </div>
       </div>
-      <div ><button >退出</button><button >继续</button></div>
+      <div id="buttons"><button id="quit">退出</button><button id="continue">继续</button></div>
     </div>
 
   </div>
