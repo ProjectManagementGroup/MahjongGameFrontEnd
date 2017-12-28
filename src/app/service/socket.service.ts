@@ -141,6 +141,7 @@ export class SocketService {
        case "game start":
          global.game_start=true;
          global.get_game_start.next(global.game_start);
+         break;
        case "game start allocate":
          var content = message.object;
          global.uuid=content.ownIndex;
@@ -164,10 +165,11 @@ export class SocketService {
          global.getTile_Bottom.next(global.bottom_tile);
          global.getTile_Right.next(global.right_tile);
          global.getTile_Top.next(global.top_tile);
-         global.get_turn.next(global.turn);
+         // global.get_turn.next(global.turn);
          global.next_turn=0;
          global.get_next_turn.next(global.next_turn);
          global.get_rest.next(global.rest);
+         break;
        case 'get tile':
          //TODO：发牌数据问题
          //global.bottom_tile[0].push(<Tile>message.object);
@@ -195,6 +197,7 @@ export class SocketService {
            global.getTile_Top.next(global.top_tile);
          }
          global.get_rest.next(global.rest);
+         break;
        case 'out success':
          if(message.ok){
            var is_new = (global.new_tile==global.out_tile);
@@ -229,6 +232,7 @@ export class SocketService {
            global.top_tile[0].push(global.current_tile);
            global.getTile_Top.next(global.top_tile);
          }
+         break;
        case 'bump request success':
          console.log("bump request success!!!!");
          break;
@@ -277,7 +281,7 @@ export class SocketService {
            global.top_tile[1]=global.top_tile[1].concat(global.eat_bump_tiles);
            global.getTile_Top.next(global.top_tile);
          }
-         break;;
+         break;
        case 'game end':
          var content = message.object;
          global.winner = <number>content.winnerIndex;
@@ -294,6 +298,7 @@ export class SocketService {
        case 'speak':
          global.latest_message=<Message>message.object;
          global.get_latest_message.next(global.latest_message);
+         break;
      }
    }
     //this.getRS.next(true);
