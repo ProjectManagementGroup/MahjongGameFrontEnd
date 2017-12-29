@@ -104,7 +104,7 @@ export class TableComponent  implements OnInit {
     );
     this.socketService.get_latest_message.subscribe(
       (val)=>{
-        this.chatMessage.push(val);
+        this.chatMessage=val;
       }
     )
   }

@@ -76,8 +76,8 @@ export class SocketService {
   get_is_finished: Subject<boolean> =new Subject<boolean>();
 
   //聊天消息
-  latest_message:Message;
-  get_latest_message:Subject<Message> = new Subject<Message>();
+  latest_message:Message[]=[];
+  get_latest_message:Subject<Message[]> = new Subject<Message[]>();
 
   //4个boolean
   last_is_bottom:boolean = false;
@@ -388,7 +388,12 @@ export class SocketService {
          global.get_is_finished.next(global.is_finished);
          break;
        case 'speak':
-         global.latest_message=<Message>message.object;
+         if(global.latest_message.length<6){
+           global.latest_message.push(<Message>message.object);
+         }else{
+           global.latest_message=global.latest_message.splice(0,1);
+           global.latest_message.push(<Message>message.object)
+         }
          global.get_latest_message.next(global.latest_message);
          break;
      }
