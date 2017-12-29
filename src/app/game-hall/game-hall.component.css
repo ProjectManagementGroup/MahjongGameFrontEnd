@@ -6,10 +6,12 @@ url('../../assets/fonts/water.ttf')  format('truetype'); /* Safari, Android, iOS
 
 body {
   height:758px;
-  background-image: url(../../assets/images/hall.png);
+  /*background-image: url(../../assets/images/hall.png);*/
+  background-image: url(../../assets/images/gamehall_bg3.jpg);
   background-repeat:no-repeat;
-  /*background:#f0f0f0;*/  background-size: cover;
-
+  /*background:#f0f0f0;*/
+  /*background-size: cover;*/
+  background-size: 100% 758px;
   /*padding-top: 70px;*/
 }
 /*footer {*/
@@ -27,7 +29,7 @@ body {
   margin-right: -22%;
   border:none;
   /*background: #f0f0f0;*/
-  background-image: url(../../assets/images/border.png);
+  /*background-image: url(../../assets/images/border.png);*/
   background-repeat:no-repeat;
   background-size:90% 100%;
   /*opacity: 0.9;*/
@@ -168,7 +170,7 @@ body {
    opacity:0.8;
  }
 #create_room {
-  background-image: url(../../assets/images/create_room.png);
+  background-image: url(../../assets/images/room_button2.png);
   margin-top:40px;
   margin-left:10%;
   background-size:100% 75px;
@@ -176,16 +178,18 @@ body {
   /*margin:50px 30px 10px 10px;*/
 }
 #add_room {
-  background-image: url(../../assets/images/enter_room.png);
+  background-image: url(../../assets/images/room_button1.png);
   margin-left:10%;
   margin-top:-10px;
-  background-size:100% 80px;
+  background-size:100% 75px;
   background-repeat: no-repeat;
   /*margin: 15px 20px 30px 10px;*/
 }
 #log_out {
-  background-image: url(../../assets/images/button1.png);
+  background-image: url(../../assets/images/room_button4.png);
   margin-left:10%;
+  margin-top:-10px;
+  background-size:100% 75px;
   /*margin:0px 100px 10px 10px;*/
 }
 #user_portrait {
