@@ -56,7 +56,7 @@ export class BottomComponent  implements OnInit {
   private new_tile:Tile = null;
   // 最后出的那张牌在不在这个方位
   private hasCurrentTile: boolean = false;
-  private lastUselessNum: number = 0;
+
 
   @Input() uuid: number;
   @Input() current_tile: Tile; //最后出的牌
@@ -79,13 +79,6 @@ export class BottomComponent  implements OnInit {
       (tiles)=>{
         this.tiles = tiles;
         this.orderTileService.bubbleSortTile(this.tiles[0]);
-        let newNum = this.tiles[2].length;
-        if(newNum > this.lastUselessNum) {
-          this.hasCurrentTile = true;
-        }else {
-          this.hasCurrentTile = false;
-        }
-        this.lastUselessNum = newNum;
       }
     );
     this.socketService.get_new_tile.subscribe(
@@ -97,7 +90,12 @@ export class BottomComponent  implements OnInit {
       (val)=>{
         this.next_turn=val;
       }
-    )
+    );
+    this.socketService.get_last_is_bottom.subscribe(
+      (val)=>{
+        this.hasCurrentTile = val;
+      }
+    );
   }
 
   //检测碰牌是否成功，如果成功就发给后台
