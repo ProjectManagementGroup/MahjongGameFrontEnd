@@ -4,6 +4,7 @@ import { User} from '../object/user';
 import { Player} from '../object/player';
 import {Subject} from 'rxjs';
 import {Message} from "../object/message";
+import {nextTick} from "q";
 @Injectable()
 export class SocketService {
   //0 using_tile 1 used_tile 2  useless_tile
@@ -77,6 +78,16 @@ export class SocketService {
   //聊天消息
   latest_message:Message;
   get_latest_message:Subject<Message> = new Subject<Message>();
+
+  //4个boolean
+  last_is_bottom:boolean = false;
+  last_is_top:boolean = false;
+  last_is_left:boolean = false;
+  last_is_right:boolean = false;
+  get_last_is_bottom:Subject<boolean> = new Subject<boolean>();
+  get_last_is_top:Subject<boolean> = new Subject<boolean>();
+  get_last_is_left:Subject<boolean> = new Subject<boolean>();
+  get_last_is_right:Subject<boolean> = new Subject<boolean>();
  public create():void {
     //this.socket = new WebSocket(this.wsUrl);
     let global = this;
@@ -184,9 +195,9 @@ export class SocketService {
          break;
        //别人抓了一张牌
        case 'allocate tile':
-         var temp = message.object-global.uuid;
-         global.next_turn = message.object;
-         console.log("目前"+message.object+"抓了一张牌该出牌了");
+         var temp = message.object.gameid-global.uuid;
+         global.next_turn = message.object.gameid;
+         console.log("目前"+message.object.gameid+"抓了一张牌该出牌了");
          global.get_next_turn.next(global.next_turn);
          global.rest--;
          if(temp==1||temp==-3){
@@ -219,11 +230,14 @@ export class SocketService {
               console.log("此时bottom_tile的数量（打出的牌不是新牌且新牌不是null）："+global.bottom_tile[0].length);
            }
            }
-           //如果是新牌则不做处理
-           // else{
-           //   global.new_tile=null;
-           //   global.get_new_tile.next(global.new_tile);
-           // }
+           global.last_is_bottom=true;
+           global.last_is_left=false;
+           global.last_is_right=false;
+           global.last_is_top=false;
+           global.get_last_is_bottom.next(global.last_is_bottom);
+           global.get_last_is_left.next(global.last_is_left);
+           global.get_last_is_right.next(global.last_is_right);
+           global.get_last_is_top.next(global.last_is_top);
             //将新的bottom，turn,当前牌推送出去，新牌（null）推送出去
            global.bottom_tile[2].push(global.out_tile);
            global.getTile_Bottom.next(global.bottom_tile);
@@ -245,17 +259,36 @@ export class SocketService {
          var temp = global.turn-global.uuid;
          if(temp==1||temp==-3){
            console.log("出牌的是你的下家");
+           global.right_tile[0].pop();
            global.right_tile[2].push(global.current_tile);
            global.getTile_Right.next(global.right_tile);
+           global.last_is_bottom=false;
+           global.last_is_left=false;
+           global.last_is_right=true;
+           global.last_is_top=false;
          }else if(temp==-1||temp==3){
            console.log("出牌的是你的上家");
+           global.left_tile[0].pop();
            global.left_tile[2].push(global.current_tile);
            global.getTile_Left.next(global.left_tile);
+           global.last_is_bottom=false;
+           global.last_is_left=false;
+           global.last_is_right=false;
+           global.last_is_top=true;
          }else{
            console.log("出牌的是你的对家");
+           global.top_tile[0].pop();
            global.top_tile[2].push(global.current_tile);
            global.getTile_Top.next(global.top_tile);
+           global.last_is_bottom=false;
+           global.last_is_left=false;
+           global.last_is_right=false;
+           global.last_is_top=true;
          }
+         global.get_last_is_bottom.next(global.last_is_bottom);
+         global.get_last_is_left.next(global.last_is_left);
+         global.get_last_is_right.next(global.last_is_right);
+         global.get_last_is_top.next(global.last_is_top);
          break;
        case 'bump request success':
          console.log("bump request success!!!!");
@@ -269,7 +302,8 @@ export class SocketService {
          var temp = global.turn-global.uuid;
          if(temp==1||temp==-3){
            console.log("下家打出去的牌的张数"+global.right_tile[2].length);
-           global.right_tile[2].splice(global.right_tile[2].indexOf(global.current_tile),1);
+           //global.right_tile[2].splice(global.right_tile[2].indexOf(global.current_tile),1);
+           global.right_tile[2].pop();
            console.log("下家打出去的牌被拿走后的张数"+global.right_tile[2].length);
            global.getTile_Right.next(global.right_tile);
          }else if(temp==-1||temp==3){
@@ -287,6 +321,14 @@ export class SocketService {
            global.top_tile[2].splice(global.top_tile[2].indexOf(global.current_tile),1);
            console.log("对家打出去的牌被拿走后的张数"+global.top_tile[2].length);
            global.getTile_Top.next(global.top_tile);
+           global.last_is_bottom=false;
+           global.last_is_left=false;
+           global.last_is_right=false;
+           global.last_is_top=false;
+           global.get_last_is_bottom.next(global.last_is_bottom);
+           global.get_last_is_left.next(global.last_is_left);
+           global.get_last_is_right.next(global.last_is_right);
+           global.get_last_is_top.next(global.last_is_top);
          }
          //判断碰牌的人位置去掉吃碰人手中的牌和并增加用过的牌
          temp = content.index-global.uuid;
@@ -351,7 +393,6 @@ export class SocketService {
          break;
      }
    }
-    //this.getRS.next(true);
     this.socket.onerror = function () {
       console.log("warning!!!!!!!");
     };
