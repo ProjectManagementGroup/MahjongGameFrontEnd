@@ -331,8 +331,8 @@ export class SocketService {
            global.get_last_is_top.next(global.last_is_top);
          }
          //判断碰牌的人位置去掉吃碰人手中的牌和并增加用过的牌
-         temp = content.index-global.uuid;
-         global.next_turn = content.index;
+         temp = content.gameid-global.uuid;
+         global.next_turn = content.gameid;
          console.log("当前吃碰牌该出牌的人是"+global.next_turn);
          global.get_next_turn.next(global.next_turn);
          if(temp==1||temp==-3){
@@ -412,7 +412,8 @@ export class SocketService {
     this.socket.send(message);
   }
   sendEatBumpMessage(message:Tile[]):void {
-    this.eat_bump_tiles=message;
+   console.log("有人发出吃碰请求牌数"+message.length);
+   this.eat_bump_tiles=message;
   }
   setOuttile(tile:Tile):void {
     this.out_tile=tile;
