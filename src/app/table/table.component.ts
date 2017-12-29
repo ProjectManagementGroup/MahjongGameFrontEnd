@@ -109,8 +109,11 @@ export class TableComponent  implements OnInit {
     )
   }
   send_message():void {
-    var smessage = "speak|"+this.message;
-    this.socketService.sendMessage(smessage);
+    if(this.message !== ""){
+      var smessage = "speak|"+this.message;
+      this.socketService.sendMessage(smessage);
+      this.message = "";
+    }
   }
 
 }
