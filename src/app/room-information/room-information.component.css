@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'water';/*此处YourWebFontName为你的字体名称*/
+  src:
+    url('../../assets/fonts/water.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
 .room_information{
   text-align: center;
   height: 740px;
@@ -80,10 +85,19 @@ top:0px;
 top:0px;
 }
 
-.button{
+.buttons{
   position: absolute;
-  width: 100px;
+  width: 220px;
   height: 50px;
-  right:10px;
-  bottom:0px;
+  right:70px;
+  bottom:-20px;
+}
+button {
+  border-radius: 20px;
+  font-family: 'water';
+  font-size: 18px;
+  width:100px;
+  /*background-color: black;*/
+  /*color:white;*/
+  opacity: 0.9;
 }
