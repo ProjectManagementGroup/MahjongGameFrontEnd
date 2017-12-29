@@ -377,6 +377,7 @@ export class SocketService {
          global.win_tiles=<Tile[]>content.ownTiles;
          global.get_win_tiles.next(global.win_tiles);
          //向玩家推送游戏结束的消息
+         global.win_tile=content.winTile;
          global.is_finished=true;
          global.get_is_finished.next(global.is_finished);
          break;

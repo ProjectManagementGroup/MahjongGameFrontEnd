@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Tile } from '../object/tile';
 import { SocketService } from '../service/socket.service';
 import {Player} from "../object/player";
+import {OrderTileService} from "../service/order-tile.service";
 
 const WINNERTILES: Tile[] = [
   {type: 'bamboo', value: 1, typeid: 0 },
@@ -41,8 +42,9 @@ export class GameResultComponent  implements OnInit {
   private winner_id:number;
   private win: boolean = false;
 
-  constructor(private socketService: SocketService) {
+  constructor(private socketService: SocketService,private orderService:OrderTileService) {
     this.winner_tiles=this.socketService.win_tiles;
+    this.orderService.bubbleSortTile(this.winner_tiles);
     this.hu_tile=this.socketService.win_tile;
     this.players=this.socketService.players;
     this.uuid=this.socketService.uuid;
