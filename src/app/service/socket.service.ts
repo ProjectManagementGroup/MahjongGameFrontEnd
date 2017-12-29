@@ -273,9 +273,9 @@ export class SocketService {
            global.left_tile[2].push(global.current_tile);
            global.getTile_Left.next(global.left_tile);
            global.last_is_bottom=false;
-           global.last_is_left=false;
+           global.last_is_left=true;
            global.last_is_right=false;
-           global.last_is_top=true;
+           global.last_is_top=false
          }else{
            console.log("出牌的是你的对家");
            global.top_tile[0].pop();
@@ -301,7 +301,6 @@ export class SocketService {
          var content = message.object;
          //判断最后出牌人的位置,去掉它无用的牌中的一张
          var temp = global.turn-global.uuid;
-         console
          if(temp==1||temp==-3){
            console.log("下家打出去的牌的张数"+global.right_tile[2].length);
            //global.right_tile[2].splice(global.right_tile[2].indexOf(global.current_tile),1);
@@ -387,6 +386,8 @@ export class SocketService {
            global.latest_message.push(<Message>message.object)
          }
          global.get_latest_message.next(global.latest_message);
+         break;
+       case  '':
          break;
      }
    }
