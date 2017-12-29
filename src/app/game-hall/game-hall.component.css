@@ -42,7 +42,7 @@ body {
 }
 .message_panel {
   /*background: #f0f0f0;*/
-  height:220px;
+  height:240px;
   opacity: 0.5;
   font-family:'water';
 }
@@ -130,8 +130,8 @@ body {
   border-radius: 30px;
 }
 #message_buttons{
-  height:60px;
-  padding-left: 20px;
+  /*height:50px;*/
+  padding: 0px;
   /*margin-top:350px;*/
 }
 #friend_key,#friend_key1 {
@@ -150,9 +150,10 @@ body {
   outline:none;
   background: none;
   border:none;
-  width:30%;
-  margin:8%;
-  height:40px;
+  width:25%;
+  margin:0;
+  margin-left: 50px;
+  height:30px;
   background-size:100% 100%;
   font-weight: bold;
   color:white;
@@ -234,7 +235,7 @@ ul {
   font-family: "water";
 }
 .message_box {
-  height:70px;
+  height:120px;
   overflow:auto;
   overflow-x: hidden
 }
