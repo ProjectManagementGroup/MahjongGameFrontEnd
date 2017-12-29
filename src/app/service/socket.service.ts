@@ -419,7 +419,15 @@ export class SocketService {
         this.get_rest.next(this.rest);
       case 'out success':
         if(message.ok){
-          this.bottom_tile[0].splice(this.bottom_tile[0].indexOf( this.out_tile ), 1);
+          if(this.out_tile !== this.new_tile) {
+            this.bottom_tile[0].splice(this.bottom_tile[0].indexOf( this.out_tile ), 1);
+            if(this.new_tile !== null) {
+              this.bottom_tile[0].push(this.new_tile);
+            }
+          }else {
+            this.new_tile = null;
+          }
+
           this.bottom_tile[2].push(this.out_tile);
           this.getTile_Bottom.next(this.bottom_tile);
           this.turn = this.uuid;
