@@ -382,7 +382,8 @@ export class SocketService {
          if(global.latest_message.length<6){
            global.latest_message.push(<Message>message.object);
          }else{
-           global.latest_message=global.latest_message.splice(0,1);
+           global.latest_message.splice(0,1);
+           console.log("信息数量："+global.latest_message.length);
            global.latest_message.push(<Message>message.object)
          }
          global.get_latest_message.next(global.latest_message);
