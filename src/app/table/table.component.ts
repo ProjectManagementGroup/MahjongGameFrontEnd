@@ -88,6 +88,12 @@ export class TableComponent  implements OnInit {
       }
     );
 
+    this.socketService.get_next_turn.subscribe(
+      (next_turn)=>{
+        this.next_turn = next_turn;
+      }
+    );
+
     this.socketService.get_is_finished.subscribe(
       (val)=>{
         this.is_finished=val;
