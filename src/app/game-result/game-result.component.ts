@@ -3,6 +3,7 @@ import { Tile } from '../object/tile';
 import { SocketService } from '../service/socket.service';
 import {Player} from "../object/player";
 import {OrderTileService} from "../service/order-tile.service";
+import {Router} from '@angular/router';
 
 const WINNERTILES: Tile[] = [
   {type: 'bamboo', value: 1, typeid: 0 },
@@ -42,7 +43,7 @@ export class GameResultComponent  implements OnInit {
   private winner_id:number;
   private win: boolean = false;
 
-  constructor(private socketService: SocketService,private orderService:OrderTileService) {
+  constructor(private socketService: SocketService,private orderService:OrderTileService,private router: Router) {
     this.winner_tiles=this.socketService.win_tiles;
     this.orderService.bubbleSortTile(this.winner_tiles);
     this.hu_tile=this.socketService.win_tile;
@@ -58,9 +59,16 @@ export class GameResultComponent  implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.socketService.get_players.subscribe(
+      (val)=>{
+        this.players=val;
+        this.router.navigate(['/room']);
+      }
+    );
   }
 
-
+  ready(): void {
+    this.socketService.sendMessage("ready|");
+  }
 
 }
