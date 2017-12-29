@@ -5,7 +5,6 @@ import { Player} from '../object/player';
 import {Subject} from 'rxjs';
 import {Message} from "../object/message";
 import {nextTick} from "q";
-import {Friend} from "../object/friend";
 @Injectable()
 export class SocketService {
   //0 using_tile 1 used_tile 2  useless_tile
