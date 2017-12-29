@@ -128,7 +128,8 @@ export class SocketService {
          global.get_players.next(global.players);
          //global.uuid=content.me.index;
          for(var i=0;i<global.players.length;i++){
-           if(global.players[i].name==global.user.name){
+           if(global.players[i].name==global.user.name)
+           {
              global.uuid=global.players[i].gameid;
            }
          }
@@ -300,6 +301,7 @@ export class SocketService {
          var content = message.object;
          //判断最后出牌人的位置,去掉它无用的牌中的一张
          var temp = global.turn-global.uuid;
+         console
          if(temp==1||temp==-3){
            console.log("下家打出去的牌的张数"+global.right_tile[2].length);
            //global.right_tile[2].splice(global.right_tile[2].indexOf(global.current_tile),1);
@@ -324,9 +326,10 @@ export class SocketService {
 
          }
          //判断碰牌的人位置去掉吃碰人手中的牌和并增加用过的牌
-         temp = content.gameid-global.uuid;
+         var temp = <number>(content.gameid-global.uuid);
          global.next_turn = content.gameid;
          console.log("当前吃碰牌该出牌的人是"+global.next_turn);
+         console.log("temp是"+temp);
          global.get_next_turn.next(global.next_turn);
          if(temp==1||temp==-3){
            global.right_tile[0].pop();
