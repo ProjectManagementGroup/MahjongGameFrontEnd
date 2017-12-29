@@ -55,4 +55,11 @@
   width: 25px;
   float: left;
 }
+.selected:last-child{
+  box-shadow: 5px 0px 10px 5px rgba(255,0,0,0.7);
+  transform: rotate(0deg) scale(1.1);
+  -webkit-transform: rotate(0deg) scale(1.1);
+  -moz-transform: rotate(0deg) scale(1.1);
+  background-color: rgba(255,0,0,0.5);
+}
 

@@ -59,6 +59,7 @@ export class LeftComponent  implements OnInit {
     // this.tiles[0] = USINGTILE;
     // this.tiles[1] = USEDTILE;
     // this.tiles[2] = USELESSTRILE;
+    // this.hasCurrentTile = true;
   }
 
   ngOnInit(): void {
