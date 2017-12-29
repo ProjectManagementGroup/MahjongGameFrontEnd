@@ -321,14 +321,7 @@ export class SocketService {
            global.top_tile[2].splice(global.top_tile[2].indexOf(global.current_tile),1);
            console.log("对家打出去的牌被拿走后的张数"+global.top_tile[2].length);
            global.getTile_Top.next(global.top_tile);
-           global.last_is_bottom=false;
-           global.last_is_left=false;
-           global.last_is_right=false;
-           global.last_is_top=false;
-           global.get_last_is_bottom.next(global.last_is_bottom);
-           global.get_last_is_left.next(global.last_is_left);
-           global.get_last_is_right.next(global.last_is_right);
-           global.get_last_is_top.next(global.last_is_top);
+
          }
          //判断碰牌的人位置去掉吃碰人手中的牌和并增加用过的牌
          temp = content.gameid-global.uuid;
@@ -336,20 +329,16 @@ export class SocketService {
          console.log("当前吃碰牌该出牌的人是"+global.next_turn);
          global.get_next_turn.next(global.next_turn);
          if(temp==1||temp==-3){
-           global.right_tile[0].splice(global.right_tile[0].indexOf(global.eat_bump_tiles[0]),1);
-           global.right_tile[0].splice(global.right_tile[0].indexOf(global.eat_bump_tiles[1]),1);
+           global.right_tile[0].pop();
+           global.right_tile[0].pop();
            console.log("下家吃碰后手中的牌的数量："+global.right_tile[0].length);
-           //global.right_tile[1]=global.right_tile[1].concat(global.eat_bump_tiles);
-           //global.right_tile[1].push(global.current_tile);
            global.right_tile[1]=global.right_tile[1].concat(<Tile[]>content.tile);
            console.log("下家吃碰牌后的展出牌的个数："+global.right_tile[1].length);
            global.getTile_Right.next(global.right_tile);
          }else if(temp==-1||temp==3){
-           global.left_tile[0].splice(global.left_tile[0].indexOf(global.eat_bump_tiles[0]),1);
-           global.left_tile[0].splice(global.left_tile[0].indexOf(global.eat_bump_tiles[1]),1);
+           global.left_tile[0].pop();
+           global.left_tile[0].pop();
            console.log("上家吃碰后手中的牌的数量："+global.left_tile[0].length);
-           // global.left_tile[1]=global.left_tile[1].concat(global.eat_bump_tiles);
-           // global.left_tile[1].push(global.current_tile);
            global.left_tile[1]=global.left_tile[1].concat(<Tile[]>content.tile);
            console.log("上家吃碰牌后的展出牌的个数："+global.left_tile[1].length);
            global.getTile_Left.next(global.left_tile);
@@ -357,21 +346,25 @@ export class SocketService {
            global.bottom_tile[0].splice(global.bottom_tile[0].indexOf(global.eat_bump_tiles[0]),1);
            global.bottom_tile[0].splice(global.bottom_tile[0].indexOf(global.eat_bump_tiles[1]),1);
            console.log("我吃碰后手中的牌的数量："+global.bottom_tile[0].length);
-           //global.bottom_tile[1]=global.bottom_tile[1].concat(global.eat_bump_tiles);
-           //global.bottom_tile[1].push(global.current_tile);
            global.bottom_tile[1]=global.bottom_tile[1].concat(<Tile[]>content.tile);
            console.log("我吃碰牌后的展出牌的个数："+global.bottom_tile[1].length);
            global.getTile_Bottom.next(global.bottom_tile);
          }else{
-           global.top_tile[0].splice(global.top_tile[0].indexOf(global.eat_bump_tiles[0]),1);
-           global.top_tile[0].splice(global.top_tile[0].indexOf(global.eat_bump_tiles[1]),1);
+           global.top_tile[0].pop();
+           global.top_tile[0].pop();
            console.log("对家吃碰后手中的牌的数量："+global.top_tile[0].length);
-           //global.top_tile[1]=global.top_tile[1].concat(global.eat_bump_tiles);
-           //global.top_tile[1].push(global.current_tile);
            global.top_tile[1]=global.top_tile[1].concat(<Tile[]>content.tile);
            console.log("对家吃碰牌后的展出牌的个数："+global.top_tile[1].length);
            global.getTile_Top.next(global.top_tile);
          }
+         global.last_is_bottom=false;
+         global.last_is_left=false;
+         global.last_is_right=false;
+         global.last_is_top=false;
+         global.get_last_is_bottom.next(global.last_is_bottom);
+         global.get_last_is_left.next(global.last_is_left);
+         global.get_last_is_right.next(global.last_is_right);
+         global.get_last_is_top.next(global.last_is_top);
          break;
        case 'game end':
          var content = message.object;
@@ -379,10 +372,6 @@ export class SocketService {
          global.get_winner.next(global.winner);
          global.win_tiles=<Tile[]>content.ownTiles;
          global.get_win_tiles.next(global.win_tiles);
-         // for (var i=0 ; i<4;i++){
-         //   global.result_point.push(<number>content.all[i].point);
-         // }
-         // global.get_result_point.next(global.result_point);
          //向玩家推送游戏结束的消息
          global.is_finished=true;
          global.get_is_finished.next(global.is_finished);
