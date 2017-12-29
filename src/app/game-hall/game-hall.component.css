@@ -233,4 +233,9 @@ ul {
 .modal {
   font-family: "water";
 }
+.message_box {
+  height:70px;
+  overflow:auto;
+  overflow-x: hidden
+}
 

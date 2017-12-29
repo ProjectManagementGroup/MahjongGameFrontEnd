@@ -145,9 +145,10 @@
           <h3 class="panel-title">消息</h3>
         </div>
         <div class="panel-body">
-          <p *ngIf="!invatation">暂无消息</p>
-          <div class="message" *ngIf="invatation">
-            <ul >
+          <!--<p *ngIf="!invatation">暂无消息</p>-->
+          <!--<div class="message" *ngIf="invatation">-->
+          <div class="message">
+            <ul class="message_box">
               <li>邀请者(房主)：    {{invatation[0]}}</li>
               <li>被邀请者1： {{invatation[1]}}</li>
               <li>被邀请者2： {{invatation[2]}}</li>
