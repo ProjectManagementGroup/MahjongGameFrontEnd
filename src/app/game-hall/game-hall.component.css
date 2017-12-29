@@ -182,7 +182,7 @@ body {
    opacity:0.8;
  }
 #create_room {
-  background-image: url(../../assets/images/room_button2.png);
+  background-image: url(../../assets/images/room_button22.png);
   margin-top:40px;
   margin-left:10%;
   background-size:100% 75px;
@@ -190,7 +190,7 @@ body {
   /*margin:50px 30px 10px 10px;*/
 }
 #add_room {
-  background-image: url(../../assets/images/room_button1.png);
+  background-image: url(../../assets/images/room_button11.png);
   margin-left:10%;
   margin-top:-10px;
   background-size:100% 75px;
@@ -198,7 +198,7 @@ body {
   /*margin: 15px 20px 30px 10px;*/
 }
 #log_out {
-  background-image: url(../../assets/images/room_button4.png);
+  background-image: url(../../assets/images/room_button41.png);
   margin-left:10%;
   margin-top:-10px;
   background-size:100% 75px;
