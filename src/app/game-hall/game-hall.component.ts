@@ -6,23 +6,23 @@ import { Router} from "@angular/router";
 import {$} from "protractor";
 
 
-// const FRIENDS: Friend[] = [
-//   {name:'wn',state:'在线'},
-//   {name:'ymm',state:'在线'},
-//   {name:'yay',state:'离线'},
-//   {name:'wxy',state:'在线'},
-//   {name:'xm',state:'在线'},
-//   {name:'xh',state:'在线'},
-// ];
-//
-// const USERS: User[] = [
-//   {name:'wn',point:1000},
-//   {name:'ymm',point:80},
-//   {name:'yay',point:780},
-//   {name:'wxy',point:100},
-//   {name:'xm',point:105},
-//   {name:'xh',point:100},
-// ];
+const FRIENDS: Friend[] = [
+  {name:'wn',state:'在线'},
+  {name:'ymm',state:'在线'},
+  {name:'yay',state:'离线'},
+  {name:'wxy',state:'在线'},
+  {name:'xm',state:'在线'},
+  {name:'xh',state:'在线'},
+];
+
+const USERS: User[] = [
+  {name:'wn',point:1000},
+  {name:'ymm',point:80},
+  {name:'yay',point:780},
+  {name:'wxy',point:100},
+  {name:'xm',point:105},
+  {name:'xh',point:100},
+];
 
 @Component({
   selector: 'game-hall',
@@ -46,8 +46,8 @@ export class GameHallComponent implements OnInit{
 
   constructor(private socket:SocketService,private router:Router){
       this.user=socket.user;
-      // this.friends=FRIENDS;
-      // this.users=USERS;
+      this.friends=FRIENDS;
+      this.users=USERS;
   }
   ngOnInit(): void {
     this.socket.get_invitation.subscribe((val)=>{
