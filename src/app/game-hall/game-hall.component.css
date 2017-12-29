@@ -122,11 +122,11 @@ body {
   padding-left: 20px;
   /*margin-top:350px;*/
 }
-#search_key {
+#friend_key,#friend_key1 {
   width:70%;
   height:30px;
 }
-#search {
+#search_friend,#search_friend1 {
   width:25%;
   height:30px;
   float:right;
