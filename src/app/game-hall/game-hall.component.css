@@ -21,7 +21,7 @@ body {
 }
 
 #buttons {
-  margin-top:300px;
+  margin-top:230px;
   background: none;
   margin-left: 20%;
   margin-right: -22%;
@@ -30,7 +30,7 @@ body {
   background-image: url(../../assets/images/border.png);
   background-repeat:no-repeat;
   background-size:90% 100%;
-  opacity: 0.9;
+  /*opacity: 0.9;*/
 }
 .friend_panel {
   /*background: #f0f0f0;*/
@@ -158,7 +158,7 @@ body {
   background: none;
   border:none;
   width:70%;
-  height:60px;
+  height:80px;
   background-size:100% 100%;
   font-family:'water';
   font-size:20px;
@@ -168,14 +168,19 @@ body {
    opacity:0.8;
  }
 #create_room {
-  background-image: url(../../assets/images/button1.png);
-  margin-top:30px;
+  background-image: url(../../assets/images/create_room.png);
+  margin-top:40px;
   margin-left:10%;
+  background-size:100% 75px;
+  background-repeat: no-repeat;
   /*margin:50px 30px 10px 10px;*/
 }
 #add_room {
-  background-image: url(../../assets/images/button2.png);
+  background-image: url(../../assets/images/enter_room.png);
   margin-left:10%;
+  margin-top:-10px;
+  background-size:100% 80px;
+  background-repeat: no-repeat;
   /*margin: 15px 20px 30px 10px;*/
 }
 #log_out {
