@@ -88,6 +88,8 @@ export class SocketService {
   get_last_is_top:Subject<boolean> = new Subject<boolean>();
   get_last_is_left:Subject<boolean> = new Subject<boolean>();
   get_last_is_right:Subject<boolean> = new Subject<boolean>();
+
+
  public create():void {
     //this.socket = new WebSocket(this.wsUrl);
     let global = this;
