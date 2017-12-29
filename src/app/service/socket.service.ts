@@ -16,7 +16,7 @@ export class SocketService {
   bottom_tile: Tile[][]=[[],[],[]];
   getTile_Bottom: Subject<Tile[][]> = new Subject<Tile[][]>();
 
-  turn: number=0; //当前出牌者，最后一个牌是谁出的，是已经出完的
+  turn: number; //当前出牌者，最后一个牌是谁出的，是已经出完的
   get_turn: Subject<number> = new Subject<number>();
 
   current_tile: Tile; //最后出的牌
@@ -68,7 +68,7 @@ export class SocketService {
   win_tiles: Tile[];
   get_win_tiles: Subject<Tile[]> = new Subject<Tile[]>();
   //新发的牌
-  new_tile: Tile;
+  new_tile: Tile=null;
   get_new_tile: Subject<Tile> = new Subject<Tile>();
   //此句是否结束
   is_finished: boolean = false;
@@ -186,10 +186,10 @@ export class SocketService {
          global.next_turn = message.object;
          global.get_next_turn.next(global.next_turn);
          global.rest--;
-         if(temp==1){
+         if(temp==1||temp==-3){
            global.right_tile[0].push(null);
            global.getTile_Right.next(global.right_tile);
-         }else if(temp==-1){
+         }else if(temp==-1||temp==3){
            global.left_tile[0].push(null);
            global.getTile_Left.next(global.left_tile);
          }else{
@@ -201,12 +201,17 @@ export class SocketService {
        case 'out success':
          if(message.ok){
            var is_new = (global.new_tile==global.out_tile);
+           console.log("打出的牌是否为新牌："+is_new);
            if(!is_new){
            global.bottom_tile[0].splice(global.bottom_tile[0].indexOf( global.out_tile ,1), 1);
-           global.bottom_tile[0].push(global.new_tile);
+           if(!global.new_tile) {
+             global.bottom_tile[0].push(global.new_tile);
            }
-           global.new_tile=null;
-           global.get_new_tile.next(global.new_tile);
+           }else{
+             global.new_tile=null;
+             global.get_new_tile.next(global.new_tile);
+           }
+
            global.bottom_tile[2].push(global.out_tile);
            global.getTile_Bottom.next(global.bottom_tile);
            global.turn = global.uuid;
@@ -217,19 +222,19 @@ export class SocketService {
          break;
        case 'other out':
          var content = message.object;
-         global.turn = content.index;
+         global.turn = content.gameid;
          global.current_tile = (<Tile> content.tile);
          global.get_turn.next(global.turn);
          global.get_current.next(global.current_tile);
          var temp = global.turn-global.uuid;
-         if(temp==1){
+         if(temp==1||temp==-3){
            global.right_tile[2].push(global.current_tile);
            global.getTile_Right.next(global.right_tile);
-         }else if(temp==-1){
-           global.left_tile[0].push(global.current_tile);
+         }else if(temp==-1||temp==3){
+           global.left_tile[2].push(global.current_tile);
            global.getTile_Left.next(global.left_tile);
          }else{
-           global.top_tile[0].push(global.current_tile);
+           global.top_tile[2].push(global.current_tile);
            global.getTile_Top.next(global.top_tile);
          }
          break;
@@ -243,10 +248,10 @@ export class SocketService {
          var content = message.object;
          //判断最后出牌人的位置,去掉它无用的牌中的一张
          var temp = global.turn-global.uuid;
-         if(temp==1){
+         if(temp==1||temp==-3){
            global.right_tile[2].splice(global.right_tile[2].indexOf(global.current_tile),1);
            global.getTile_Right.next(global.right_tile);
-         }else if(temp==-1){
+         }else if(temp==-1||temp==3){
            global.left_tile[2].splice(global.left_tile[2].indexOf(global.current_tile),1);
            global.getTile_Left.next(global.right_tile);
          }else if(temp==0){
@@ -260,25 +265,29 @@ export class SocketService {
          temp = content.index-global.uuid;
          global.next_turn = content.index;
          global.get_next_turn.next(global.next_turn);
-         if(temp==1){
+         if(temp==1||temp==-3){
            global.right_tile[0].splice(global.right_tile[0].indexOf(global.eat_bump_tiles[0]),1);
            global.right_tile[0].splice(global.right_tile[0].indexOf(global.eat_bump_tiles[1]),1);
            global.right_tile[1]=global.right_tile[1].concat(global.eat_bump_tiles);
+           global.right_tile[1].push(global.current_tile);
            global.getTile_Right.next(global.right_tile);
-         }else if(temp==-1){
+         }else if(temp==-1||temp==3){
            global.left_tile[0].splice(global.left_tile[0].indexOf(global.eat_bump_tiles[0]),1);
            global.left_tile[0].splice(global.left_tile[0].indexOf(global.eat_bump_tiles[1]),1);
            global.left_tile[1]=global.left_tile[1].concat(global.eat_bump_tiles);
+           global.left_tile[1].push(global.current_tile);
            global.getTile_Left.next(global.left_tile);
          }else if(temp==0){
            global.bottom_tile[0].splice(global.bottom_tile[0].indexOf(global.eat_bump_tiles[0]),1);
            global.bottom_tile[0].splice(global.bottom_tile[0].indexOf(global.eat_bump_tiles[1]),1);
            global.bottom_tile[1]=global.bottom_tile[1].concat(global.eat_bump_tiles);
+           global.bottom_tile[1].push(global.current_tile);
            global.getTile_Bottom.next(global.bottom_tile);
          }else{
            global.top_tile[0].splice(global.top_tile[0].indexOf(global.eat_bump_tiles[0]),1);
            global.top_tile[0].splice(global.top_tile[0].indexOf(global.eat_bump_tiles[1]),1);
            global.top_tile[1]=global.top_tile[1].concat(global.eat_bump_tiles);
+           global.top_tile[1].push(global.current_tile);
            global.getTile_Top.next(global.top_tile);
          }
          break;

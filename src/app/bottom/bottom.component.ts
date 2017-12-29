@@ -61,11 +61,13 @@ export class BottomComponent  implements OnInit {
   @Input() uuid: number;
   @Input() current_tile: Tile; //最后出的牌
   @Input() turn: number=0; //当前出牌者，最后一个牌是谁出的，是已经出完的
-  @Input() next_turn: number;
+  private next_turn: number = 0;//默认庄家出牌
+
 
   constructor(private socketService: SocketService,
               private orderTileService: OrderTileService,
               private checkTileService: CheckTileService ) {
+
     // this.tiles[0] = USINGTILE;
     // this.tiles[1] = USEDTILE;
     // this.tiles[2] = USELESSTRILE;
@@ -89,6 +91,11 @@ export class BottomComponent  implements OnInit {
     this.socketService.get_new_tile.subscribe(
       (val)=>{
         this.new_tile=val;
+      }
+    );
+    this.socketService.get_next_turn.subscribe(
+      (val)=>{
+        this.next_turn=val;
       }
     )
   }
@@ -131,7 +138,9 @@ export class BottomComponent  implements OnInit {
   }
 
   outTile(tile:Tile):void {
+
     if(this.next_turn == this.uuid) {
+      this.next_turn++;
       this.new_tile = null;
       var message="out|"+tile.type+"|"+tile.value;
       this.socketService.setOuttile(tile);
