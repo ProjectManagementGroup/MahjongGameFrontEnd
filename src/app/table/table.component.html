@@ -40,14 +40,16 @@
     <div class="left_tile"><h4><span class="label label-default">剩余牌数 {{restTile}}</span></h4></div>
     <!--新添加的聊天室-->
     <div class="chatting">
-      <div class="top_chatting">
-        <div *ngFor="let chat_message of chatMessage" class="chat_message">
-          {{chat_message}}
+      <div class="hidden_wrapper">
+        <div class="top_chatting">
+          <div *ngFor="let chat_message of chatMessage" class="chat_message">
+            {{chat_message.speaker}}:{{chat_message.content}}
+          </div>
         </div>
       </div>
-      <div class="bottom_chatting">
-        <input [(ngModel)]="message" type="text" value="" id="text">
-        <button (click)="send_message()">发送</button>
+      <div class="bottom_chatting form-inline">
+        <input  class="form-control" [(ngModel)]="message" type="text" value="" id="text">
+        <button id="send" class="btn btn-default" (click)="send_message()">发送</button>
       </div>
     </div>
   </div>
