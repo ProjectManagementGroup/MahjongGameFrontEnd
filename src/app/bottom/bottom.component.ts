@@ -115,7 +115,7 @@ export class BottomComponent  implements OnInit {
     if(this.turn == ((this.uuid + 3)%4)){
       if(this.checkTileService.checkEat(this.current_tile, this.tiles[0], eatTiles)){
         this.socketService.sendEatBumpMessage(eatTiles);
-        this.socketService.sendMessage('eat|');
+        this.socketService.sendMessage('eat|'+eatTiles[0].value+'|'+eatTiles[1].value);
 
       }
     }
