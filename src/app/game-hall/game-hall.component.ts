@@ -1,19 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../object/user';
-import {Friend} from '../object/friend';
 import {SocketService} from "../service/socket.service";
 import { Router} from "@angular/router";
-import {$} from "protractor";
 
 
-const FRIENDS: Friend[] = [
-  {name:'wn',state:'在线'},
-  {name:'ymm',state:'在线'},
-  {name:'anyi',state:'在线'},
-  {name:'wxy',state:'在线'},
-  {name:'wangying',state:'在线'},
-  {name:'xh',state:'离线'},
-];
+//
+// const FRIENDS: Friend[] = [
+//   {name:'wn',state:'在线'},
+//   {name:'ymm',state:'在线'},
+//   {name:'anyi',state:'在线'},
+//   {name:'wxy',state:'在线'},
+//   {name:'wangying',state:'在线'},
+//   {name:'xh',state:'离线'},
+// ];
 
 // const USERS: User[] = [
 //   {name:'wn',point:1000},
@@ -39,13 +38,15 @@ export class GameHallComponent implements OnInit{
   name2:string;
   name3:string;
   visible:boolean=false;
-
-  private friends: Friend[]=[];//搜索的朋友信息
-  private users: User[]=[];//搜索的朋友信息
-
+  //被加好友邀请信息
+  friendInvitation:string=null;
+  private friends: string[]=[];//搜索的朋友信息
+  //private users: User[]=[];//搜索的朋友信息
+  //邀请的好友
+  inviting_friend:string;
   constructor(private socket:SocketService,private router:Router){
       this.user=socket.user;
-      this.friends=FRIENDS;
+      this.friends=socket.friendsList;
       // this.users=USERS;
   }
   ngOnInit(): void {
@@ -57,6 +58,12 @@ export class GameHallComponent implements OnInit{
       this.room_number = val;
       this.visible=false;
       this.router.navigate(['room']);
+    });
+    this.socket.get_friendList.subscribe((val)=>{
+      this.friends=val;
+    });
+    this.socket.get_friendInvitation.subscribe((val)=>{
+      this.friendInvitation=val;
     });
 
   }
@@ -74,5 +81,13 @@ export class GameHallComponent implements OnInit{
   }
   create_room():void {
     this.visible=true;
+  }
+  send_friendinvitation() : void {
+    var message = "friendInvitation|"+this.inviting_friend;
+    this.socket.sendMessage(message);
+  }
+
+  accept_friendinvitation():void {
+    var message = "friendAccept|"+this.friendInvitation;
   }
 }

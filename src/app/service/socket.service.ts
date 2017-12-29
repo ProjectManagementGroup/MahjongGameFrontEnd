@@ -5,6 +5,7 @@ import { Player} from '../object/player';
 import {Subject} from 'rxjs';
 import {Message} from "../object/message";
 import {nextTick} from "q";
+import {Friend} from "../object/friend";
 @Injectable()
 export class SocketService {
   //0 using_tile 1 used_tile 2  useless_tile
@@ -89,7 +90,12 @@ export class SocketService {
   get_last_is_left:Subject<boolean> = new Subject<boolean>();
   get_last_is_right:Subject<boolean> = new Subject<boolean>();
 
-
+  //附加功能好友列表
+  friendsList :string[] ;
+  get_friendList:Subject<string[]> = new Subject<string[]>();
+  //被邀请信息
+  friendInvitation:string;
+  get_friendInvitation:Subject<string>= new Subject<string>();
  public create():void {
     //this.socket = new WebSocket(this.wsUrl);
     let global = this;
@@ -114,8 +120,10 @@ export class SocketService {
          if (message.ok) {
            global.login_state=true;
            global.user=<User>message.object;
+           global.friendsList=global.user.friendList;
            global.getLS.next(global.login_state);
            global.get_user.next(global.user);
+           global.get_friendList.next(global.friendsList);
          }else{
            global.login_state=false;
            global.getLS.next(global.login_state);
@@ -391,7 +399,13 @@ export class SocketService {
          }
          global.get_latest_message.next(global.latest_message);
          break;
-       case  '':
+       case  'friendAccept':
+         global.friendsList=<string[]>message.object;
+         global.get_friendList.next(global.friendsList);
+         break;
+       case 'friendInvitation':
+         global.friendInvitation=message.object;
+         global.get_friendInvitation.next(global.friendInvitation);
          break;
      }
    }

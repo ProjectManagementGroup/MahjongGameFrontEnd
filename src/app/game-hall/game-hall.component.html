@@ -29,7 +29,7 @@
   <label for="username1" class="control-label">第1个好友:</label>
   <select class="form-control" id="username1" [(ngModel)]="name1">
     <option *ngFor="let friend of friends" class="friend_name">
-      {{friend.name}}
+      {{friend}}
     </option>
   </select>
 <!--<input type="text" class="form-control" id="username1"  [(ngModel)]="name1">-->
@@ -39,7 +39,7 @@
   <!--<input type="text" class="form-control" id="username2" [(ngModel)]="name2">-->
   <select class="form-control" id="username2" [(ngModel)]="name2">
     <option *ngFor="let friend of friends" class="friend_name">
-      {{friend.name}}
+      {{friend}}
     </option>
   </select>
 </div>
@@ -48,7 +48,7 @@
 <!--<input type="text" class="form-control" id="username3" [(ngModel)]="name3">-->
   <select class="form-control" id="username3" [(ngModel)]="name3">
     <option *ngFor="let friend of friends" class="friend_name">
-      {{friend.name}}
+      {{friend}}
     </option>
   </select>
 </div>
@@ -84,7 +84,7 @@
 <div class="modal-body">
   <div>
     <div class="search_bar form-inline form-group">
-      <input type="text" class="form-control" id="user_key">
+      <input type="text" class="form-control" id="user_key" [(ngModel)]="inviting_friend">
       <button id="search_user" class="btn btn-default">搜索玩家</button>
     </div>
     <div class="hidden_wrapper">
@@ -100,7 +100,7 @@
 </div>
 <div class="modal-footer">
 <button class="cancel_button" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
-<button id="add" type="button" class="btn btn-primary" data-dismiss="modal" (click)="send_invitation()">确定添加</button>
+<button id="add" type="button" class="btn btn-primary" data-dismiss="modal" (click)="send_friendinvitation()">确定添加</button>
 </div>
 </div>
 </div>
@@ -133,7 +133,7 @@
             <div class="friend_list">
               <div *ngFor="let friend of friends" class="friend_info">
                 <img src="../../assets/images/background2.jpg" width="30px" height="30px"/>
-                {{friend.name}}:{{friend.state}}
+                {{friend}}
                 <button class="btn btn-default delete_friend">删除好友</button>
               </div>
             </div>
@@ -146,18 +146,24 @@
         </div>
         <div class="panel-body">
           <p *ngIf="!invatation">暂无消息</p>
-          <div class="message" *ngIf="invatation">
+          <div class="message" *ngIf="invatation||friendInvitation">
           <!--<div class="message">-->
-            <ul class="message_box">
+            <ul class="message_box" *ngIf="invatation">
               <li>邀请者(房主)：    {{invatation[0]}}</li>
               <li>被邀请者1： {{invatation[1]}}</li>
               <li>被邀请者2： {{invatation[2]}}</li>
               <li>被邀请者3： {{invatation[3]}}</li>
               <li>房间号： {{invatation[4]}}</li>
             </ul>
+
+            <ul class="message_box" *ngIf="friendInvitation">
+              <li>来自远方的邀请： {{friendInvitation}}</li>
+            </ul>
             <p id="message_buttons">
               <button id="accept" (click)="accept_invitation()" *ngIf="invatation">接收</button>
               <button id="refuse" *ngIf="invatation">拒绝</button>
+              <button id="accept1" (click)="accept_friendinvitation()" *ngIf="friendInvitation">接收</button>
+              <button id="refuse1" *ngIf="friendInvitation">拒绝</button>
               <!--<button id="accept" (click)="accept_invitation()">接收</button>-->
               <!--<button id="refuse">拒绝</button>-->
             </p>
