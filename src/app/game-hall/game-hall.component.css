@@ -37,13 +37,13 @@ body {
 .friend_panel {
   /*background: #f0f0f0;*/
   height:320px;
-  opacity: 0.5;
+  opacity: 0.8;
   font-family:'water';
 }
 .message_panel {
   /*background: #f0f0f0;*/
   height:240px;
-  opacity: 0.5;
+  opacity: 0.8;
   font-family:'water';
 }
 .panel-body{
@@ -217,7 +217,7 @@ body {
   background: none;
   border:none;
   color: #CD853F;
-  opacity:0.8;
+  /*opacity:0.8;*/
   font-weight:bolder;
   background: url(../../assets/images/model.png);
   background-size: 100% 100%;
