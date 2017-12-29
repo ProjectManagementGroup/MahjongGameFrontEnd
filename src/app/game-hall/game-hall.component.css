@@ -8,8 +8,8 @@ body {
   height:758px;
   background-image: url(../../assets/images/hall.png);
   background-repeat:no-repeat;
-  background-size: cover;
-  /*background:#f0f0f0;*/
+  /*background:#f0f0f0;*/  background-size: cover;
+
   /*padding-top: 70px;*/
 }
 /*footer {*/
@@ -21,27 +21,115 @@ body {
 }
 
 #buttons {
-  margin-top:190px;
+  margin-top:300px;
   background: none;
+  margin-left: 20%;
+  margin-right: -22%;
   border:none;
   /*background: #f0f0f0;*/
   background-image: url(../../assets/images/border.png);
-  background-size:100% 100%;
+  background-repeat:no-repeat;
+  background-size:90% 100%;
   opacity: 0.9;
 }
-.panel {
+.friend_panel {
   /*background: #f0f0f0;*/
-  height:500px;
+  height:320px;
+  opacity: 0.5;
+  font-family:'water';
+}
+.message_panel {
+  /*background: #f0f0f0;*/
+  height:220px;
   opacity: 0.5;
   font-family:'water';
 }
 .panel-body{
   height:100%;
 }
+.form-inline {
+  width: 240px;
+  margin:auto;
+}
+.hidden_wrapper{
+  height: 200px;
+  width: 240px;
+  overflow: hidden;
+  margin:auto;
+  padding-top: 5px;
+}
+
+.friend_list,.user_list{
+  text-align: center;
+  width: 262px;
+  height: 200px;
+  overflow: auto;
+  background: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.friend_info,.user_info{
+  text-align: left;
+  width: 240px;
+  background: none;
+  color:#FFD700;
+  /*padding-bottom: 5px;*/
+  border-bottom: 1px solid #ccc;
+  border-color:rgba(255,255,255,0.3);
+  background-color: #1E90FF;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  /*margin: 0px 0px;*/
+  padding:6px;
+}
+#search_user,#user_key {
+  background: none;
+}
+.search_bar {
+  width:260px;
+  margin-left:16px;
+}
+#search_user {
+  width:30%;
+  /*padding:1px 2px;*/
+  padding-left:2px;
+  padding-right:2px;
+}
+#user_key {
+  width:60%;
+}
+#add_button {
+  float: right;
+  height:25px;
+  /*width:70px;*/
+  padding:1px 3px;
+}
+.delete_friend,.add_friend {
+  float: right;
+  height:25px;
+  /*width:70px;*/
+  padding:0 3px;
+  /*padding:0;*/
+  margin:auto;
+  font-size:11px;
+  /*border-color: red;*/
+  border-radius: 30px;
+}
 #message_buttons{
   height:60px;
   padding-left: 20px;
   /*margin-top:350px;*/
+}
+#search_key {
+  width:70%;
+  height:30px;
+}
+#search {
+  width:25%;
+  height:30px;
+  float:right;
+  padding:1px 2px;
+  font-size: 12px;
 }
 #accept,#refuse {
   opacity: 1;
@@ -61,30 +149,41 @@ body {
 #refuse {
   background-image: url(../../assets/images/refuse.png);
 }
-#create_room,#add_room {
+.modal-body {
+  height: 260px;
+}
+#create_room,#add_room,#log_out {
   opacity: 1;
   outline:none;
   background: none;
   border:none;
-  width:90%;
-  height:80px;
+  width:70%;
+  height:60px;
   background-size:100% 100%;
   font-family:'water';
   font-size:20px;
   color:white;
 }
-#create_room:hover,#add_room:hover,#accept:hover,#refuse:hover {
+#create_room:hover,#add_room:hover,#log_out:hover,#accept:hover,#refuse:hover {
    opacity:0.8;
  }
 #create_room {
   background-image: url(../../assets/images/button1.png);
-  margin:50px 10px 10px 10px;
+  margin-top:30px;
+  margin-left:10%;
+  /*margin:50px 30px 10px 10px;*/
 }
 #add_room {
   background-image: url(../../assets/images/button2.png);
-  margin:15px 10px 30px 10px;
+  margin-left:10%;
+  /*margin: 15px 20px 30px 10px;*/
 }
-img{
+#log_out {
+  background-image: url(../../assets/images/button1.png);
+  margin-left:10%;
+  /*margin:0px 100px 10px 10px;*/
+}
+#user_portrait {
   border: 1px dotted #000000; /*border: 1px solid #000000;*/
   -webkit-border-radius: 50%;
   border-radius: 50%
@@ -105,5 +204,8 @@ img{
 }
 ul {
   padding-top: 20px;
+}
+.cancel_button {
+  float:left;
 }
 

@@ -46,6 +46,56 @@
 <!--</div>-->
 <!--</div>-->
 <!--</div>-->
+<div class="modal fade" id="friendModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" id="exampleModalLabel">添加好友</h4>
+</div>
+<div class="modal-body">
+  <div>
+    <div class="search_bar form-inline form-group">
+      <input type="text" class="form-control" id="user_key">
+      <button id="search_user" class="btn btn-default">搜索玩家</button>
+    </div>
+    <div class="hidden_wrapper">
+      <div class="user_list">
+        <div *ngFor="let user of users" class="user_info">
+          <img src="../../assets/images/background2.jpg" width="30px" height="30px"/>
+          {{user.name}}:{{user.point}}
+          <button class="btn btn-default add_friend">添加好友</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+<button class="cancel_button" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+<button id="add" type="button" class="btn btn-primary" data-dismiss="modal" (click)="send_invitation()">确定添加</button>
+</div>
+</div>
+</div>
+</div>
+
+<!--<div class="modal fade" id="friendModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">-->
+  <!--<div class="modal-dialog" role="document">-->
+    <!--<div class="modal-content">-->
+      <!--<div class="modal-header">-->
+        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+        <!--<h4 class="modal-title" id="exampleModalLabel">添加好友/h4>-->
+      <!--</div>-->
+      <!--<div class="modal-body">-->
+        <!---->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="modal-footer">-->
+      <!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
+      <!--<button type="button" class="btn btn-primary" (click)="send_invitation()">确定添加</button>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
 
 
 
@@ -53,7 +103,7 @@
 <div class="container">
   <div class="page-header">
     <h4>
-      <img src="../../assets/images/background2.jpg" width="70px" height="70px"/>
+      <img id="user_portrait" src="../../assets/images/background2.jpg" width="70px" height="70px"/>
       <span class="label label-default">{{user.name}}</span>
     </h4>
   </div>
@@ -62,7 +112,29 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <div class="panel panel-danger">
+      <div class="panel panel-danger friend_panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">好友列表
+            <button id="add_button" class="btn btn-default" data-toggle="modal" data-target="#friendModal">添加好友</button>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-inline">
+            <input type="text" class="form-control" id="search_key">
+            <button id="search" class="btn btn-default">搜索好友</button>
+          </div>
+          <div class="hidden_wrapper">
+            <div class="friend_list">
+              <div *ngFor="let friend of friends" class="friend_info">
+                <img src="../../assets/images/background2.jpg" width="30px" height="30px"/>
+                {{friend.name}}:{{friend.state}}
+                <button class="btn btn-default delete_friend">删除好友</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-danger message_panel">
         <div class="panel-heading">
           <h3 class="panel-title">消息</h3>
         </div>
@@ -112,6 +184,7 @@
         <!--<p><button id="create_room" data-toggle="modal" data-target="#inviteModal">创建房间</button></p>-->
         <p><button id="create_room" data-toggle="modal" (click)="create_room()">创建房间</button></p>
         <p><button id="add_room">加入房间</button></p>
+        <p><button id="log_out">退出游戏</button></p>
       </div>
     </div>
   </div>
