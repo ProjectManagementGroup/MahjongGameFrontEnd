@@ -26,30 +26,45 @@
 <div class="modal-body">
 <div>
 <div class="form-group">
-<label for="username1" class="control-label">第1个好友:</label>
-<input type="text" class="form-control" id="username1"  [(ngModel)]="name1">
+  <label for="username1" class="control-label">第1个好友:</label>
+  <select class="form-control" id="username1" [(ngModel)]="name1">
+    <option *ngFor="let friend of friends" class="friend_name">
+      {{friend.name}}
+    </option>
+  </select>
+<!--<input type="text" class="form-control" id="username1"  [(ngModel)]="name1">-->
 </div>
 <div class="form-group">
-<label for="username2" class="control-label">第2个好友:</label>
-<input type="text" class="form-control" id="username2" [(ngModel)]="name2">
+  <label for="username2" class="control-label">第2个好友:</label>
+  <!--<input type="text" class="form-control" id="username2" [(ngModel)]="name2">-->
+  <select class="form-control" id="username2" [(ngModel)]="name2">
+    <option *ngFor="let friend of friends" class="friend_name">
+      {{friend.name}}
+    </option>
+  </select>
 </div>
 <div class="form-group">
-<label for="username3" class="control-label">第3个好友:</label>
-<input type="text" class="form-control" id="username3" [(ngModel)]="name3">
+  <label for="username3" class="control-label">第3个好友:</label>
+<!--<input type="text" class="form-control" id="username3" [(ngModel)]="name3">-->
+  <select class="form-control" id="username3" [(ngModel)]="name3">
+    <option *ngFor="let friend of friends" class="friend_name">
+      {{friend.name}}
+    </option>
+  </select>
 </div>
-  <div class="form-inline">
-    <input type="text" class="form-control" id="friend_key1">
-    <button id="search_friend1" class="btn btn-default">搜索好友</button>
-  </div>
-  <div class="hidden_wrapper">
-    <div class="friend_list">
-      <div *ngFor="let friend of friends" class="friend_info">
-        <img src="../../assets/images/background2.jpg" width="30px" height="30px"/>
-        {{friend.name}}:{{friend.state}}
-        <button class="btn btn-default delete_friend">删除好友</button>
-      </div>
-    </div>
-  </div>
+  <!--<div class="form-inline">-->
+    <!--<input type="text" class="form-control" id="friend_key1">-->
+    <!--<button id="search_friend1" class="btn btn-default">搜索好友</button>-->
+  <!--</div>-->
+  <!--<div class="hidden_wrapper">-->
+    <!--<div class="friend_list">-->
+      <!--<div *ngFor="let friend of friends" class="friend_info">-->
+        <!--<img src="../../assets/images/background2.jpg" width="30px" height="30px"/>-->
+        <!--{{friend.name}}:{{friend.state}}-->
+        <!--<button class="btn btn-default delete_friend">删除好友</button>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 </div>
 </div>
 <div class="modal-footer">

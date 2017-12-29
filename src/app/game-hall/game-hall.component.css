@@ -82,6 +82,18 @@ body {
   /*margin: 0px 0px;*/
   padding:6px;
 }
+.friend_name{
+  background: none;
+  font-family:'water';
+  /*padding-bottom: 5px;*/
+  /*border-bottom: 1px solid #ccc;*/
+  /*border-color:rgba(255,255,255,0.3);*/
+  /*background-color: #F5FFFA;*/
+  /*border-radius: 5px;*/
+  /*margin-bottom: 5px;*/
+  /*margin: 0px 0px;*/
+  /*padding:6px;*/
+}
 #search_user,#user_key {
   background: none;
 }
@@ -201,6 +213,7 @@ body {
   border:none;
   color: #CD853F;
   opacity:0.8;
+  font-weight:bolder;
   background: url(../../assets/images/model.png);
   background-size: 100% 100%;
 }
@@ -212,5 +225,8 @@ ul {
 }
 .cancel_button {
   float:left;
+}
+.modal {
+  font-family: "water";
 }
 
