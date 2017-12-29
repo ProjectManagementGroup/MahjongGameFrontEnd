@@ -2,12 +2,14 @@
   text-align: center;
   height: 740px;
   min-width: 1520px;
-  background-image: url("../../assets/images/game_background.png");
+  background-image: url("../../assets/images/game_background5.jpg");
+  background-size: 1520px 740px;
 }
 
 .center_in_ri{
   text-align: center;
-  background-image: url("../../assets/images/game_background3.png");
+  background-image: url("../../assets/images/game_background6.jpg");
+  background-size: 940px 540px;
   border-radius:5%;
   width: 940px;
   height: 540px;
@@ -17,11 +19,11 @@
   -webkit-transform:translate(-50%,-50%);
   -moz-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
+  box-shadow: 0px 0px 15px 5px rgba(255,154,0,0.7);
 }
 
 .show_room_info{
   text-align: center;
-  background-image: url("../../assets/images/game_background.png");
   border-radius:5%;
   width: 300px;
   height: 400px;

@@ -2,7 +2,8 @@
   text-align: center;
   height: 740px;
   min-width: 1520px;
-  background-image: url("../../assets/images/game_background.png");
+  background-image: url("../../assets/images/game_background5.jpg");
+  background-size: 1520px 740px;
 }
 
 .center_in_gr{

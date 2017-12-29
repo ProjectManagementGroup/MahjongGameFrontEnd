@@ -1,7 +1,7 @@
 <div class="bottom">
   <!--已打出的牌 -->
   <div class="bottom_useless">
-    <div *ngFor="let useless_tile of tiles[2]" class="useless_tile">
+    <div *ngFor="let useless_tile of tiles[2]" class="useless_tile" [class.selected]="hasCurrentTile">
       <img  height="40" width="30" src="../../assets/picture/{{useless_tile.type}}/{{useless_tile.value}}.png" alt="useless_tile_img">
     </div>
   </div>
