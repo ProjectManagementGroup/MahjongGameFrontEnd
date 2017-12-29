@@ -67,7 +67,7 @@ export class UpComponent  implements OnInit {
         this.tiles = tiles;
       }
     );
-    this.socketService.get_last_is_up.subscribe(
+    this.socketService.get_last_is_top.subscribe(
       (val)=>{
         this.hasCurrentTile = val;
       }
