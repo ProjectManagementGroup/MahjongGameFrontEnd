@@ -21,6 +21,7 @@
   -webkit-transform:translate(-50%,-50%);
   -moz-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
+  box-shadow: 0px 0px 15px 5px rgba(255,154,0,0.7);
 }
 
 .left_in_table {
