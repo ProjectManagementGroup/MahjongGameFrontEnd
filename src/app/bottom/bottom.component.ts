@@ -130,7 +130,7 @@ export class BottomComponent  implements OnInit {
       this.socketService.setWintile(this.new_tile);
       var message="win|"+this.new_tile.typeid+"|"+this.new_tile.value;
       this.socketService.sendMessage(message);
-    }else{
+    }else if(this.current_tile!==null){
       this.socketService.setWintile(this.current_tile);
       var message="win|"+this.current_tile.typeid+"|"+this.current_tile.value;
       this.socketService.sendMessage(message);
