@@ -65,7 +65,10 @@ export class GameHallComponent implements OnInit{
       this.friends=val;
     });
     this.socket.get_friendInvitation.subscribe((val)=>{
-      this.friendInvitation=val;
+      if(this.invatation==null){
+        this.friendInvitation=val;
+      }
+
     });
 
   }
