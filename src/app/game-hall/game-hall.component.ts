@@ -52,6 +52,7 @@ export class GameHallComponent implements OnInit{
   }
   ngOnInit(): void {
     this.socket.get_invitation.subscribe((val)=>{
+      this.friendInvitation=null;
       this.invatation = val;
       }
     );
@@ -91,5 +92,6 @@ export class GameHallComponent implements OnInit{
   accept_friendinvitation():void {
     var message = "friendAccept|"+this.friendInvitation;
     this.socket.sendMessage(message);
+    this.friendInvitation=null;
   }
 }
