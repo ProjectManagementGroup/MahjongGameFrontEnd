@@ -83,19 +83,7 @@ export class CheckTileService {
       }
     }
   }
-
-  public checkWin(using_tiles: Tile[], win_tile: Tile): boolean{
-    //先判断牌数可不可以胡
-    let numof3 = (using_tiles.length-1)/3;
-    if((using_tiles.length-1)%3 !== 0){
-      return false;
-    }
-    //初始化tiles数组
-    let tiles = [];
-    for(let i=0; i<using_tiles.length; i++){
-      tiles.push(this.getTileNum(using_tiles[i]));
-    }
-    tiles.push(this.getTileNum(win_tile));
+  private checkIsWin(tiles: number[], numof3: number): boolean{
     //给tiles数组排序
     this.bubbleSortNum(tiles);
     //初始化标志位
@@ -135,7 +123,7 @@ export class CheckTileService {
         }else if(this.findShun(tiles, tag, firstUnTag)){
           continue;
         }else{
-           break;
+          break;
         }
       }
 
@@ -145,6 +133,36 @@ export class CheckTileService {
       }
     }
     return iswin;
+  }
+
+  public checkWinAtGameStart(using_tiles: Tile[]): boolean{
+    //先判断牌数可不可以胡
+    let numof3 = (using_tiles.length-2)/3;
+    if((using_tiles.length-2)%3 !== 0){
+      return false;
+    }
+    //初始化tiles数组
+    let tiles = [];
+    for(let i=0; i<using_tiles.length; i++){
+      tiles.push(this.getTileNum(using_tiles[i]));
+    }
+    return this.checkIsWin(tiles, numof3);
+
+  }
+
+  public checkWin(using_tiles: Tile[], win_tile: Tile): boolean{
+    //先判断牌数可不可以胡
+    let numof3 = (using_tiles.length-1)/3;
+    if((using_tiles.length-1)%3 !== 0){
+      return false;
+    }
+    //初始化tiles数组
+    let tiles = [];
+    for(let i=0; i<using_tiles.length; i++){
+      tiles.push(this.getTileNum(using_tiles[i]));
+    }
+    tiles.push(this.getTileNum(win_tile));
+    return this.checkIsWin(tiles, numof3);
   }
 
   private findFirstUnTag(tag: number[]): number{
