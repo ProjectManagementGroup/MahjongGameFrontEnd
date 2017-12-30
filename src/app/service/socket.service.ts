@@ -203,6 +203,10 @@ export class SocketService {
          global.get_next_turn.next(global.next_turn);
          global.rest=83;
          global.get_rest.next(global.rest);
+         if(global.uuid==0){
+           global.can_win=true;
+         }
+         global.get_can_win.next(global.can_win);
          break;
        //我抓到一张牌
        case 'get tile':
