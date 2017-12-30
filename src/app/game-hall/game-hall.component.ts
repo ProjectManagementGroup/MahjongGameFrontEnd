@@ -90,5 +90,6 @@ export class GameHallComponent implements OnInit{
 
   accept_friendinvitation():void {
     var message = "friendAccept|"+this.friendInvitation;
+    this.socket.sendMessage(message);
   }
 }
