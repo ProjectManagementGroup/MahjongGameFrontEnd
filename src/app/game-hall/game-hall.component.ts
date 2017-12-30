@@ -48,6 +48,7 @@ export class GameHallComponent implements OnInit{
       this.user=socket.user;
       this.friends=socket.friendsList;
       // this.users=USERS;
+    // this.friendInvitation="来自远方的邀请：wn";
   }
   ngOnInit(): void {
     this.socket.get_invitation.subscribe((val)=>{

@@ -145,7 +145,7 @@ body {
   padding:1px 2px;
   font-size: 12px;
 }
-#accept,#accept1,#refuse，#refuse1 {
+#accept,#accept1,#refuse,#refuse1 {
   opacity: 1;
   outline:none;
   background: none;
@@ -158,10 +158,10 @@ body {
   font-weight: bold;
   color:white;
 }
-#accept，#accept1 {
+#accep,#accept1 {
   background-image: url(../../assets/images/accept.png);
 }
-#refuse，#refuse1 {
+#refuse,#refuse1 {
   background-image: url(../../assets/images/refuse.png);
 }
 .modal-body {
@@ -236,6 +236,11 @@ ul {
 }
 .message_box {
   height:120px;
+  overflow:auto;
+  overflow-x: hidden
+}
+.message_box_friendInvitation{
+  height: 50px;
   overflow:auto;
   overflow-x: hidden
 }

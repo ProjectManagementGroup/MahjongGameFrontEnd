@@ -156,7 +156,7 @@
               <li>房间号： {{invatation[4]}}</li>
             </ul>
 
-            <ul class="message_box" *ngIf="friendInvitation">
+            <ul class="message_box_friendInvitation" *ngIf="friendInvitation">
               <li>来自远方的邀请： {{friendInvitation}}</li>
             </ul>
             <p id="message_buttons">
@@ -164,6 +164,7 @@
               <button id="refuse" *ngIf="invatation">拒绝</button>
               <button id="accept1" (click)="accept_friendinvitation()" *ngIf="friendInvitation">接收</button>
               <button id="refuse1" *ngIf="friendInvitation">拒绝</button>
+              <!--<button id="refuse1" *ngIf="friendInvitation">拒绝</button>-->
               <!--<button id="accept" (click)="accept_invitation()">接收</button>-->
               <!--<button id="refuse">拒绝</button>-->
             </p>
