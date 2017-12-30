@@ -63,6 +63,7 @@ export class GameResultComponent  implements OnInit {
     this.socketService.get_players.subscribe(
       (val)=>{
         if(this.isReady){
+          this.isReady = false;
           this.router.navigate(['/room']);
         }
       }
