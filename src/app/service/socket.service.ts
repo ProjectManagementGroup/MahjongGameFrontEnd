@@ -165,6 +165,16 @@ export class SocketService {
        case "game start":
          global.game_start=true;
          global.get_game_start.next(global.game_start);
+         global.bottom_tile=[[],[],[]];
+         global.top_tile=[[],[],[]];
+         global.left_tile=[[],[],[]];
+         global.right_tile=[[],[],[]];
+         global.new_tile=null;
+         global.get_new_tile.next(global.new_tile);
+         global.getTile_Left.next(global.left_tile);
+         global.getTile_Bottom.next(global.bottom_tile);
+         global.getTile_Right.next(global.right_tile);
+         global.getTile_Top.next(global.top_tile);
          break;
        case "game start allocate":
          var content = message.object;
@@ -191,6 +201,7 @@ export class SocketService {
          //第一次发牌设置next_turn
          global.next_turn=0;
          global.get_next_turn.next(global.next_turn);
+         global.rest=83;
          global.get_rest.next(global.rest);
          break;
        //我抓到一张牌
