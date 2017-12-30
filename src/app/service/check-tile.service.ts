@@ -71,12 +71,135 @@ export class CheckTileService {
     return (isfind1!= -1) && (isfind2 != -1);
   }
 
-  public checkWin(){
+  private bubbleSortNum(nums: number[]): void{
+    let size = nums.length;
+    for (let i = 0; i < size; i++) {
+      for (let j = i; j < size; j++) {
+        if (nums[j] < nums[i]) {
+          let tmp = nums[j];
+          nums[j] = nums[i];
+          nums[i] = tmp;
+        }
+      }
+    }
+  }
 
+  public checkWin(using_tiles: Tile[], win_tile: Tile): boolean{
+    //先判断牌数可不可以胡
+    let numof3 = (using_tiles.length-1)/3;
+    if((using_tiles.length-1)%3 !== 0){
+      return false;
+    }
+    //初始化tiles数组
+    let tiles = [];
+    for(let i=0; i<using_tiles.length; i++){
+      tiles.push(this.getTileNum(using_tiles[i]));
+    }
+    tiles.push(this.getTileNum(win_tile));
+    //给tiles数组排序
+    this.bubbleSortNum(tiles);
+    //初始化标志位
+    let tag = [];
+    for(let i=0;i<tiles.length;i++){
+      tag.push(0);
+    }
+
+    let pairIndex = -1;
+    let iswin = false;
+
+    while(pairIndex<tiles.length){
+      //清空标记位
+      for(let i=0;i<tag.length;i++){
+        tag[i]=0;
+      }
+      //找对
+      let isFindPair = false;
+      for(let b = pairIndex+1;b<tiles.length-1;b++){
+        if(tiles[b]==tiles[b+1]){
+          pairIndex = b+1;
+          tag[b]=1;
+          tag[b+1]=1;
+          isFindPair = true;
+          break;
+        }
+      }
+      if(!isFindPair){
+        break;
+      }
+
+      //看3333
+      for(let i=0;i<numof3;i++){
+        let firstUnTag = this.findFirstUnTag(tag);
+        if(this.findKe(tiles, tag, firstUnTag)){
+          continue;
+        }else if(this.findShun(tiles, tag, firstUnTag)){
+          continue;
+        }else{
+           break;
+        }
+      }
+
+      if(this.findFirstUnTag(tag) == -1){
+        iswin = true;
+        break;
+      }
+    }
+    return iswin;
+  }
+
+  private findFirstUnTag(tag: number[]): number{
+    for(let i=0;i<tag.length;i++){
+      if(tag[i]==0){
+        return i;
+      }
+    }
+    return -1;
+  }
+  private findKe(tiles: number[], tag: number[], firstUnTag: number): boolean{
+    let isFind = false;
+    if(tiles[firstUnTag+1]==tiles[firstUnTag] && tiles[firstUnTag+2]==tiles[firstUnTag]){
+      tag[firstUnTag]=1;
+      tag[firstUnTag+1]=1;
+      tag[firstUnTag+2]=1;
+      isFind = true;
+    }
+    return isFind;
+  }
+
+  private findShun(tiles: number[], tag: number[], firstUnTag: number): boolean{
+    let pointer = firstUnTag  + 1;
+    let find1Index = -1;
+    let find2Index = -1;
+    for(let i=pointer;i<tiles.length;i++){
+      if(tag[i] == 0){
+        if(tiles[i] == (tiles[firstUnTag]+1)){
+          pointer = i+1;
+          find1Index = i;
+          break;
+        }
+      }
+    }
+
+    for(let i=pointer;i<tiles.length;i++){
+      if(tag[i] == 0){
+        if(tiles[i] == (tiles[firstUnTag]+2)){
+          find2Index = i;
+          break;
+        }
+      }
+    }
+
+    if(find1Index !== -1 && find2Index !== -1){
+      tag[firstUnTag] = 1;
+      tag[find1Index] = 1;
+      tag[find2Index] = 1;
+      return true;
+    }
+    return false;
   }
   /*
   // bump碰牌 eat吃牌 rod杠牌
-  public checkBump(target: Tile, sameTypeTiles: Array<Tile>): boolean {
+  public checkBump(rget: Tile, sameTypeTiles: Array<Tile>): boolean {
     return this.isNumMoreThan(target.value, sameTypeTiles, 2);
   }
 
