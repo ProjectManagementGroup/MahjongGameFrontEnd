@@ -43,6 +43,7 @@ export class GameResultComponent  implements OnInit {
   private winner_id:number;
   private win: boolean = false;
 
+  private isReady = false;
   constructor(private socketService: SocketService,private orderService:OrderTileService,private router: Router) {
     this.winner_tiles=this.socketService.win_tiles;
     this.orderService.bubbleSortTile(this.winner_tiles);
@@ -62,13 +63,16 @@ export class GameResultComponent  implements OnInit {
     this.socketService.get_players.subscribe(
       (val)=>{
         this.players=val;
-        this.router.navigate(['/room']);
+        if(this.isReady){
+          this.router.navigate(['/room']);
+        }
       }
     );
   }
 
   ready(): void {
     this.socketService.sendMessage("ready|");
+    this.isReady = true;
   }
 
 }
