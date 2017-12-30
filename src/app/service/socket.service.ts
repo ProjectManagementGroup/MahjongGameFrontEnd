@@ -88,7 +88,9 @@ export class SocketService {
   get_last_is_top:Subject<boolean> = new Subject<boolean>();
   get_last_is_left:Subject<boolean> = new Subject<boolean>();
   get_last_is_right:Subject<boolean> = new Subject<boolean>();
-
+  //能否胡
+  can_win:boolean=false;
+  get_can_win:Subject<boolean> = new Subject<boolean>();
   //附加功能好友列表
   friendsList :string[] ;
   get_friendList:Subject<string[]> = new Subject<string[]>();
@@ -101,8 +103,9 @@ export class SocketService {
     //this.socket.onmessage = this.dealData;
    this.socket.onmessage = function (event) {
      //global.getRS.next(true);
-     var message = JSON.parse(event.data);
      console.log(event.data);
+     var message = JSON.parse(event.data);
+
      switch (message.message) {
        case 'register':
          if (message.ok) {
@@ -202,6 +205,8 @@ export class SocketService {
          global.next_turn = global.uuid;
          console.log("，目前该出牌的人是我");
          global.get_next_turn.next(global.next_turn);
+         global.can_win=true;
+         global.get_can_win.next(global.can_win);
          break;
        //别人抓了一张牌
        case 'allocate tile':
@@ -224,6 +229,8 @@ export class SocketService {
            global.getTile_Top.next(global.top_tile);
          }
          global.get_rest.next(global.rest);
+         global.can_win=false;
+         global.get_can_win.next(global.can_win);
          break;
        //出牌成功
        case 'out success':
@@ -257,6 +264,8 @@ export class SocketService {
            global.current_tile = global.out_tile;
            global.get_turn.next(global.turn);
            global.get_current.next(global.current_tile);
+           global.can_win=false;
+           global.get_can_win.next(global.can_win);
          }
          break;
        //别人出牌
@@ -299,6 +308,8 @@ export class SocketService {
          global.get_last_is_left.next(global.last_is_left);
          global.get_last_is_right.next(global.last_is_right);
          global.get_last_is_top.next(global.last_is_top);
+         global.can_win=true;
+         global.get_can_win.next(global.can_win);
          break;
        case 'bump request success':
          console.log("bump request success!!!!");

@@ -56,7 +56,7 @@ export class BottomComponent  implements OnInit {
   private new_tile:Tile = null;
   // 最后出的那张牌在不在这个方位
   private hasCurrentTile: boolean = false;
-
+  private can_win:boolean=false;
 
   @Input() uuid: number;
   @Input() current_tile: Tile; //最后出的牌
@@ -96,6 +96,11 @@ export class BottomComponent  implements OnInit {
         this.hasCurrentTile = val;
       }
     );
+    this.socketService.get_can_win.subscribe(
+      (val)=>{
+        this.can_win=val;
+      }
+    );
   }
 
   //检测碰牌是否成功，如果成功就发给后台
@@ -126,14 +131,16 @@ export class BottomComponent  implements OnInit {
   }
 
   win(): void {
-    if(this.new_tile !== null){
-      this.socketService.setWintile(this.new_tile);
-      var message="win|"+this.new_tile.typeid+"|"+this.new_tile.value;
-      this.socketService.sendMessage(message);
-    }else if(this.current_tile!==null){
-      this.socketService.setWintile(this.current_tile);
-      var message="win|"+this.current_tile.typeid+"|"+this.current_tile.value;
-      this.socketService.sendMessage(message);
+    if(this.can_win) {
+      if (this.new_tile !== null) {
+        this.socketService.setWintile(this.new_tile);
+        var message = "win|" + this.new_tile.typeid + "|" + this.new_tile.value;
+        this.socketService.sendMessage(message);
+      } else if (this.current_tile !== null) {
+        this.socketService.setWintile(this.current_tile);
+        var message = "win|" + this.current_tile.typeid + "|" + this.current_tile.value;
+        this.socketService.sendMessage(message);
+      }
     }
   }
 
