@@ -27,15 +27,15 @@ export class CenterComponent implements AfterViewInit,OnDestroy{
   private turn: number;
   // 定时器
   private timer;
-  private countDown: number = 5;
+  private countDown: number = COUNTDOWN;
   private startTimer: boolean = false;
 
   constructor(private socketService: SocketService) {
-    //this.leftPlayer = PLAYERS[0];
-    //this.upPlayer = PLAYERS[1];
-    //this.rightPlayer = PLAYERS[2];
-    //this.bottomPlayer = PLAYERS[3];
-    //this.countDown = 7;
+    // this.leftPlayer = PLAYERS[0];
+    // this.upPlayer = PLAYERS[1];
+    // this.rightPlayer = PLAYERS[2];
+    // this.bottomPlayer = PLAYERS[3];
+    // this.startTimer = true;
   }
 
   ngOnInit(): void {
@@ -55,7 +55,7 @@ export class CenterComponent implements AfterViewInit,OnDestroy{
   // 每一秒更新
   ngAfterViewInit() {
     this.timer = setInterval(() => {
-      if (this.startTimer && this.countDown > 0) {
+      if (this.startTimer && this.countDown > 1) {
         this.countDown--;
       }else{
         this.startTimer = false;

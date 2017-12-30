@@ -109,3 +109,7 @@
   background-color: #CFD8DC !important;
   color: white;
 }
+.count_down h4 span {
+  font-size: medium;
+  color: white;
+}

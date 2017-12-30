@@ -3,7 +3,10 @@
   <div class="right_arrow"></div>
   <div class="up_arrow"></div>
   <div class="bottom_arrow"></div>
-  <div class="count_down"><h4><span class="label label-default" *ngIf="startTimer">{{countDown}}</span></h4></div>
+  <div class="count_down">
+    <h4>
+      <span  *ngIf="startTimer">{{countDown}}</span>
+    </h4></div>
   <div *ngIf="leftPlayer.gameid === next_turn"  class="left_arrow_highlight"></div>
   <div *ngIf="rightPlayer.gameid === next_turn"  class="right_arrow_highlight"></div>
   <div *ngIf="upPlayer.gameid === next_turn"  class="up_arrow_highlight"></div>
